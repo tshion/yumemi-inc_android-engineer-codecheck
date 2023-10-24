@@ -41,7 +41,7 @@ released | アプリリリースしたものの記録用
 1. 1日の終わりに出来たところまでをDraft Pull Request として作成する
     * 特に理由が無ければ`develop` ブランチに対してPR を作ってください
     * 進捗管理の都合上、どこまで出来ているかを見たいので、対応してくれるととても助かります
-1. 作成したPull Request の`Linked issues` に関連のGitHub Issue を紐づける
+1. 作成したPull Request の`Development` に関連のGitHub Issue を紐づける
 1. 作業が完了したら、Draft 状態を解除し、レビュー担当者に連絡してください
 
 
