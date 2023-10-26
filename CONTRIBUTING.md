@@ -46,6 +46,16 @@ released | アプリリリースしたものの記録用
 
 
 
+## リリース作業の流れ
+1. リリース対象PR がdevelop ブランチに全てマージされていることを確認する
+1. develop ブランチに切り替え、アプリバージョンを更新し、コミットする
+    * [variables.gradle](./variables.gradle) 内を確認してください
+1. develop ブランチからreleased ブランチにPull Request を作成する
+1. 問題なければPull Request をマージする
+1. GitHub Actions が自動実行されるので、様子を見る
+
+
+
 ## その他
 ### 心得
 * クラスやメソッドは、なるべく統治しやすい単位で切ること
