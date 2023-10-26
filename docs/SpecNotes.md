@@ -22,3 +22,5 @@ GitHub リポジトリの詳細画面 | [TwoFragment](../app/src/main/kotlin/jp/
 ## その他
 * GitHub REST API
     * https://docs.github.com/ja/rest/search/search?apiVersion=2022-11-28#search-repositories
+* アプリバージョンの仕様
+    * https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/5 を参照してください
