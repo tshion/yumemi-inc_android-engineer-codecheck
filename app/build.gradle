@@ -14,8 +14,8 @@ android {
         applicationId "jp.co.yumemi.android.codecheck"
         minSdk 23
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode appVersionCode
+        versionName appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
