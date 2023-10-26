@@ -19,11 +19,30 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        def file = rootProject.file('release.jks')
+        if (file.exists()) {
+            release {
+                // keystore.properties の読み取り
+                def prop = new Properties()
+                try {
+                    prop.load(new FileInputStream(rootProject.file('keystore.properties')))
+                } catch (e) {
+                }
+
+                storeFile file
+                storePassword System.getenv('KEYSTORE_PASSWORD') ?: prop.getProperty('KEYSTORE_PASSWORD', '')
+                keyAlias System.getenv('KEY_ALIAS') ?: prop.getProperty('KEY_ALIAS', '')
+                keyPassword System.getenv('KEY_PASSWORD') ?: prop.getProperty('KEY_PASSWORD', '')
+            }
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
