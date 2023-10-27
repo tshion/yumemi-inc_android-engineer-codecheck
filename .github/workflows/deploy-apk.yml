@@ -30,6 +30,7 @@ jobs:
         uses: timheuer/base64-to-file@v1.2
         with:
           fileName: 'release.jks'
+          fileDir: './'
           encodedString: ${{ secrets.KEYSTORE }}
 
       - name: list up *.jks
