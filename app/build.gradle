@@ -88,8 +88,8 @@ dependencies {
 }
 
 
-// アプリバージョン名の抜き出し
-tasks.register('pickVersionName') {
+// アプリバージョン名の表示
+tasks.register('showVersionName') {
     def file = rootProject.file('./app/build/outputs/apk/release/output-metadata.json')
     def versionName = 'unknown'
     if (file.exists()) {
@@ -97,6 +97,5 @@ tasks.register('pickVersionName') {
         def matches = (text =~ /"versionName": "(.+)",/)
         versionName = matches[0][1]
     }
-    println("version: ${versionName}")
-    return versionName
+    println(versionName)
 }
