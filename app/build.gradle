@@ -6,6 +6,15 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+
+// keystore.properties の読み取り
+def keystoreProperties = new Properties()
+try {
+    keystoreProperties.load(new FileInputStream(rootProject.file('keystore.properties')))
+} catch (e) {
+}
+
+
 android {
     namespace 'jp.co.yumemi.android.code_check'
     compileSdk 31
@@ -19,11 +28,26 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        def file = rootProject.file('release.jks')
+        if (file.exists()) {
+            release {
+                storeFile file
+                storePassword System.getenv('KEYSTORE_PASSWORD')
+                        ?: keystoreProperties.getProperty('KEYSTORE_PASSWORD', '')
+                keyAlias System.getenv('KEY_ALIAS')
+                        ?: keystoreProperties.getProperty('KEY_ALIAS', '')
+                keyPassword System.getenv('KEY_PASSWORD')
+                        ?: keystoreProperties.getProperty('KEY_PASSWORD', '')
+            }
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -61,4 +85,18 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+
+
+// アプリバージョン名の抜き出し
+tasks.register('pickVersionName') {
+    def file = rootProject.file('./app/build/outputs/apk/release/output-metadata.json')
+    def versionName = 'unknown'
+    if (file.exists()) {
+        def text = file.text.toString()
+        def matches = (text =~ /"versionName": "(.+)",/)
+        versionName = matches[0][1]
+    }
+    println("version: ${versionName}")
+    return versionName
 }
