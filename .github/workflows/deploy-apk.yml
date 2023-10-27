@@ -26,10 +26,14 @@ jobs:
 
       # https://github.com/timheuer/base64-to-file
       - name: Set keystore's file
+        id: set_keystore
         uses: timheuer/base64-to-file@v1.2
         with:
           fileName: 'release.jks'
           encodedString: ${{ secrets.KEYSTORE }}
+
+      - name: list up *.jks
+        run: echo "${ls *.jks}"
 
       - name: Build release apk
         run: ./gradlew app:assembleRelease
