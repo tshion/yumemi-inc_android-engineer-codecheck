@@ -46,15 +46,16 @@ jobs:
       - name: Pick version name
         id: app-version
         run: |
-          echo $(./gradlew app:pickVersionName) > VERSION_NAME
-          echo $(VERSION_NAME)
-          echo "version-name=$(cat VERSION_NAME)" >> "$GITHUB_OUTPUT"
+          echo "$(./gradlew app:showVersionName)" > TMP_LOG
+          echo "$(head -n 1 TMP_LOG)" > TMP_LOG
+          echo "app version: $(cat TMP_LOG)"
+          echo "version-name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
 
       - name: Set git tag
         run: |
           echo "${{ steps.app-version.outputs.version-name }}" > TAG_NAME
-          git tag $(cat TAG_NAME)
-          git push origin $(cat TAG_NAME)
+          git tag "$(cat TAG_NAME)"
+          git push origin "$(cat TAG_NAME)"
 
       - name: Create release with assets
         run: gh release create "${{ steps.app-version.outputs.version-name }}" 'app/build/outputs/apk/release/app-release.apk'
