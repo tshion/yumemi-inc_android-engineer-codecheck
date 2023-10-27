@@ -6,6 +6,15 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+
+// keystore.properties の読み取り
+def keystoreProperties = new Properties()
+try {
+    keystoreProperties.load(new FileInputStream(rootProject.file('keystore.properties')))
+} catch (e) {
+}
+
+
 android {
     namespace 'jp.co.yumemi.android.code_check'
     compileSdk 31
@@ -23,17 +32,13 @@ android {
         def file = rootProject.file('release.jks')
         if (file.exists()) {
             release {
-                // keystore.properties の読み取り
-                def prop = new Properties()
-                try {
-                    prop.load(new FileInputStream(rootProject.file('keystore.properties')))
-                } catch (e) {
-                }
-
                 storeFile file
-                storePassword System.getenv('KEYSTORE_PASSWORD') ?: prop.getProperty('KEYSTORE_PASSWORD', '')
-                keyAlias System.getenv('KEY_ALIAS') ?: prop.getProperty('KEY_ALIAS', '')
-                keyPassword System.getenv('KEY_PASSWORD') ?: prop.getProperty('KEY_PASSWORD', '')
+                storePassword System.getenv('KEYSTORE_PASSWORD')
+                        ?: keystoreProperties.getProperty('KEYSTORE_PASSWORD', '')
+                keyAlias System.getenv('KEY_ALIAS')
+                        ?: keystoreProperties.getProperty('KEY_ALIAS', '')
+                keyPassword System.getenv('KEY_PASSWORD')
+                        ?: keystoreProperties.getProperty('KEY_PASSWORD', '')
             }
         }
     }
