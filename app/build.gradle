@@ -86,3 +86,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
+
+
+// アプリバージョン名の抜き出し
+tasks.register('pickVersionName') {
+    def file = rootProject.file('./app/build/outputs/apk/release/output-metadata.json')
+    def versionName = 'unknown'
+    if (file.exists()) {
+        def text = file.text.toString()
+        def matches = (text =~ /"versionName": "(.+)",/)
+        versionName = matches[0][1]
+    }
+    println("version: ${versionName}")
+    return versionName
+}
