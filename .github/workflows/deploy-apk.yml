@@ -1,0 +1,65 @@
+name: Deploy APK
+
+on:
+  push:
+    branches:
+      - released
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      # https://github.com/actions/setup-java
+      - name: set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version-file: '.java-version'
+          distribution: 'microsoft'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # https://github.com/timheuer/base64-to-file
+      - name: Set keystore's file
+        id: set_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'release.jks'
+          fileDir: './'
+          encodedString: ${{ secrets.KEYSTORE }}
+
+      - name: list up *.jks
+        run: echo $(ls *.jks)
+
+      - name: Build release apk
+        run: ./gradlew app:assembleRelease
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Pick version name
+        id: app-version
+        run: |
+          echo "$(./gradlew app:showVersionName)" > TMP_LOG
+          echo "$(head -n 1 TMP_LOG)" > TMP_LOG
+          echo "app version: $(cat TMP_LOG)"
+          echo "version-name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
+
+      - name: Set git tag
+        run: |
+          echo "${{ steps.app-version.outputs.version-name }}" > TAG_NAME
+          git tag "$(cat TAG_NAME)"
+          git push origin "$(cat TAG_NAME)"
+
+      - name: Create release with assets
+        run: gh release create "${{ steps.app-version.outputs.version-name }}" 'app/build/outputs/apk/release/app-release.apk' 'app/build/outputs/mapping/release/mapping.txt' --generate-notes --title "${{ steps.app-version.outputs.version-name }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

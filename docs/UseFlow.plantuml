@@ -1,0 +1,41 @@
+@startuml
+actor User
+box "App" #LightBlue
+    participant TopActivity
+    participant OneFragment
+    participant OneViewModel
+    participant TwoFragment
+end box
+participant "GitHub REST API" as GitHub
+
+
+== アプリ起動フロー ==
+User -> TopActivity : (アプリ起動)
+TopActivity -> OneFragment : (初期画面の設定)
+OneFragment --> User : 検索画面の表示
+
+
+== 検索フロー ==
+User -> OneFragment : 検索ワードの入力 & 検索実行
+activate OneFragment
+OneFragment -> OneViewModel : 検索メソッドの呼び出し
+activate OneViewModel
+OneViewModel -> GitHub : HTTPS 通信の実行
+activate GitHub
+note right of GitHub
+    GET /search/repositories
+end note
+GitHub --> OneViewModel : 通信結果
+deactivate GitHub
+OneViewModel --> OneFragment
+deactivate OneViewModel
+OneFragment --> User : 検索結果の表示
+deactivate OneFragment
+
+...
+
+User -> OneFragment : 検索結果の中から任意のものをタップ
+OneFragment -> TwoFragment : 検索結果を添えて画面遷移
+TwoFragment --> User : 詳細画面の表示
+
+@enduml
