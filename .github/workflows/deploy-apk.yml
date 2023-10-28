@@ -60,6 +60,6 @@ jobs:
           git push origin "$(cat TAG_NAME)"
 
       - name: Create release with assets
-        run: gh release create "${{ steps.app-version.outputs.version-name }}" 'app/build/outputs/apk/release/app-release.apk' 'app/build/outputs/mapping/release/mapping.txt'
+        run: gh release create "${{ steps.app-version.outputs.version-name }}" 'app/build/outputs/apk/release/app-release.apk' 'app/build/outputs/mapping/release/mapping.txt' --generate-notes --title "${{ steps.app-version.outputs.version-name }}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
