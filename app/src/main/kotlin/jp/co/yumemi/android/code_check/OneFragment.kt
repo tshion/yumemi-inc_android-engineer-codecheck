@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.*
 import jp.co.yumemi.android.code_check.databinding.FragmentOneBinding
+import java.net.UnknownHostException
 
 class OneFragment: Fragment(R.layout.fragment_one){
 
@@ -36,9 +38,17 @@ class OneFragment: Fragment(R.layout.fragment_one){
         _binding.searchInputText
             .setOnEditorActionListener{ editText, action, _ ->
                 if (action== EditorInfo.IME_ACTION_SEARCH){
-                    editText.text.toString().let {
-                        _viewModel.searchResults(it).apply{
-                            _adapter.submitList(this)
+                    editText.text.toString().also {
+                        try {
+                            _viewModel.searchResults(it).apply{
+                                _adapter.submitList(this)
+                            }
+                        } catch (e: UnknownHostException) {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.error_offline),
+                                Toast.LENGTH_SHORT,
+                            ).show()
                         }
                     }
                     return@setOnEditorActionListener true
