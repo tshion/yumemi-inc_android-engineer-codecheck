@@ -1,6 +1,7 @@
 package jp.co.yumemi.android.code_check
 
 import android.os.StrictMode
+import androidx.fragment.app.strictmode.FragmentStrictMode
 
 /**
  * Debug ビルド時に適用するApplication クラス
@@ -25,5 +26,18 @@ class DebugApplication : MainApplication() {
         // endregion
 
         super.onCreate()
+
+        // region: FragmentStrictMode の設定
+        FragmentStrictMode.Policy.Builder()
+            .detectFragmentReuse()
+            .detectFragmentTagUsage()
+            .detectRetainInstanceUsage()
+            .detectSetUserVisibleHint()
+            .detectTargetFragmentUsage()
+            .detectWrongFragmentContainer()
+            .penaltyDeath()
+            .build()
+            .also { FragmentStrictMode.defaultPolicy = it }
+        // endregion
     }
 }
