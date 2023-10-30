@@ -40,8 +40,16 @@ class OneFragment: Fragment(R.layout.fragment_one){
                 if (action== EditorInfo.IME_ACTION_SEARCH){
                     editText.text.toString().also {
                         try {
-                            _viewModel.searchResults(it).apply{
-                                _adapter.submitList(this)
+                            if (it.isNotBlank()) {
+                                _viewModel.searchResults(it).apply {
+                                    _adapter.submitList(this)
+                                }
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    getString(R.string.validation_blank),
+                                    Toast.LENGTH_SHORT,
+                                ).show()
                             }
                         } catch (e: UnknownHostException) {
                             Toast.makeText(
