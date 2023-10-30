@@ -20,7 +20,7 @@ class DebugApplication : MainApplication() {
         StrictMode.VmPolicy.Builder()
             .detectAll()
             .penaltyLog()
-            .penaltyDeath()
+            // .penaltyDeath() // FIXME: 1.0.3 時点では通信実行時に引っ掛かるので、一時的に封印
             .build()
             .also { StrictMode.setVmPolicy(it) }
         // endregion
