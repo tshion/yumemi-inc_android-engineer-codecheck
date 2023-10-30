@@ -32,6 +32,8 @@
     * https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-android
 * Ktor
     * https://mvnrepository.com/artifact/io.ktor/ktor-client-android
+* LeakCanary
+    * https://mvnrepository.com/artifact/com.squareup.leakcanary/leakcanary-android
 * Material Design
     * https://mvnrepository.com/artifact/com.google.android.material/material
 
