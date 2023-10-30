@@ -20,6 +20,7 @@
     * Java: 17
     * Kotlin: 1.6.21
 * GitHub
+* macOS or Windows
 
 
 
