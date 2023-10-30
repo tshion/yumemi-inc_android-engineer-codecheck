@@ -2,5 +2,6 @@
     <string name="app_name">Android Engineer CodeCheck</string>
     <string name="error_offline">通信状態が悪いようです。しばらく時間を置いてから再度お試しください。</string>
     <string name="searchInputText_hint">GitHub のリポジトリを検索できるよー</string>
+    <string name="validation_blank">何か入力してください。</string>
     <string name="written_language">Written in %s</string>
 </resources>
