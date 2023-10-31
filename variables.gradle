@@ -5,4 +5,12 @@ ext {
     def appVersionPatch = 3
     appVersionCode = 10000 * appVersionMajor + 100 * appVersionMinor + appVersionPatch
     appVersionName = "${appVersionMajor}.${appVersionMinor}.${appVersionPatch}"
+
+    // ライブラリバージョン
+    libver = [
+            androidx: [
+                    espresso: '3.5.1',
+                    junit: '1.1.5',
+            ]
+    ]
 }
