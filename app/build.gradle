@@ -88,6 +88,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:${libver.androidx.espresso}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${libver.androidx.espresso}"
     androidTestImplementation "androidx.test.ext:junit-ktx:${libver.androidx.junit}"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:${libver.androidx.uiautomator}"
 
     // LeakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'

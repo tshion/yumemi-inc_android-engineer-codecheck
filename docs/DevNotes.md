@@ -26,6 +26,7 @@
         * https://mvnrepository.com/artifact/androidx.navigation/navigation-ui-ktx
     * https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview
     * https://mvnrepository.com/artifact/androidx.test.ext/junit-ktx
+    * https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
 * Coil
     * https://mvnrepository.com/artifact/io.coil-kt/coil
 * JUnit
