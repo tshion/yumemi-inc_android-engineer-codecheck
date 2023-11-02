@@ -96,6 +96,9 @@ dependencies {
 
     // LeakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:${libver.timber}"
 }
 
 

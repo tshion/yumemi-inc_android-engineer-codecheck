@@ -39,6 +39,8 @@
     * https://mvnrepository.com/artifact/com.squareup.leakcanary/leakcanary-android
 * Material Design
     * https://mvnrepository.com/artifact/com.google.android.material/material
+* Timber
+    * https://mvnrepository.com/artifact/com.jakewharton.timber/timber
 
 
 
