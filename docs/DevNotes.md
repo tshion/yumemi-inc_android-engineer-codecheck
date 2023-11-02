@@ -14,6 +14,9 @@
     * https://mvnrepository.com/artifact/androidx.appcompat/appcompat
     * https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
     * https://mvnrepository.com/artifact/androidx.core/core-ktx
+    * espresso
+        * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-contrib
+        * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
     * lifecycle
         * https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-livedata-ktx
         * https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-runtime-ktx
@@ -22,8 +25,8 @@
         * https://mvnrepository.com/artifact/androidx.navigation/navigation-fragment-ktx
         * https://mvnrepository.com/artifact/androidx.navigation/navigation-ui-ktx
     * https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview
-    * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
-    * https://mvnrepository.com/artifact/androidx.test.ext/junit
+    * https://mvnrepository.com/artifact/androidx.test.ext/junit-ktx
+    * https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
 * Coil
     * https://mvnrepository.com/artifact/io.coil-kt/coil
 * JUnit
