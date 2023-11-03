@@ -36,14 +36,16 @@ GitHub リポジトリを検索できるAndroid アプリ。
 ## もしアプリ開発をやってみたくなったら
 下記を参照してください。
 
+* [CONTRIBUTING](./docs/CONTRIBUTING.md)
+    * 開発環境について
+    * 開発作業の流れ
+    * レビュー方針
+    * リリースの流れ
+    * 備考
 * [仕様メモ](./docs/SpecNotes.md)
     * 画面一覧
     * アプリの使い方
     * その他
-* [CONTRIBUTING](./CONTRIBUTING.md)
-    * 開発環境について
-    * Git ブランチについて
-    * 開発作業の流れ
 * [開発メモ](./docs/DevNotes.md)
     * 適用されている設計パターン
     * ライブラリ依存関係
