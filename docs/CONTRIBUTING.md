@@ -69,6 +69,7 @@
 1. `develop` ブランチに切り替え、アプリバージョンを更新し、コミットする
     * [variables.gradle](../variables.gradle) 内を確認してください
 1. `develop` ブランチから`released` ブランチにPull Request を作成する
+    * 例: [PR #16](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/16)
 1. 問題なければPull Request をマージする
 1. GitHub Actions が自動実行されるので、様子を見る
 
