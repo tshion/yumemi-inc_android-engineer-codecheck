@@ -9,7 +9,8 @@
 * アプリ改良のマイルストーンは下記のように設定しました
     * [v1.0.0](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/1) -> 他のIT 企業がアプリをリリースした状況の再現
     * [v1.1.0](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/3) -> 本格的なアプリ改良に入る前の下準備
-    * [v1.2.0](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/2) -> 本格的なアプリ改良 (**複製元で定義されている課題への対応**)
+        * [v1.0.x](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/4) -> v1.1.0 開発期間中に発覚したバグフィックスへの対応
+    * [v1.2.0](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/2) -> 本格的なアプリ改良 (**複製元で起票されているIssue への対応**)
 
 
 
@@ -20,7 +21,15 @@ GitHub リポジトリを検索できるAndroid アプリ。
 
 ### インストール方法
 アプリのapk は[GitHub リポジトリのリリース](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/releases) 経由で入手することが出来ます。
-Android OS 6.0 以降の端末で、apk のダウンロード → インストールをお試しくださいませ。
+
+* Android
+    * Android OS 6.0 以降の端末で、apk のダウンロード → インストールをお試しくださいませ
+* <details>
+  <summary>(開発者向けの実験的機能) <a href="https://learn.microsoft.com/ja-jp/windows/android/wsa/">Windows Subsystem for Android</a></summary>
+
+  1. apk をダウンロードする
+  1. [Windows 11 Android SubsystemにAPKをインストールする方法 – SMART ASW](https://smartasw.com/archives/13868) を参考に、 `adb` 経由でインストールする
+  </details>
 
 
 
