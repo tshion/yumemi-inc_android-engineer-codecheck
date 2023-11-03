@@ -2,11 +2,16 @@ package jp.co.yumemi.android.code_check
 
 import android.os.StrictMode
 import androidx.fragment.app.strictmode.FragmentStrictMode
+import timber.log.Timber
 
 /**
  * Debug ビルド時に適用するApplication クラス
  */
 class DebugApplication : MainApplication() {
+
+    /** Timber のログ出力ツリー */
+    override val timberTree = Timber.DebugTree()
+
 
     override fun onCreate() {
         // region: StrictMode の設定
