@@ -1,5 +1,5 @@
 # 開発メモ
-## 適用されている設計パターン
+## 適用されている実装 & 設計パターン
 * Jetpack
     * [Navigation](https://developer.android.com/guide/navigation)
         * Single Activity, Many Fragments
@@ -45,7 +45,7 @@
 ## リリースビルドを試したい
 プロジェクトルートにパスを移動してから下記の手順を踏んで環境を整備してください。
 
-※機密情報のため.gitignore に設定しています。なので都度対応してください。
+※機密情報のためGit 管理から外しています。なので都度対応してください。
 
 1. release.jks を新規作成し、署名情報を記載してください
 1. keystore.properties を新規作成し、下記のフォーマットで必要な情報を記載してください
