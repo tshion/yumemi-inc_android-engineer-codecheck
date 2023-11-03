@@ -11,20 +11,26 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.*
 import jp.co.yumemi.android.code_check.databinding.FragmentOneBinding
+import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 
 class OneFragment: Fragment(R.layout.fragment_one){
+
+    private val _viewModel by viewModels<OneViewModel>()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
 
         val _binding= FragmentOneBinding.bind(view)
-
-        val _viewModel= OneViewModel(context!!)
 
         val _layoutManager= LinearLayoutManager(context!!)
         val _dividerItemDecoration=
@@ -41,9 +47,7 @@ class OneFragment: Fragment(R.layout.fragment_one){
                     editText.text.toString().also {
                         try {
                             if (it.isNotBlank()) {
-                                _viewModel.searchResults(it).apply {
-                                    _adapter.submitList(this)
-                                }
+                                _viewModel.searchResults(it)
                             } else {
                                 Toast.makeText(
                                     requireContext(),
@@ -68,6 +72,14 @@ class OneFragment: Fragment(R.layout.fragment_one){
             it.layoutManager= _layoutManager
             it.addItemDecoration(_dividerItemDecoration)
             it.adapter= _adapter
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                _viewModel.searchResult.collect {
+                    _adapter.submitList(it)
+                }
+            }
         }
     }
 
