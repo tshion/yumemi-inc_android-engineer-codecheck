@@ -3,7 +3,6 @@
  */
 package jp.co.yumemi.android.code_check
 
-import android.content.Context
 import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import io.ktor.client.*
@@ -14,6 +13,8 @@ import io.ktor.client.statement.*
 import jp.co.yumemi.android.code_check.TopActivity.Companion.lastSearchDate
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.runBlocking
 import kotlinx.parcelize.Parcelize
 import org.json.JSONObject
@@ -22,12 +23,16 @@ import java.util.*
 /**
  * TwoFragment で使う
  */
-class OneViewModel(
-    val context: Context
-) : ViewModel() {
+class OneViewModel : ViewModel() {
+
+    private val _searchResult = MutableStateFlow(emptyList<item>())
+
+    /** 検索結果が流れてくるFlow */
+    val searchResult: StateFlow<List<item>> = _searchResult
+
 
     // 検索結果
-    fun searchResults(inputText: String): List<item> = runBlocking {
+    fun searchResults(inputText: String) = runBlocking {
         val client = HttpClient(Android)
 
         return@runBlocking GlobalScope.async {
@@ -59,7 +64,7 @@ class OneViewModel(
                     item(
                         name = name,
                         ownerIconUrl = ownerIconUrl,
-                        language = context.getString(R.string.written_language, language),
+                        language = language,
                         stargazersCount = stargazersCount,
                         watchersCount = watchersCount,
                         forksCount = forksCount,
@@ -70,7 +75,7 @@ class OneViewModel(
 
             lastSearchDate = Date()
 
-            return@async items.toList()
+            _searchResult.value = items
         }.await()
     }
 }
