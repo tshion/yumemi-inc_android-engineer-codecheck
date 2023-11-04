@@ -42,8 +42,10 @@ GitHub リポジトリを検索できるAndroid アプリ。
     * レビュー方針
     * リリースの流れ
     * 備考
-* [仕様メモ](./docs/SpecNotes.md)
+* [先方からの要求事項](./docs/Requirements.md)
     * アプリの使い方
+    * システム関連
+* [仕様メモ](./docs/SpecNotes.md)
     * サーバー関連
     * アプリ運用関連
 * [開発メモ](./docs/DevNotes.md)
