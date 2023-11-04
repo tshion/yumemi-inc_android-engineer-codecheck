@@ -38,7 +38,7 @@ github_connector | ./ | - | 外 | M | GitHub とのデータ交換方法の定�
 
 
 
-## 実装メモ
+## 設計パターンを支えるライブラリ
 * Jetpack
     * [Navigation](https://developer.android.com/guide/navigation)
         * Single Activity, Many Fragments
