@@ -4,6 +4,9 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
+
+    // Google GMS Google Services Gradle Plugin
+    id 'com.google.gms.google-services'
 }
 
 
@@ -93,6 +96,10 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:${libver.androidx.espresso}"
     androidTestImplementation "androidx.test.ext:junit-ktx:${libver.androidx.junit}"
     androidTestImplementation "androidx.test.uiautomator:uiautomator:${libver.androidx.uiautomator}"
+
+    // Firebase
+    releaseImplementation platform('com.google.firebase:firebase-bom:32.5.0')
+    releaseImplementation("com.google.firebase:firebase-crashlytics")
 
     // LeakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
