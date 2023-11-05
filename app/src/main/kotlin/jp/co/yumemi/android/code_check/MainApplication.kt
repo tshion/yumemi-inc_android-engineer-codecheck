@@ -1,6 +1,9 @@
 package jp.co.yumemi.android.code_check
 
 import android.app.Application
+import android.util.Log
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
 open class MainApplication : Application() {
@@ -13,7 +16,9 @@ open class MainApplication : Application() {
             message: String,
             t: Throwable?,
         ) {
-            // TODO: 必要に応じてログ出力先を設定する
+            when (priority) {
+                Log.ERROR -> t?.also { Firebase.crashlytics.recordException(it) }
+            }
         }
     }
 
