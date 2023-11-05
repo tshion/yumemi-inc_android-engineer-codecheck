@@ -29,7 +29,9 @@
     * https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
 * Coil
     * https://mvnrepository.com/artifact/io.coil-kt/coil
-* https://mvnrepository.com/artifact/com.google.firebase/firebase-bom
+* Firebase
+    * https://mvnrepository.com/artifact/com.google.firebase/firebase-bom
+    * https://mvnrepository.com/artifact/com.google.firebase/firebase-crashlytics-gradle
 * https://mvnrepository.com/artifact/com.google.gms.google-services/com.google.gms.google-services.gradle.plugin
 * JUnit
     * https://mvnrepository.com/artifact/junit/junit

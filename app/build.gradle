@@ -5,10 +5,19 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
 
+    // Firebase Crashlytics Gradle
+    id 'com.google.firebase.crashlytics' apply false
+
     // Google GMS Google Services Gradle Plugin
-    id 'com.google.gms.google-services'
+    id 'com.google.gms.google-services' apply false
 }
 
+
+// app/google-services.json がある場合のみFirebase Crashlytics 関連のセットアップ
+if (rootProject.file('app/google-services.json').exists()) {
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'com.google.firebase.crashlytics'
+}
 
 // keystore.properties の読み取り
 def keystoreProperties = new Properties()
