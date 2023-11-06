@@ -6,18 +6,12 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 
     // Firebase Crashlytics Gradle
-    id 'com.google.firebase.crashlytics' apply false
+    id 'com.google.firebase.crashlytics'
 
     // Google GMS Google Services Gradle Plugin
     id 'com.google.gms.google-services' apply false
 }
 
-
-// app/google-services.json がある場合のみFirebase Crashlytics 関連のセットアップ
-if (rootProject.file('app/google-services.json').exists()) {
-    apply plugin: 'com.google.gms.google-services'
-    apply plugin: 'com.google.firebase.crashlytics'
-}
 
 // keystore.properties の読み取り
 def keystoreProperties = new Properties()
@@ -128,4 +122,10 @@ tasks.register('showVersionName') {
         versionName = matches[0][1]
     }
     println(versionName)
+}
+
+
+// app/google-services.json がある場合のみセットアップ
+if (rootProject.file('app/google-services.json').exists()) {
+    apply plugin: 'com.google.gms.google-services'
 }
