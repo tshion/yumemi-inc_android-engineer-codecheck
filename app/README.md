@@ -8,5 +8,7 @@
 ### ビルドタイプによる実装の違い
 | | debug<br />(開発作業用) | release<br />(ストアリリース用)
 --- | :---: | :---:
-Firebase Crashlytics | - |利用可能
+Firebase Crashlytics | - | 利用可能
+google-services.json | - | 必須
 Timber | 全て出力 | `e()` をCrashlytics へ転送
+署名情報(release.jks) | - | 必須
