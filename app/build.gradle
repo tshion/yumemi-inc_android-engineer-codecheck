@@ -17,12 +17,12 @@ try {
 
 android {
     namespace 'jp.co.yumemi.android.code_check'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "jp.co.yumemi.android.codecheck"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode appVersionCode
         versionName appVersionName
 
