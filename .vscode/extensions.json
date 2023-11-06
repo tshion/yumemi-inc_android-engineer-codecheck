@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        "jebbs.plantuml",
+        "redhat.vscode-yaml",
+    ]
+}

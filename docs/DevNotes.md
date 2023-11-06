@@ -1,5 +1,5 @@
 # 開発メモ
-## 適用されている設計パターン
+## 適用されている実装 & 設計パターン
 * Jetpack
     * [Navigation](https://developer.android.com/guide/navigation)
         * Single Activity, Many Fragments
@@ -14,6 +14,9 @@
     * https://mvnrepository.com/artifact/androidx.appcompat/appcompat
     * https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
     * https://mvnrepository.com/artifact/androidx.core/core-ktx
+    * espresso
+        * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-contrib
+        * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
     * lifecycle
         * https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-livedata-ktx
         * https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-runtime-ktx
@@ -22,34 +25,52 @@
         * https://mvnrepository.com/artifact/androidx.navigation/navigation-fragment-ktx
         * https://mvnrepository.com/artifact/androidx.navigation/navigation-ui-ktx
     * https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview
-    * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
-    * https://mvnrepository.com/artifact/androidx.test.ext/junit
+    * https://mvnrepository.com/artifact/androidx.test.ext/junit-ktx
+    * https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
 * Coil
     * https://mvnrepository.com/artifact/io.coil-kt/coil
+* Firebase
+    * https://mvnrepository.com/artifact/com.google.firebase/firebase-bom
+    * https://mvnrepository.com/artifact/com.google.firebase/firebase-crashlytics-gradle
+* https://mvnrepository.com/artifact/com.google.gms.google-services/com.google.gms.google-services.gradle.plugin
 * JUnit
     * https://mvnrepository.com/artifact/junit/junit
 * Kotlin Coroutines
     * https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-android
 * Ktor
     * https://mvnrepository.com/artifact/io.ktor/ktor-client-android
+* LeakCanary
+    * https://mvnrepository.com/artifact/com.squareup.leakcanary/leakcanary-android
 * Material Design
     * https://mvnrepository.com/artifact/com.google.android.material/material
+* Timber
+    * https://mvnrepository.com/artifact/com.jakewharton.timber/timber
 
 
 
 ## リリースビルドを試したい
-プロジェクトルートにパスを移動してから下記の手順を踏んで環境を整備してください。
+リリースビルドを行うためには、下記の機密情報が必要です。
+Git 管理から外しているため、試す際は追加でセットアップを行なってください。
 
-※機密情報のため.gitignore に設定しています。なので都度対応してください。
+* google-services.json -> Firebase を使う際の情報
+* release.jks -> 署名情報
 
-1. release.jks を新規作成し、署名情報を記載してください
-1. keystore.properties を新規作成し、下記のフォーマットで必要な情報を記載してください
+セットアップ手順は下記となります。
+なお手順の中に出てくるファイルパスは、プロジェクトルートを基準にしたものとなります。
+
+1. google-services.json を準備し、`./app/google-services.json` に配置する
+    * ~~まずはプロジェクト管理者に問い合わせてください~~
+    * 諸般の事情で共有されない場合は、Firebase プロジェクトを新規作成してください
+        * application id は、`./app/build.gradle` に記載のものと揃えてください
+1. 署名情報を新規作成し、`./release.jks` に配置する
+    * ストアへリリースするわけではないので、各自で作成してください
+1. `./keystore.properties` を新規作成し、下記のフォーマットで必要な情報を記載する
     ``` gradle
     KEYSTORE_PASSWORD=???
     KEY_ALIAS=???
     KEY_PASSWORD=???
     ```
-1. リリースビルドを試してください
+1. リリースビルドを試す
 
 
 
