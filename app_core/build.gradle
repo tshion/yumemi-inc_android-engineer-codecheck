@@ -1,0 +1,28 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'io.github.tshion.android.codecheck.core'
+    compileSdk androidApi.target
+
+    defaultConfig {
+        minSdk androidApi.min
+
+        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        freeCompilerArgs += '-Xexplicit-api=strict'
+        jvmTarget = '17'
+    }
+    resourcePrefix 'app_'
+}
+
+dependencies {
+}
