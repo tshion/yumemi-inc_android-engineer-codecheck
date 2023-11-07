@@ -25,6 +25,9 @@ android {
     namespace 'jp.co.yumemi.android.code_check'
     compileSdk targetSdkVersion
 
+    buildFeatures {
+        viewBinding true
+    }
     defaultConfig {
         applicationId "jp.co.yumemi.android.codecheck"
         minSdk minSdkVersion
@@ -66,9 +69,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '17'
-    }
-    buildFeatures {
-        viewBinding true
     }
 }
 
