@@ -1,0 +1,44 @@
+@startuml
+
+entity RepositoryEntity {
+    +forkCount: Int
+    +id: Int
+    +issueCount: Int
+    +language: String?
+    +name: String
+    +ownerIconUrl: String?
+    +ownerName: String?
+    +starCount: Int
+    +watcherCount: Int
+
+    +{static} newInstance(?): RepositoryEntity
+}
+note right of RepositoryEntity::forkCount
+    0以上
+end note
+note right of RepositoryEntity::issueCount
+    0以上
+end note
+note right of RepositoryEntity::ownerIconUrl
+    URI 形式
+end note
+note right of RepositoryEntity::starCount
+    0以上
+end note
+note right of RepositoryEntity::watcherCount
+    0以上
+end note
+note top of RepositoryEntity : リポジトリ情報
+
+
+entity RepositoryQueryEntity {
+    +keyword: String
+
+    +{static} newInstance(keyword: String?): RepositoryQueryEntity
+}
+note right of RepositoryQueryEntity::keyword
+    1文字以上
+end note
+note top of RepositoryQueryEntity : リポジトリの検索条件
+
+@enduml

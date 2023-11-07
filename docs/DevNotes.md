@@ -1,14 +1,4 @@
-# 開発メモ
-## 適用されている実装 & 設計パターン
-* Jetpack
-    * [Navigation](https://developer.android.com/guide/navigation)
-        * Single Activity, Many Fragments
-    * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-* [Kotlin coroutines](https://developer.android.com/kotlin/coroutines)
-* [View Binding](https://developer.android.com/topic/libraries/view-binding)
-
-
-
+# 開発Tips
 ## ライブラリ依存関係
 * AndroidX(Jetpack)
     * https://mvnrepository.com/artifact/androidx.appcompat/appcompat

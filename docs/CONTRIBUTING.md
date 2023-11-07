@@ -8,7 +8,7 @@
 * Android Studio Giraffe | 2022.3.1 Patch 2
     * Gradle: 8.0
     * JDK: 17
-    * Kotlin: 1.6.21
+    * Kotlin Plugin: 1.6.21 以降
 * GitHub
 * macOS or Windows
 * <details>
