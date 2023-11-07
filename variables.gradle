@@ -1,4 +1,8 @@
 ext {
+    // アプリ構成
+    minSdkVersion = 23
+    targetSdkVersion = 34
+
     // アプリバージョン
     def appVersionMajor = 1
     def appVersionMinor = 1
