@@ -2,24 +2,21 @@
 buildscript {
     // Local variables
     apply from: 'variables.gradle'
-
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3"
-
-        // Firebase
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
-
-        // Google GMS Google Services Gradle Plugin
-        classpath "com.google.gms:google-services:4.4.0"
-    }
 }
 
-tasks.register('clean', Delete) {
-    delete rootProject.buildDir
+plugins {
+    // Android Gradle Plugin
+    id 'com.android.application' version '8.1.2' apply false
+
+    // AndroidX Navigation
+    id 'androidx.navigation.safeargs' version '2.5.3' apply false
+
+    // Firebase
+    id 'com.google.firebase.crashlytics' version '2.9.9' apply false
+
+    // Google GMS Google Services Gradle Plugin
+    id 'com.google.gms.google-services' version '4.4.0' apply false
+
+    // Kotlin
+    id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
 }

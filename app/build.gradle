@@ -23,12 +23,15 @@ try {
 
 android {
     namespace 'jp.co.yumemi.android.code_check'
-    compileSdk 34
+    compileSdk targetSdkVersion
 
+    buildFeatures {
+        viewBinding true
+    }
     defaultConfig {
         applicationId "jp.co.yumemi.android.codecheck"
-        minSdk 23
-        targetSdk 34
+        minSdk minSdkVersion
+        targetSdk targetSdkVersion
         versionCode appVersionCode
         versionName appVersionName
 
@@ -67,48 +70,49 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
-
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
-
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
-    implementation 'io.ktor:ktor-client-android:1.6.4'
-
-    implementation 'io.coil-kt:coil:1.3.2'
-
-    testImplementation 'junit:junit:4.13.2'
-
     // AndroidX
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:${libver.androidx.espresso}"
-    androidTestImplementation "androidx.test.espresso:espresso-core:${libver.androidx.espresso}"
-    androidTestImplementation "androidx.test.ext:junit-ktx:${libver.androidx.junit}"
-    androidTestImplementation "androidx.test.uiautomator:uiautomator:${libver.androidx.uiautomator}"
+    implementation "${libraries.androidx.appcompat}"
+    implementation "${libraries.androidx.constraintlayout}"
+    implementation "${libraries.androidx.core}"
+    androidTestImplementation "${libraries.androidx.espresso.contrib}"
+    androidTestImplementation "${libraries.androidx.espresso.core}"
+    androidTestImplementation "${libraries.androidx.junit}"
+    implementation "${libraries.androidx.lifecycle.runtime}"
+    implementation "${libraries.androidx.lifecycle.viewmodel}"
+    implementation "${libraries.androidx.navigation.fragment}"
+    implementation "${libraries.androidx.navigation.ui}"
+    implementation "${libraries.androidx.recyclerview}"
+    androidTestImplementation "${libraries.androidx.uiautomator}"
+
+    // Coil
+    implementation "${libraries.coil}"
 
     // Firebase
-    releaseImplementation platform('com.google.firebase:firebase-bom:32.5.0')
-    releaseImplementation("com.google.firebase:firebase-crashlytics")
+    releaseImplementation platform("${libraries.firebase.bom}")
+    releaseImplementation("${libraries.firebase.crashlytics}")
+
+    // JUnit
+    testImplementation "${libraries.junit}"
+
+    // Kotlin Coroutines
+    implementation "${libraries.coroutines.bom}"
+    implementation "${libraries.coroutines.android}"
+
+    // Ktor
+    implementation "${libraries.ktor}"
 
     // LeakCanary
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+    debugImplementation "${libraries.leakCanary}"
+
+    // Material Design
+    implementation "${libraries.material}"
 
     // Timber
-    implementation "com.jakewharton.timber:timber:${libver.timber}"
+    implementation "${libraries.timber}"
 }
 
 
