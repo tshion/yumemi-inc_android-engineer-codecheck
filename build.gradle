@@ -7,6 +7,7 @@ buildscript {
 plugins {
     // Android Gradle Plugin
     id 'com.android.application' version '8.1.2' apply false
+    id 'com.android.library' version '8.1.2' apply false
 
     // AndroidX Navigation
     id 'androidx.navigation.safeargs' version '2.5.3' apply false
