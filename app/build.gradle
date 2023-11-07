@@ -23,15 +23,15 @@ try {
 
 android {
     namespace 'jp.co.yumemi.android.code_check'
-    compileSdk targetSdkVersion
+    compileSdk androidApi.target
 
     buildFeatures {
         viewBinding true
     }
     defaultConfig {
         applicationId "jp.co.yumemi.android.codecheck"
-        minSdk minSdkVersion
-        targetSdk targetSdkVersion
+        minSdk androidApi.min
+        targetSdk androidApi.target
         versionCode appVersionCode
         versionName appVersionName
 
