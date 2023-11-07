@@ -10,5 +10,5 @@
 
 ## システム関連
 * GitHub REST API を利用する
-* アプリの公開環境としてGitHub Releases を利用する
+* アプリのアップデートがあるかの判定に、GitHub Releases に登録されているバージョン情報を参照する
 * 本アプリはAndroid, iOS 端末向けに提供する
