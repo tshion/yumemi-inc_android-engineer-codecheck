@@ -8,7 +8,6 @@
         * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-contrib
         * https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core
     * lifecycle
-        * https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-livedata-ktx
         * https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-runtime-ktx
         * https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-viewmodel-ktx
     * navigation
