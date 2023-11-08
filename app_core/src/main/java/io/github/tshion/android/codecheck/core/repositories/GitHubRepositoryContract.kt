@@ -4,7 +4,7 @@ import io.github.tshion.android.codecheck.core.entities.RepositoryQueryEntity
 import io.github.tshion.android.codecheck.core.entities.RepositoryResultEntity
 
 /**
- * GitHub に関するデータのリポジトリ定義
+ * GitHub 関連データのリポジトリ定義
  */
 public interface GitHubRepositoryContract {
 

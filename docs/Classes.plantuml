@@ -1,17 +1,48 @@
 @startuml
 
+entity RepositoryQueryEntity {
+    +keyword: String
+    +page: Int
+    .. 既定値 ..
+    +order: String = "desc"
+    +perPage: Int = 50
+    +sort: String? = null
+
+    +{static} newInstance(keyword: String?, page: Int): ...
+}
+note left of RepositoryQueryEntity::keyword
+    1文字以上
+end note
+note left of RepositoryQueryEntity::page
+    0以上
+end note
+note top of RepositoryQueryEntity : リポジトリの検索条件
+
+
+
+interface GitHubRepositoryContract {
+    +search(query: RepositoryQueryEntity): RepositoryResultEntity
+}
+note top of GitHubRepositoryContract : GitHub に関するデータのリポジトリ定義
+
+
+
+entity RepositoryResultEntity {
+    + hasMore: Boolean
+    + items: List<RepositoryEntity>
+}
+note top of RepositoryResultEntity : リポジトリの検索結果
+
 entity RepositoryEntity {
     +forkCount: Int
-    +id: Int
+    +fullName: String
     +issueCount: Int
     +language: String?
-    +name: String
-    +ownerIconUrl: String?
-    +ownerName: String?
+    +ownerIconUrl: URL?
     +starCount: Int
     +watcherCount: Int
 
-    +{static} newInstance(?): RepositoryEntity
+    +{static} parseOrNull(...): ...?
 }
 note right of RepositoryEntity::forkCount
     0以上
@@ -30,15 +61,6 @@ note right of RepositoryEntity::watcherCount
 end note
 note top of RepositoryEntity : リポジトリ情報
 
-
-entity RepositoryQueryEntity {
-    +keyword: String
-
-    +{static} newInstance(keyword: String?): RepositoryQueryEntity
-}
-note right of RepositoryQueryEntity::keyword
-    1文字以上
-end note
-note top of RepositoryQueryEntity : リポジトリの検索条件
+RepositoryResultEntity o-- RepositoryEntity
 
 @enduml

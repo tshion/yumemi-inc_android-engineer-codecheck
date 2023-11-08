@@ -29,8 +29,6 @@ public class RepositoryQueryEntity private constructor(
         /**
          * インスタンス生成
          *
-         * @param keyword 検索キーワード
-         * @param page ページ番号の指定
          * @throws IllegalArgumentException 空文字 or null or 300文字を超える場合
          * @throws IndexOutOfBoundsException 意図しないページ数を指定された場合
          */
