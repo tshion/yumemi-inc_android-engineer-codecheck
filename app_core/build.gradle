@@ -25,4 +25,10 @@ android {
 }
 
 dependencies {
+
+    // AndroidX
+    implementation "${libraries.androidx.annotation}"
+
+    // JUnit
+    testImplementation "${libraries.junit}"
 }

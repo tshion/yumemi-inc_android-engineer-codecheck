@@ -1,6 +1,7 @@
 # 開発Tips
 ## ライブラリ依存関係
 * AndroidX(Jetpack)
+    * https://mvnrepository.com/artifact/androidx.annotation/annotation
     * https://mvnrepository.com/artifact/androidx.appcompat/appcompat
     * https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
     * https://mvnrepository.com/artifact/androidx.core/core-ktx
