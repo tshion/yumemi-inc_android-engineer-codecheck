@@ -20,6 +20,13 @@ internal class RepositoryQueryEntityTest {
         Assert.fail()
     }
 
+    @Test()
+    fun 空白を指定してインスタンス生成() {
+        RepositoryQueryEntity.newInstance("   ", 1).also {
+            Assert.assertNotNull(it)
+        }
+    }
+
     @Test(expected = IllegalArgumentException::class)
     fun 長すぎるキーワードを指定してインスタンス生成() {
         val word = (0..300).joinToString(separator = "") { "a" }

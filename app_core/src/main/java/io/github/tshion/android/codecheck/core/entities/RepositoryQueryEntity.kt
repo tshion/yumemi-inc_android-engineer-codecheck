@@ -36,7 +36,7 @@ public class RepositoryQueryEntity private constructor(
             keyword: String?,
             page: Int,
         ): RepositoryQueryEntity {
-            if (keyword.isNullOrBlank() || 300 < keyword.length) {
+            if (keyword.isNullOrEmpty() || 300 < keyword.length) {
                 throw IllegalArgumentException()
             }
             if (page < 1) {
