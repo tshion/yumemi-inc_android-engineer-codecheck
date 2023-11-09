@@ -1,7 +1,7 @@
 ext {
     // アプリ構成
     androidApi = [
-            min: 23,
+            min   : 23,
             target: 34,
     ]
 
@@ -15,7 +15,10 @@ ext {
     // ライブラリバージョン
     def versionEspresso = '3.5.1'
     def versionLifecycle = '2.5.1'
+    def versionMoshi = '1.13.0'
     def versionNavigation = '2.5.3'
+    def versionOkHttp = '4.10.0'
+    def versionRetrofit = '2.9.0'
     libraries = [
             androidx  : [
                     appcompat       : 'androidx.appcompat:appcompat:1.3.1',
@@ -41,6 +44,7 @@ ext {
             coroutines: [
                     bom    : 'org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.6.1',
                     android: 'org.jetbrains.kotlinx:kotlinx-coroutines-android',
+                    core   : 'org.jetbrains.kotlinx:kotlinx-coroutines-core',
             ],
             firebase  : [
                     bom        : 'com.google.firebase:firebase-bom:32.5.0',
@@ -50,6 +54,18 @@ ext {
             ktor      : 'io.ktor:ktor-client-android:1.6.4',
             leakCanary: 'com.squareup.leakcanary:leakcanary-android:2.12',
             material  : 'com.google.android.material:material:1.4.0',
+            moshi     : [
+                    codegen: "com.squareup.moshi:moshi-kotlin-codegen:$versionMoshi",
+                    moshi  : "com.squareup.moshi:moshi-kotlin:$versionMoshi",
+            ],
+            okhttp    : [
+                    bom   : "com.squareup.okhttp3:okhttp-bom:$versionOkHttp",
+                    okhttp: "com.squareup.okhttp3:okhttp",
+            ],
+            retrofit  : [
+                    converter: "com.squareup.retrofit2:converter-moshi:$versionRetrofit",
+                    retrofit : "com.squareup.retrofit2:retrofit:$versionRetrofit",
+            ],
             timber    : 'com.jakewharton.timber:timber:5.0.1',
     ]
 }

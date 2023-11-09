@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 plugins {
     id 'java-library'
     id 'org.jetbrains.kotlin.jvm'
+    id 'com.google.devtools.ksp' version '1.6.21-1.0.6'
 }
 
 java {
@@ -12,4 +13,23 @@ java {
 
 kotlin {
     explicitApi = ExplicitApiMode.Strict
+}
+
+dependencies {
+
+    // Kotlin Coroutines
+    implementation platform("${libraries.coroutines.bom}")
+    implementation "${libraries.coroutines.core}"
+
+    // Moshi
+    implementation "${libraries.moshi.moshi}"
+    ksp "${libraries.moshi.codegen}"
+
+    // OkHttp
+    implementation platform("${libraries.okhttp.bom}")
+    implementation "${libraries.okhttp.okhttp}"
+
+    // Retrofit
+    implementation "${libraries.retrofit.converter}"
+    implementation "${libraries.retrofit.retrofit}"
 }
