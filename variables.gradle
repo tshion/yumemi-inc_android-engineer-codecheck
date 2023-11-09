@@ -15,6 +15,7 @@ ext {
     // ライブラリバージョン
     def versionEspresso = '3.5.1'
     def versionLifecycle = '2.5.1'
+    def versionMockK = '1.12.4'
     def versionNavigation = '2.5.3'
     libraries = [
             androidx  : [
@@ -42,6 +43,7 @@ ext {
             coroutines: [
                     bom    : 'org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.6.1',
                     android: 'org.jetbrains.kotlinx:kotlinx-coroutines-android',
+                    test: 'org.jetbrains.kotlinx:kotlinx-coroutines-test',
             ],
             firebase  : [
                     bom        : 'com.google.firebase:firebase-bom:32.5.0',
@@ -51,6 +53,7 @@ ext {
             ktor      : 'io.ktor:ktor-client-android:1.6.4',
             leakCanary: 'com.squareup.leakcanary:leakcanary-android:2.12',
             material  : 'com.google.android.material:material:1.4.0',
+            mockK     : "io.mockk:mockk:${versionMockK}",
             timber    : 'com.jakewharton.timber:timber:5.0.1',
     ]
 }

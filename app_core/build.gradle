@@ -21,4 +21,11 @@ dependencies {
 
     // JUnit
     testImplementation "${libraries.junit}"
+
+    // Kotlin Coroutines
+    testImplementation platform("${libraries.coroutines.bom}")
+    testImplementation "${libraries.coroutines.test}"
+
+    // MockK
+    testImplementation "${libraries.mockK}"
 }
