@@ -13,10 +13,11 @@ internal class RepositoryEntityTest {
     fun ハッピーパス() {
         val item = RepositoryEntity.parseOrNull(
             forkCount = 0,
-            fullName = "a / b",
             issueCount = 0,
             language = null,
+            name = "b",
             ownerIconUrl = null,
+            ownerName = "a",
             starCount = 0,
             watcherCount = 0,
         )
@@ -25,10 +26,11 @@ internal class RepositoryEntityTest {
 
         RepositoryEntity.parseOrNull(
             item.forkCount,
-            item.fullName,
             item.issueCount,
             language = "kotlin",
+            item.name,
             ownerIconUrl = "https://github.com/tshion/yumemi-inc_android-engineer-codecheck",
+            item.ownerName,
             item.starCount,
             item.watcherCount,
         ).also { assertNotNull(it) }
@@ -38,10 +40,11 @@ internal class RepositoryEntityTest {
     fun 数字に異常がある場合はnull() {
         val item = RepositoryEntity.parseOrNull(
             forkCount = 0,
-            fullName = "a / b",
             issueCount = 0,
             language = null,
+            name = "b",
             ownerIconUrl = null,
+            ownerName = "a",
             starCount = 0,
             watcherCount = 0,
         )
@@ -50,40 +53,44 @@ internal class RepositoryEntityTest {
 
         RepositoryEntity.parseOrNull(
             forkCount = -1,
-            item.fullName,
             item.issueCount,
             item.language,
+            item.name,
             item.ownerIconUrl?.toString(),
+            item.ownerName,
             item.starCount,
             item.watcherCount,
         ).also { assertNull(it) }
 
         RepositoryEntity.parseOrNull(
             item.forkCount,
-            item.fullName,
             issueCount = -1,
             item.language,
+            item.name,
             item.ownerIconUrl?.toString(),
+            item.ownerName,
             item.starCount,
             item.watcherCount,
         ).also { assertNull(it) }
 
         RepositoryEntity.parseOrNull(
             item.forkCount,
-            item.fullName,
             item.issueCount,
             item.language,
+            item.name,
             item.ownerIconUrl?.toString(),
+            item.ownerName,
             starCount = -1,
             item.watcherCount,
         ).also { assertNull(it) }
 
         RepositoryEntity.parseOrNull(
             item.forkCount,
-            item.fullName,
             item.issueCount,
             item.language,
+            item.name,
             item.ownerIconUrl?.toString(),
+            item.ownerName,
             item.starCount,
             watcherCount = -1,
         ).also { assertNull(it) }
@@ -93,10 +100,11 @@ internal class RepositoryEntityTest {
     fun 解釈できないURLがある場合はnull() {
         RepositoryEntity.parseOrNull(
             forkCount = 0,
-            fullName = "a / b",
             issueCount = 0,
             language = null,
+            name = "b",
             ownerIconUrl = "github.com/tshion/yumemi-inc_android-engineer-codecheck",
+            ownerName = "a",
             starCount = 0,
             watcherCount = 0,
         ).also { assertNull(it) }
