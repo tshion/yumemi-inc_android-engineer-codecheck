@@ -55,8 +55,8 @@ ext {
             leakCanary: 'com.squareup.leakcanary:leakcanary-android:2.12',
             material  : 'com.google.android.material:material:1.4.0',
             moshi     : [
-                    codegen: "com.squareup.moshi:moshi-kotlin-codegen:$versionMoshi",
-                    moshi  : "com.squareup.moshi:moshi-kotlin:$versionMoshi",
+                    adapters: "com.squareup.moshi:moshi-adapters:$versionMoshi",
+                    moshi   : "com.squareup.moshi:moshi-kotlin:$versionMoshi",
             ],
             okhttp    : [
                     bom   : "com.squareup.okhttp3:okhttp-bom:$versionOkHttp",

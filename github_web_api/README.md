@@ -11,3 +11,13 @@ GitHub REST API とHTTP 通信をするモジュール。
     * 型の前についている`kotlin.` を削除
     * コメントの整形
 * エンドポイントに紐づくメソッド名は、`HTTP 動詞` + `パス` というふうに付けています
+
+
+
+## 関連リンク
+* GitHub REST API
+    * エンドポイント
+        * https://docs.github.com/ja/rest/search/search?apiVersion=2022-11-28#search-repositories
+    * メタ情報
+        * [API のバージョン - GitHub Docs](https://docs.github.com/ja/rest/overview/api-versions?apiVersion=2022-11-28)
+        * [メディアの種類 - GitHub Docs](https://docs.github.com/ja/rest/overview/media-types?apiVersion=2022-11-28)

@@ -34,13 +34,10 @@
     * https://mvnrepository.com/artifact/com.google.android.material/material
 * Moshi
     * https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin
-    * https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin-codegen
 * OkHttp
     * https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
 * Retrofit
     * https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
-* Symbol Processing API
-    * https://mvnrepository.com/artifact/com.google.devtools.ksp/symbol-processing-api
 * Timber
     * https://mvnrepository.com/artifact/com.jakewharton.timber/timber
 
