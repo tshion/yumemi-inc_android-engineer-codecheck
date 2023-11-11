@@ -7,7 +7,7 @@ package io.github.tshion.android.codecheck.github.webapi.entities
  * @param triage
  * @param pull
  */
-public data class ReposearchresultitemPermissions(
+public data class Permissions(
     val admin: Boolean,
     val maintain: Boolean? = null,
     val push: Boolean,

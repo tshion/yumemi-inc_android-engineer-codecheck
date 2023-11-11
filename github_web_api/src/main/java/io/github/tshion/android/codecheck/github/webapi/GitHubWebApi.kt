@@ -4,7 +4,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.github.tshion.android.codecheck.github.webapi.utils.GitHubInterceptor
-import io.github.tshion.android.codecheck.github.webapi.utils.LocalDateTimeAdapter
+import io.github.tshion.android.codecheck.github.webapi.utils.OffsetDateTimeAdapter
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -30,7 +30,7 @@ public class GitHubWebApi internal constructor(
         val jsonConverter = Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())
             .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
-            .add(LocalDateTimeAdapter())
+            .add(OffsetDateTimeAdapter())
             .build()
             .let { MoshiConverterFactory.create(it) }
 

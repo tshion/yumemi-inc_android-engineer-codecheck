@@ -7,8 +7,14 @@ GitHub REST API とHTTP 通信をするモジュール。
 * GitHub REST API の仕様が変わった場合、本モジュールも追従します
 * Kotlin Explicit API モードがstrict レベルで有効となっています
 * [OpenAPI 定義](../docs/github.yaml) から生成したコードを、編集した上で流用しています
-    * `Array` -> `List` への型変更
+    * IDE の検索機能で、`([a-z])([A-Z])` を`$1_\l$2` で置換し、変数名をスネークケース化
     * 型の前についている`kotlin.` を削除
+    * 型変更
+        * `Array` -> `List`
+        * `BigDecimal` -> `Int`
+        * nullable
+            * 必須のものはnullable 化
+            * 任意なものはnullable + 既定値`null` を割り当て
     * コメントの整形
 * エンドポイントに紐づくメソッド名は、`HTTP 動詞` + `パス` というふうに付けています
 

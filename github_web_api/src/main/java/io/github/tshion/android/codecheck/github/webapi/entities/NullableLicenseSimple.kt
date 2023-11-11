@@ -6,15 +6,15 @@ package io.github.tshion.android.codecheck.github.webapi.entities
  * @param key
  * @param name
  * @param url
- * @param spdxId
- * @param nodeId
- * @param htmlUrl
+ * @param spdx_id
+ * @param node_id
+ * @param html_url
  */
 public data class NullableLicenseSimple(
     val key: String,
     val name: String,
-    val url: String,
-    val spdxId: String,
-    val nodeId: String,
-    val htmlUrl: String? = null
+    val url: String?,
+    val spdx_id: String?,
+    val node_id: String,
+    val html_url: String? = null
 )

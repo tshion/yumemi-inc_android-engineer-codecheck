@@ -7,44 +7,44 @@ package io.github.tshion.android.codecheck.github.webapi.entities
  * @param email
  * @param login
  * @param id
- * @param nodeId
- * @param avatarUrl
- * @param gravatarId
+ * @param node_id
+ * @param avatar_url
+ * @param gravatar_id
  * @param url
- * @param htmlUrl
- * @param followersUrl
- * @param followingUrl
- * @param gistsUrl
- * @param starredUrl
- * @param subscriptionsUrl
- * @param organizationsUrl
- * @param reposUrl
- * @param eventsUrl
- * @param receivedEventsUrl
+ * @param html_url
+ * @param followers_url
+ * @param following_url
+ * @param gists_url
+ * @param starred_url
+ * @param subscriptions_url
+ * @param organizations_url
+ * @param repos_url
+ * @param events_url
+ * @param received_events_url
  * @param type
- * @param siteAdmin
- * @param starredAt
+ * @param site_admin
+ * @param starred_at
  */
 public data class NullableSimpleUser(
     val name: String? = null,
     val email: String? = null,
     val login: String,
     val id: Int,
-    val nodeId: String,
-    val avatarUrl: String,
-    val gravatarId: String,
+    val node_id: String,
+    val avatar_url: String,
+    val gravatar_id: String?,
     val url: String,
-    val htmlUrl: String,
-    val followersUrl: String,
-    val followingUrl: String,
-    val gistsUrl: String,
-    val starredUrl: String,
-    val subscriptionsUrl: String,
-    val organizationsUrl: String,
-    val reposUrl: String,
-    val eventsUrl: String,
-    val receivedEventsUrl: String,
+    val html_url: String,
+    val followers_url: String,
+    val following_url: String,
+    val gists_url: String,
+    val starred_url: String,
+    val subscriptions_url: String,
+    val organizations_url: String,
+    val repos_url: String,
+    val events_url: String,
+    val received_events_url: String,
     val type: String,
-    val siteAdmin: Boolean,
-    val starredAt: String? = null
+    val site_admin: Boolean,
+    val starred_at: String? = null
 )
