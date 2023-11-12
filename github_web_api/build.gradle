@@ -20,8 +20,7 @@ dependencies {
     testImplementation "${libraries.junit}"
 
     // Kotlin Coroutines
-    implementation platform("${libraries.coroutines.bom}")
-    implementation "${libraries.coroutines.core}"
+    testImplementation platform("${libraries.coroutines.bom}")
     testImplementation "${libraries.coroutines.test}"
 
     // Moshi
