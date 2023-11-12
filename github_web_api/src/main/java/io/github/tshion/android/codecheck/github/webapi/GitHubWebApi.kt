@@ -1,12 +1,15 @@
 package io.github.tshion.android.codecheck.github.webapi
 
+import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import io.github.tshion.android.codecheck.github.webapi.entities.GitHubErrorResponse
 import io.github.tshion.android.codecheck.github.webapi.utils.GitHubInterceptor
 import io.github.tshion.android.codecheck.github.webapi.utils.OffsetDateTimeAdapter
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.File
@@ -38,14 +41,17 @@ public class GitHubWebApi internal constructor(
     /** WebAPI エンドポイント */
     public val endpoint: ApiEndpoint
 
+    /** 通信エラーのJSON データを解析するアダプター */
+    private val errorJsonAdapter: JsonAdapter<GitHubErrorResponse>
+
 
     init {
-        val jsonConverter = Moshi.Builder()
+        val moshi = Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())
             .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
             .add(OffsetDateTimeAdapter())
             .build()
-            .let { MoshiConverterFactory.create(it) }
+        errorJsonAdapter = moshi.adapter(GitHubErrorResponse::class.java)
 
         val okHttpClient = client.newBuilder()
             .addInterceptor(GitHubInterceptor(applicationId))
@@ -61,10 +67,21 @@ public class GitHubWebApi internal constructor(
             .build()
 
         endpoint = Retrofit.Builder()
-            .addConverterFactory(jsonConverter)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .baseUrl(baseUrl)
             .client(okHttpClient)
             .build()
             .create(ApiEndpoint::class.java)
+    }
+
+
+    /**
+     * 通信エラーのメッセージ解析
+     */
+    public fun parse(e: HttpException): GitHubErrorResponse? {
+        val json = e.response()?.errorBody()?.string() ?: return null
+        return runCatching {
+            errorJsonAdapter.fromJson(json)
+        }.getOrNull()
     }
 }

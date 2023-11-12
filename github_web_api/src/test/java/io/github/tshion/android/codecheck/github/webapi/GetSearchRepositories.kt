@@ -164,9 +164,7 @@ class GetSearchRepositories {
         try {
             webApi.endpoint.getSearchRepositories("android")
         } catch (e: HttpException) {
-            val errorBody = e.response()?.errorBody()
-            Assert.assertNotNull(errorBody)
-            Assert.assertTrue(contents == errorBody?.string())
+            Assert.assertTrue(contents == e.response()?.errorBody()?.string())
             throw e
         } finally {
             server.shutdown()
