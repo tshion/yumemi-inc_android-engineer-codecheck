@@ -37,6 +37,8 @@ GitHub REST API とHTTP 通信をするモジュール。
 ### 注意事項
 * GitHub REST API からエラーが返ってきた場合は、クラッシュ分析ツールへ連携することを推奨します
     * [REST API を使用するためのベスト プラクティス - GitHub Docs](https://docs.github.com/ja/rest/guides/best-practices-for-using-the-rest-api?apiVersion=2022-11-28#follow-any-redirects-that-the-api-sends-you) の記載で、意図的に無視すると不正利用と見なされる場合がありそうなため
+* 通信キャッシュ用の領域は4MB に設定されています
+* 通信タイムアウトは10.5 秒に設定されています
 * もしProguard が必要な場合は、利用側で調整してください
 
 
@@ -57,6 +59,7 @@ GitHub REST API とHTTP 通信をするモジュール。
             * 任意なものはnullable + 既定値`null` を割り当て
     * コメントの整形
 * エンドポイントに紐づくメソッド名は、`HTTP 動詞` + `パス` というふうに付けています
+* ユニットテスト用のサンプルデータは `test/resources/` にあるJSON ファイルを書き換えることで変更可能です
 
 
 
@@ -74,14 +77,15 @@ GitHub REST API とHTTP 通信をするモジュール。
 
 ### 依存ライブラリ
 * コア
-    * [OkHttp](https://github.com/square/okhttp)
+    * [OkHttp](https://github.com/square/okhttp) ([maven](https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp))
 * モジュール内部利用
-    * [Moshi Adapters](https://github.com/square/moshi/tree/master/moshi-adapters)
-    * [Moshi Kotlin](https://github.com/square/moshi#kotlin)
-    * [Retrofit](https://github.com/square/retrofit)
+    * [Moshi Adapters](https://github.com/square/moshi/tree/master/moshi-adapters) ([maven](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-adapters))
+    * [Moshi Kotlin](https://github.com/square/moshi#kotlin) ([maven](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin))
+    * [Retrofit](https://github.com/square/retrofit) ([maven](https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit))
     * [Retrofit Converters](https://github.com/square/retrofit/tree/master/retrofit-converters)
+        * Converter: Moshi ([maven](https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-moshi))
 * テスト
-    * [JUnit4](https://github.com/junit-team/junit4)
-    * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md)
-    * [OkHttp MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
-    * [Okio](https://github.com/square/okio)
+    * [JUnit4](https://github.com/junit-team/junit4) ([maven](https://mvnrepository.com/artifact/junit/junit))
+    * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md) ([maven](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-test))
+    * [OkHttp MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) ([maven](https://mvnrepository.com/artifact/com.squareup.okhttp3/mockwebserver))
+    * ([Okio](https://github.com/square/okio))

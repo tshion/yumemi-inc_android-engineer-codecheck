@@ -32,13 +32,6 @@
     * https://mvnrepository.com/artifact/com.squareup.leakcanary/leakcanary-android
 * Material Design
     * https://mvnrepository.com/artifact/com.google.android.material/material
-* Moshi
-    * https://mvnrepository.com/artifact/com.squareup.moshi/moshi-adapters
-    * https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin
-* OkHttp
-    * https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
-* Retrofit
-    * https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
 * Timber
     * https://mvnrepository.com/artifact/com.jakewharton.timber/timber
 
