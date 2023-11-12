@@ -2,12 +2,21 @@ package jp.co.yumemi.android.code_check
 
 import android.os.StrictMode
 import androidx.fragment.app.strictmode.FragmentStrictMode
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 
 /**
  * Debug ビルド時に適用するApplication クラス
  */
 class DebugApplication : MainApplication() {
+
+    /** アプリ全体で共有するOkHttpClient */
+    override val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor {
+            Timber.tag("OkHttp").d(it)
+        })
+        .build()
 
     /** Timber のログ出力ツリー */
     override val timberTree = Timber.DebugTree()
