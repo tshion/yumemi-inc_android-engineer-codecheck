@@ -1,5 +1,7 @@
-package io.github.tshion.android.codecheck.github.webapi
+package io.github.tshion.android.codecheck.github.webapi.endpoints
 
+import io.github.tshion.android.codecheck.github.webapi.ApiEndpoint
+import io.github.tshion.android.codecheck.github.webapi.GitHubWebApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
@@ -19,7 +21,7 @@ import java.util.concurrent.TimeUnit
  * [ApiEndpoint.getSearchRepositories] のユニットテスト
  */
 @OptIn(ExperimentalCoroutinesApi::class)
-class GetSearchRepositories {
+class GetSearchRepositoriesTest {
 
     private val applicationId = "io.github.tshion.android.codecheck.github.webapi"
 

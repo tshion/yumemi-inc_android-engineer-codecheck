@@ -12,7 +12,7 @@ import org.junit.Test
 import retrofit2.HttpException
 
 /**
- * [GitHubWebApiTest] のユニットテスト
+ * [GitHubWebApi] のユニットテスト
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 class GitHubWebApiTest {

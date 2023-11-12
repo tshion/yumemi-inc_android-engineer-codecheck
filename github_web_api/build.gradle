@@ -24,9 +24,6 @@ dependencies {
     implementation "${libraries.coroutines.core}"
     testImplementation "${libraries.coroutines.test}"
 
-    // MockK
-    testImplementation "${libraries.mockK}"
-
     // Moshi
     implementation "${libraries.moshi.adapters}"
     implementation "${libraries.moshi.moshi}"

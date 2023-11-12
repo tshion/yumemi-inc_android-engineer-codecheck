@@ -15,7 +15,6 @@ ext {
     // ライブラリバージョン
     def versionEspresso = '3.5.1'
     def versionLifecycle = '2.5.1'
-    def versionMockK = '1.12.4'
     def versionMoshi = '1.13.0'
     def versionNavigation = '2.5.3'
     def versionOkHttp = '4.10.0'
@@ -56,7 +55,6 @@ ext {
             ktor      : 'io.ktor:ktor-client-android:1.6.4',
             leakCanary: 'com.squareup.leakcanary:leakcanary-android:2.12',
             material  : 'com.google.android.material:material:1.4.0',
-            mockK     : "io.mockk:mockk:${versionMockK}",
             moshi     : [
                     adapters: "com.squareup.moshi:moshi-adapters:$versionMoshi",
                     moshi   : "com.squareup.moshi:moshi-kotlin:$versionMoshi",
