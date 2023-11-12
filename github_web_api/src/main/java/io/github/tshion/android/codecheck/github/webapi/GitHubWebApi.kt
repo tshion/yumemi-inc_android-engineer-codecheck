@@ -17,19 +17,22 @@ import java.util.concurrent.TimeUnit
  * GitHub REST API への接続
  */
 public class GitHubWebApi internal constructor(
+    applicationId: String,
     baseUrl: String,
     cacheDir: File,
     client: OkHttpClient,
 ) {
 
     /**
+     * @param applicationId ユーザーエージェントに設定するアプリケーションID
      * @param cacheDir 通信キャッシュを保存するディレクトリ
      * @param client アプリ全体で共有しているOkHttpClient
      */
     public constructor(
+        applicationId: String,
         cacheDir: File,
         client: OkHttpClient,
-    ) : this("https://api.github.com", cacheDir, client)
+    ) : this(applicationId, "https://api.github.com", cacheDir, client)
 
 
     /** WebAPI エンドポイント */
@@ -45,7 +48,7 @@ public class GitHubWebApi internal constructor(
             .let { MoshiConverterFactory.create(it) }
 
         val okHttpClient = client.newBuilder()
-            .addInterceptor(GitHubInterceptor())
+            .addInterceptor(GitHubInterceptor(applicationId))
             .cache(
                 Cache(
                     directory = File(cacheDir, "github_http_cache"),

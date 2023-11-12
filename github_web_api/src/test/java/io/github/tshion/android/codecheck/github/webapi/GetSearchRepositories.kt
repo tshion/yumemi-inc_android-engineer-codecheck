@@ -21,6 +21,8 @@ import java.util.concurrent.TimeUnit
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetSearchRepositories {
 
+    private val applicationId = "io.github.tshion.android.codecheck.github.webapi"
+
     private val cacheDir = FileSystem.SYSTEM_TEMPORARY_DIRECTORY.toFile()
 
     private val client = OkHttpClient.Builder()
@@ -30,7 +32,7 @@ class GetSearchRepositories {
     @Ignore("本番環境へ接続する不安定なテストのため")
     @Test
     fun 実際に通信を試してみる() = runTest {
-        val webApi = GitHubWebApi(cacheDir, client)
+        val webApi = GitHubWebApi(applicationId, cacheDir, client)
         val response = webApi.endpoint.getSearchRepositories("android")
         advanceUntilIdle()
         Assert.assertNotNull(response)
@@ -137,6 +139,7 @@ class GetSearchRepositories {
 
 
     private fun createMockWebApi(server: MockWebServer) = GitHubWebApi(
+        applicationId,
         baseUrl = server.url("/").toString(),
         cacheDir,
         client,
