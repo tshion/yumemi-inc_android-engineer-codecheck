@@ -111,6 +111,11 @@ dependencies {
     // Material Design
     implementation "${libraries.material}"
 
+    // OkHttp
+    implementation platform("${libraries.okhttp.bom}")
+    debugImplementation "${libraries.okhttp.logging}"
+    implementation "${libraries.okhttp.okhttp}"
+
     // Timber
     implementation "${libraries.timber}"
 }
