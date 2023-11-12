@@ -32,7 +32,10 @@
     * https://mvnrepository.com/artifact/com.squareup.leakcanary/leakcanary-android
 * Material Design
     * https://mvnrepository.com/artifact/com.google.android.material/material
+* MockK
+    * https://mvnrepository.com/artifact/io.mockk/mockk
 * Moshi
+    * https://mvnrepository.com/artifact/com.squareup.moshi/moshi-adapters
     * https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin
 * OkHttp
     * https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp

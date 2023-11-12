@@ -16,9 +16,16 @@ kotlin {
 
 dependencies {
 
+    // JUnit
+    testImplementation "${libraries.junit}"
+
     // Kotlin Coroutines
     implementation platform("${libraries.coroutines.bom}")
     implementation "${libraries.coroutines.core}"
+    testImplementation "${libraries.coroutines.test}"
+
+    // MockK
+    testImplementation "${libraries.mockK}"
 
     // Moshi
     implementation "${libraries.moshi.adapters}"
@@ -26,6 +33,7 @@ dependencies {
 
     // OkHttp
     implementation platform("${libraries.okhttp.bom}")
+    testImplementation "${libraries.okhttp.mock}"
     implementation "${libraries.okhttp.okhttp}"
 
     // Retrofit
