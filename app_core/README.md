@@ -10,3 +10,14 @@
 * Kotlin Explicit API モードがstrict レベルで有効となっています
 * インスタンス生成時に検証を行うEntity は、普通の`class` 実装となっています
     * `data class` の場合、`copy()` した際に検証をかけられないため
+
+
+
+## 関連リンク
+### 依存ライブラリ
+* コア
+    * [AndroidX Annotation](https://developer.android.com/jetpack/androidx/releases/annotation) ([maven](https://mvnrepository.com/artifact/androidx.annotation/annotation))
+* テスト
+    * [JUnit4](https://github.com/junit-team/junit4) ([maven](https://mvnrepository.com/artifact/junit/junit))
+    * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md) ([maven](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-test))
+    * [MockK](https://github.com/mockk/mockk) ([maven](https://mvnrepository.com/artifact/io.mockk/mockk))

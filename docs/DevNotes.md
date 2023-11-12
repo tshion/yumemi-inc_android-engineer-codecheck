@@ -1,7 +1,6 @@
 # 開発Tips
 ## ライブラリ依存関係
 * AndroidX(Jetpack)
-    * https://mvnrepository.com/artifact/androidx.annotation/annotation
     * https://mvnrepository.com/artifact/androidx.appcompat/appcompat
     * https://mvnrepository.com/artifact/androidx.constraintlayout/constraintlayout
     * https://mvnrepository.com/artifact/androidx.core/core-ktx
@@ -33,8 +32,6 @@
     * https://mvnrepository.com/artifact/com.squareup.leakcanary/leakcanary-android
 * Material Design
     * https://mvnrepository.com/artifact/com.google.android.material/material
-* MockK
-    * https://mvnrepository.com/artifact/io.mockk/mockk
 * Timber
     * https://mvnrepository.com/artifact/com.jakewharton.timber/timber
 
