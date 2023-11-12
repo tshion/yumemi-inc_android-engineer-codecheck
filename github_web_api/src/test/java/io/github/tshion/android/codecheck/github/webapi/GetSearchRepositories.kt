@@ -19,6 +19,8 @@ import retrofit2.HttpException
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetSearchRepositories {
 
+    private val cacheDir = FileSystem.SYSTEM_TEMPORARY_DIRECTORY.toFile()
+
     private val client = OkHttpClient.Builder()
         .build()
 
@@ -26,7 +28,7 @@ class GetSearchRepositories {
     @Ignore("本番環境へ接続する不安定なテストのため")
     @Test
     fun 実際に通信を試してみる() = runTest {
-        val webApi = GitHubWebApi(client)
+        val webApi = GitHubWebApi(cacheDir, client)
         val response = webApi.endpoint.getSearchRepositories("android")
         advanceUntilIdle()
         Assert.assertNotNull(response)
@@ -45,10 +47,7 @@ class GetSearchRepositories {
             })
             start()
         }
-        val webApi = GitHubWebApi(
-            baseUrl = server.url("/").toString(),
-            client = client,
-        )
+        val webApi = createMockWebApi(server)
 
         val response200 = webApi.endpoint.getSearchRepositories("android")
         Assert.assertNotNull(response200)
@@ -67,10 +66,7 @@ class GetSearchRepositories {
             })
             start()
         }
-        val webApi = GitHubWebApi(
-            baseUrl = server.url("/").toString(),
-            client = client,
-        )
+        val webApi = createMockWebApi(server)
 
         val response200 = webApi.endpoint.getSearchRepositories("android")
         Assert.assertNotNull(response200)
@@ -92,10 +88,7 @@ class GetSearchRepositories {
 //            })
 //            start()
 //        }
-//        val webApi = GitHubWebApi(
-//            baseUrl = server.url("/").toString(),
-//            client = client,
-//        )
+//        val webApi = createMockWebApi(server)
 //
 //        try {
 //            val response200 = webApi.endpoint.getSearchRepositories("android")
@@ -120,6 +113,12 @@ class GetSearchRepositories {
     fun code503() = runErrorTest("503_openapi_example.json", 503)
 
 
+    private fun createMockWebApi(server: MockWebServer) = GitHubWebApi(
+        baseUrl = server.url("/").toString(),
+        cacheDir,
+        client,
+    )
+
     private fun runErrorTest(
         filename: String,
         responseCode: Int,
@@ -134,10 +133,7 @@ class GetSearchRepositories {
             })
             start()
         }
-        val webApi = GitHubWebApi(
-            baseUrl = server.url("/").toString(),
-            client = client,
-        )
+        val webApi = createMockWebApi(server)
 
         try {
             webApi.endpoint.getSearchRepositories("android")

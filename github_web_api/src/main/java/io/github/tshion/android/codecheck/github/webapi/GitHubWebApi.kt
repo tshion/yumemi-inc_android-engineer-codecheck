@@ -5,9 +5,11 @@ import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.github.tshion.android.codecheck.github.webapi.utils.GitHubInterceptor
 import io.github.tshion.android.codecheck.github.webapi.utils.OffsetDateTimeAdapter
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.io.File
 import java.util.Date
 
 /**
@@ -15,11 +17,18 @@ import java.util.Date
  */
 public class GitHubWebApi internal constructor(
     baseUrl: String,
+    cacheDir: File,
     client: OkHttpClient,
 ) {
+
+    /**
+     * @param cacheDir 通信キャッシュを保存するディレクトリ
+     * @param client アプリ全体で共有しているOkHttpClient
+     */
     public constructor(
+        cacheDir: File,
         client: OkHttpClient,
-    ) : this("https://api.github.com", client)
+    ) : this("https://api.github.com", cacheDir, client)
 
 
     /** WebAPI エンドポイント */
@@ -36,6 +45,12 @@ public class GitHubWebApi internal constructor(
 
         val okHttpClient = client.newBuilder()
             .addInterceptor(GitHubInterceptor())
+            .cache(
+                Cache(
+                    directory = File(cacheDir, "github_http_cache"),
+                    maxSize = 4L * 1024L * 1024L,
+                )
+            )
             .build()
 
         endpoint = Retrofit.Builder()
