@@ -15,7 +15,7 @@ class DebugApplication : MainApplication() {
     override val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(HttpLoggingInterceptor {
             Timber.tag("OkHttp").d(it)
-        })
+        }.apply { setLevel(HttpLoggingInterceptor.Level.BODY) })
         .build()
 
     /** Timber のログ出力ツリー */
