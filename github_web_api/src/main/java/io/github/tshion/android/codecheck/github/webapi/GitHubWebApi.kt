@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.File
 import java.util.Date
+import java.util.concurrent.TimeUnit
 
 /**
  * GitHub REST API への接続
@@ -51,6 +52,9 @@ public class GitHubWebApi internal constructor(
                     maxSize = 4L * 1024L * 1024L,
                 )
             )
+            // https://docs.github.com/ja/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#timeouts
+            // 10[s] + additional: 0.5[s]
+            .callTimeout(10_500L, TimeUnit.MILLISECONDS)
             .build()
 
         endpoint = Retrofit.Builder()

@@ -12,6 +12,8 @@ import org.junit.Assert
 import org.junit.Ignore
 import org.junit.Test
 import retrofit2.HttpException
+import java.net.SocketTimeoutException
+import java.util.concurrent.TimeUnit
 
 /**
  * [ApiEndpoint.getSearchRepositories] のユニットテスト
@@ -32,6 +34,27 @@ class GetSearchRepositories {
         val response = webApi.endpoint.getSearchRepositories("android")
         advanceUntilIdle()
         Assert.assertNotNull(response)
+    }
+
+    @Ignore("10秒以上かかるテストのため")
+    @Test(expected = SocketTimeoutException::class)
+    fun timeout() = runTest {
+        val contents = FileSystem.RESOURCES.read("200_openapi_example.json".toPath()) {
+            readUtf8()
+        }
+        val server = MockWebServer().apply {
+            enqueue(MockResponse().apply {
+                setResponseCode(200)
+                setBody(contents)
+                setBodyDelay(11, TimeUnit.SECONDS)
+            })
+            start()
+        }
+        val webApi = createMockWebApi(server)
+
+        webApi.endpoint.getSearchRepositories("android")
+        advanceUntilIdle()
+        Assert.fail()
     }
 
 
