@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- アプリ全体で利用するリソース設定 -->
+
+
+    <!-- 配色ルール関連 -->
+    <color name="app_base">#0D1117</color>
+    <color name="app_base_on">#CCCCCC</color>
+</resources>
