@@ -44,9 +44,3 @@ github_connector | ./ | - | 外 | M | GitHub とのデータ交換方法の定�
         * Single Activity, Many Fragments
     * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 * [Kotlin coroutines](https://developer.android.com/kotlin/coroutines)
-
-
-
-## 備考
-### 取り扱いデータ
-![Classes](https://www.plantuml.com/plantuml/svg/dLDDIyCm6BxdL-IeUD5hBXk8Xru49_i1fSswi2qPwLjA6Jje4SMBDxquqA4NGK4G6Mp-cdxuDypQKMCxwbXEpTFdUPBtUTyqNJ0bU8C-GfG3Wm2tw52u38GCZd9WXB1QUnqXUuV2uq2mmI77cArlNDUZPKRVv8vdEfJWKv2CEuqSvkQWW794-9nAmnAyBVibSlRhM5EiyENLo-Vv9bXTgiCvFb9aODOOS-eRN6suHNSQkwHIBXeZBe1YoPmkOD6f40WfaiYiz-FvSpoxLl7PUAdyL_wRqtPwFQdCeTqoSF8rJHOtcviKsMrt1ptc6WSGmtLwJ70KlaJX93gVHU6L-ax3Y-JX7QqPmXEFbYUnHmDVIBkOdveEbwX_6wvPrtHTOn6oyijEF4XlBvFNkyqArykeL1-TlQLFzzyVqtJo6Cy_4MegD_KcVm00 "Classes")

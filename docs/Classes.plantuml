@@ -1,17 +1,26 @@
 @startuml
 
+circle "UI Module" as UI
+
+circle "WebAPI Module" as WebAPI
+
+class SearchUseCase {
+    -githubRepository: GitHubRepositoryContract
+    +searchRepositories(keyword: String?, page: Int): RepositoryResultEntity
+}
+note left of SearchUseCase : 検索フロー
+
 entity RepositoryEntity {
     +forkCount: Int
-    +id: Int
     +issueCount: Int
     +language: String?
     +name: String
-    +ownerIconUrl: String?
-    +ownerName: String?
+    +ownerIconUrl: URL?
+    +ownerName: String
     +starCount: Int
     +watcherCount: Int
 
-    +{static} newInstance(?): RepositoryEntity
+    +{static} parseOrNull(...): ...?
 }
 note right of RepositoryEntity::forkCount
     0以上
@@ -28,17 +37,39 @@ end note
 note right of RepositoryEntity::watcherCount
     0以上
 end note
-note top of RepositoryEntity : リポジトリ情報
-
+note bottom of RepositoryEntity : リポジトリ情報
 
 entity RepositoryQueryEntity {
     +keyword: String
-
-    +{static} newInstance(keyword: String?): RepositoryQueryEntity
+    +page: Int
+    .. 既定値 ..
+    +order: String = "desc"
+    +perPage: Int = 50
+    +sort: String? = null
 }
-note right of RepositoryQueryEntity::keyword
-    1文字以上
-end note
-note top of RepositoryQueryEntity : リポジトリの検索条件
+note right of RepositoryQueryEntity : リポジトリの検索条件
+
+entity RepositoryResultEntity {
+    +hasMore: Boolean
+    +items: List<RepositoryEntity>
+}
+note bottom of RepositoryResultEntity : リポジトリの検索結果
+
+interface GitHubRepositoryContract {
+    +search(query: RepositoryQueryEntity): RepositoryResultEntity
+}
+note bottom of GitHubRepositoryContract : GitHub に関するデータのリポジトリ定義
+
+
+
+UI .down.> SearchUseCase : 検索条件
+
+SearchUseCase <.right. GitHubRepositoryContract : 処理結果
+GitHubRepositoryContract <.right.> WebAPI : 通信
+SearchUseCase .up.> RepositoryQueryEntity : 変換
+RepositoryQueryEntity .down.> GitHubRepositoryContract : パラメータ
+
+SearchUseCase .down.> RepositoryResultEntity : 処理結果
+RepositoryResultEntity o.right. RepositoryEntity
 
 @enduml
