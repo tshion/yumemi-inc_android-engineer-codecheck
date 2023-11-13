@@ -1,27 +1,38 @@
+import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
+
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
-android {
-    namespace 'io.github.tshion.android.codecheck.github.webapi'
-    compileSdk androidApi.target
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
-    defaultConfig {
-        minSdk androidApi.min
-
-        consumerProguardFiles "consumer-rules.pro"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        freeCompilerArgs += '-Xexplicit-api=strict'
-        jvmTarget = '17'
-    }
+kotlin {
+    explicitApi = ExplicitApiMode.Strict
 }
 
 dependencies {
+
+    // JUnit
+    testImplementation "${libraries.junit}"
+
+    // Kotlin Coroutines
+    testImplementation platform("${libraries.coroutines.bom}")
+    testImplementation "${libraries.coroutines.test}"
+
+    // Moshi
+    implementation "${libraries.moshi.adapters}"
+    implementation "${libraries.moshi.moshi}"
+
+    // OkHttp
+    implementation platform("${libraries.okhttp.bom}")
+    testImplementation "${libraries.okhttp.mock}"
+    implementation "${libraries.okhttp.okhttp}"
+
+    // Retrofit
+    implementation "${libraries.retrofit.converter}"
+    implementation "${libraries.retrofit.retrofit}"
 }
