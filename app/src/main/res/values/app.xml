@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- アプリ全体で利用するリソース設定 -->
+
+
+    <!-- 配色ルール関連 -->
+    <color name="app_main">#24292F</color>
+    <color name="app_main_on">#FFFFFF</color>
+    <color name="app_base">#FFFFFF</color>
+    <color name="app_base_on">#24292F</color>
+    <color name="app_accent">#C9510C</color>
+
+    <!-- 透過色 -->
+    <color name="app_transparent_shadow">#4D000000</color>
+</resources>
