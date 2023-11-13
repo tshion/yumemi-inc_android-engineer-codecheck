@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- アプリ全体で利用するリソース設定 -->
+
+
+    <!-- アプリテーマ -->
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/app_main</item>
+        <item name="colorOnPrimary">@color/app_main_on</item>
+
+        <item name="android:colorBackground">@color/app_base</item>
+        <item name="colorOnBackground">@color/app_base_on</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+    </style>
 
 
     <!-- 配色ルール関連 -->
