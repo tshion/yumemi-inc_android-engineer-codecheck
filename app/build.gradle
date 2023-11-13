@@ -95,6 +95,12 @@ dependencies {
     releaseImplementation platform("${libraries.firebase.bom}")
     releaseImplementation("${libraries.firebase.crashlytics}")
 
+    // Hyperion
+    debugImplementation "${libraries.hyperion.attr}"
+    debugImplementation "${libraries.hyperion.core}"
+    debugImplementation "${libraries.hyperion.measurement}"
+    debugImplementation "${libraries.hyperion.timber}"
+
     // JUnit
     testImplementation "${libraries.junit}"
 
