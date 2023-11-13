@@ -74,6 +74,10 @@ android {
 
 dependencies {
 
+    // Local Modules
+    implementation project(":app_core")
+    implementation project(":github_web_api")
+
     // AndroidX
     implementation "${libraries.androidx.appcompat}"
     implementation "${libraries.androidx.constraintlayout}"
