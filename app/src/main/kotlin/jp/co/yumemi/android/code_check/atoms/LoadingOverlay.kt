@@ -16,7 +16,7 @@ import jp.co.yumemi.android.code_check.R
  *
  * ``` xml
  * <FrameLayout>
- *     <!-- ローディングを行っているものを表示するView -->
+ *     <!-- 表示に時間がかかるView -->
  *     <View />
  *
  *     <!-- ローディング表示 -->
