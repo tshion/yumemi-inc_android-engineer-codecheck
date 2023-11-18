@@ -1,16 +1,18 @@
 # GitHub リポジトリ検索アプリ(お題作成: 株式会社ゆめみさん)
 ## はじめに
 * **本リポジトリは[yumemi-inc/android-engineer-codecheck] をベースに、アレンジを加えたものとなります**
-* 個人的な勉強が目的のため、追加で下記の状況を設定しました
-    * アプリは他のIT 企業によってリリースされているが、大人の事情で、私が所属する企業がアプリを引き継ぐことになった
-    * アプリの発注元はプロダクト改良に積極的で、技術面の改良は我々に一任されており、さらに予算もついている
-        * 補足: もし消極的だった場合、予算と睨めっこしながらバグフィックスをこなす話となってしまうので、本リポジトリではその制限を設けない
-    * 前述の条件のため、アプリの改良はチームを組んで対応することになったので、タスク管理を行う必要がある
-* アプリ改良のマイルストーンは下記のように設定しました
-    * [v1.0.0](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/1) -> 他のIT 企業がアプリをリリースした状況の再現
-    * [v1.1.0](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/3) -> 本格的なアプリ改良に入る前の下準備
-        * [v1.0.x](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/4) -> v1.1.0 開発期間中に発覚したバグフィックスへの対応
-    * [v1.2.0](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestone/2) -> 本格的なアプリ改良 (**複製元で起票されているIssue への対応**)
+* アプリ改良のマイルストーン
+    * [完了](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestones?direction=asc&sort=title&state=closed)
+    * [進行中](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/milestones?direction=asc&sort=title&state=open)
+
+<details>
+<summary>※個人的な勉強が目的のため、状況設定を追加しました</summary>
+
+* アプリは他のIT 企業によってリリースされているが、大人の事情で、私が所属する企業がアプリを引き継ぐことになった
+* アプリの発注元はプロダクト改良に積極的で、技術面の改良は我々に一任されており、さらに予算もついている
+    * 補足: もし消極的だった場合、予算と睨めっこしながらバグフィックスをこなす話となってしまうので、本リポジトリではその制限を設けない
+* 前述の条件のため、アプリの改良はチームを組んで対応することになったので、タスク管理を行う必要がある
+</details>
 
 
 
@@ -60,10 +62,12 @@ GitHub リポジトリを検索できるAndroid アプリ。
     * 基本方針
     * 適用する設計パターン
     * 設計パターンを支えるライブラリ
-* [開発Tips](./docs/DevNotes.md)
-    * ライブラリ依存関係
-    * リリースビルドを試したい
-    * 雑記
+* 各モジュールのREADME
+    * [app](./app/)
+        * リリースビルドを試したい
+        * 依存ライブラリ
+    * [app_core](./app_core/)
+    * [github_web_api](./github_web_api/)
 
 
 

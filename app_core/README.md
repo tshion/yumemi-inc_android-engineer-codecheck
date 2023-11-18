@@ -14,10 +14,12 @@
 
 
 ## 関連リンク
-### 依存ライブラリ
+### 依存ライブラリ ([build.gradle](./build.gradle))
 * コア
-    * [AndroidX Annotation](https://developer.android.com/jetpack/androidx/releases/annotation) ([maven](https://mvnrepository.com/artifact/androidx.annotation/annotation))
+    * AndroidX
+        * [annotation](https://developer.android.com/jetpack/androidx/releases/annotation) ([Maven Google](https://mvnrepository.com/artifact/androidx.annotation/annotation))
 * テスト
-    * [JUnit4](https://github.com/junit-team/junit4) ([maven](https://mvnrepository.com/artifact/junit/junit))
-    * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md) ([maven](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-test))
-    * [MockK](https://github.com/mockk/mockk) ([maven](https://mvnrepository.com/artifact/io.mockk/mockk))
+    * [JUnit4](https://github.com/junit-team/junit4) ([Maven Central](https://mvnrepository.com/artifact/junit/junit))
+    * Kotlin Coroutines BOM ([Maven Central](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-bom))
+        * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md)
+    * [MockK](https://github.com/mockk/mockk) ([Maven Central](https://mvnrepository.com/artifact/io.mockk/mockk))
