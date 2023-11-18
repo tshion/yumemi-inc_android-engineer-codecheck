@@ -5,23 +5,32 @@
 
 
 ## 開発環境について
-* Android Studio Giraffe | 2022.3.1 Patch 2
-    * Gradle: 8.0
-    * JDK: 17
-    * Kotlin Plugin: 1.6.21 以降
-* GitHub
-* macOS or Windows
-* <details>
-  <summary>(任意) Visual Studio Code</summary>
+下記のツールをセットアップ後に、
+このプロジェクトのルートディレクトリーを
+Android Studio で開くことで開発作業をする環境が整います。
 
-  下記の作業で利用していますが、絶対に必要というわけではないので、使うかどうかの判断はお任せします。
-  * .gitignore の記述
-  * GitHub Actions の構築
-  * Git クライアント + Pull Request 等の確認
-  * Markdown の記述
-  * [OpenAPI](https://www.openapis.org/) の記述
-  * [PlantUML](https://plantuml.com/) の記述
-  </details>
+もし何か分からないことが出てきたら、声をかけてください。
+
+* macOS or Windows
+* [Android Studio](https://developer.android.com/studio): Giraffe | 2022.3.1 Patch 4
+    * Gradle: 8.0 ([gradle-wrapper.properties](../gradle/wrapper/gradle-wrapper.properties))
+    * JDK: 17
+    * Kotlin Plugin: 1.6.21 以降 ([トップレベルのbuild.gradle](../build.gradle))
+* GitHub
+
+### 任意
+下記のツールは無くても開発できますが、あると便利なので、興味に応じて試してみてください。
+
+* [JetBrains Toolbox App](https://www.jetbrains.com/ja-jp/toolbox-app/)
+    * Android Studio の複数バージョンの併用
+    * プロジェクトと起動IDE の紐付け
+* [Visual Studio Code](https://code.visualstudio.com/)
+    * .gitignore の記述
+    * GitHub Actions の構築
+    * Git クライアント + Pull Request 等の確認
+    * Markdown の記述
+    * [OpenAPI](https://www.openapis.org/) の記述
+    * [PlantUML](https://plantuml.com/) の記述
 
 
 
