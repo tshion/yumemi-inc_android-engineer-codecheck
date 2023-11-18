@@ -75,17 +75,20 @@ GitHub REST API とHTTP 通信をするモジュール。
         * [クライアントエラー](https://docs.github.com/ja/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#client-errors)
     * [メディアの種類 - GitHub Docs](https://docs.github.com/ja/rest/overview/media-types?apiVersion=2022-11-28)
 
-### 依存ライブラリ
+### 依存ライブラリ ([build.gradle](./build.gradle))
 * コア
-    * [OkHttp](https://github.com/square/okhttp) ([maven](https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp))
+    * OkHttp BOM ([Maven Central](https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp-bom))
+        * [OkHttp](https://github.com/square/okhttp)
 * モジュール内部利用
-    * [Moshi Adapters](https://github.com/square/moshi/tree/master/moshi-adapters) ([maven](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-adapters))
-    * [Moshi Kotlin](https://github.com/square/moshi#kotlin) ([maven](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin))
-    * [Retrofit](https://github.com/square/retrofit) ([maven](https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit))
+    * [Moshi Adapters](https://github.com/square/moshi/tree/master/moshi-adapters) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-adapters))
+    * [Moshi Kotlin](https://github.com/square/moshi#kotlin) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin))
+    * [Retrofit](https://github.com/square/retrofit) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit))
     * [Retrofit Converters](https://github.com/square/retrofit/tree/master/retrofit-converters)
-        * Converter: Moshi ([maven](https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-moshi))
+        * Converter: Moshi ([Maven Central](https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-moshi))
 * テスト
-    * [JUnit4](https://github.com/junit-team/junit4) ([maven](https://mvnrepository.com/artifact/junit/junit))
-    * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md) ([maven](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-test))
-    * [OkHttp MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) ([maven](https://mvnrepository.com/artifact/com.squareup.okhttp3/mockwebserver))
+    * [JUnit4](https://github.com/junit-team/junit4) ([Maven Central](https://mvnrepository.com/artifact/junit/junit))
+    * Kotlin Coroutines BOM ([Maven Central](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-bom))
+        * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md)
+    * OkHttp BOM
+        * [OkHttp MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
     * ([Okio](https://github.com/square/okio))
