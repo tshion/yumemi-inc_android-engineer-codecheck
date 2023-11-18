@@ -60,11 +60,12 @@ GitHub リポジトリを検索できるAndroid アプリ。
     * 基本方針
     * 適用する設計パターン
     * 設計パターンを支えるライブラリ
-* [開発Tips](./docs/DevNotes.md)
-    * リリースビルドを試したい
-    * 雑記
 * 各モジュールのREADME
-    * 依存ライブラリ
+    * [app](./app/)
+        * リリースビルドを試したい
+        * 依存ライブラリ
+    * [app_core](./app_core/)
+    * [github_web_api](./github_web_api/)
 
 
 
