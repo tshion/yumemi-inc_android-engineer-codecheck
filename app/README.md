@@ -1,34 +1,25 @@
-# app モジュール
+# app (Android アプリモジュール)
 ストアへリリースするアプリを実装するモジュール。
 このモジュールを起点に、種々の機能を組み合わせて、アプリを形作っていきます。
 
 
 
 ## 開発メモ
-### 開発時にアプリ上で使える便利機能
-[Hyperion](https://github.com/willowtreeapps/Hyperion-Android) を組み込んだため、
-debug ビルドでアプリ実行した際に下記の機能を利用できます。
-
-通知権限を許可した状態でOS 通知欄をタップするか、端末を振ってHyperion メニューを表示してください。
-
-* Timber 出力の確認
-* View 間の距離計測
-* View の属性確認
-
 ### ビルドタイプによる実装の違い
-| | debug<br />(開発作業用) | release<br />(ストアリリース用)
---- | :---: | :---:
-Firebase Crashlytics | - | 利用可能
-google-services.json | - | 必須
-Hyperion | 利用可能 | -
-LeakCanary | 利用可能 | -
-StrictMode | 適用済み | -
-Timber | 全て出力 | `e()` をCrashlytics へ転送
-アプリID | 末尾に`.debug` がつく | -
-アプリ名 | 先頭に`[D]` がつく | -
-アプリバージョン | 末尾に`.debug` がつく | -
-カスタムApplication クラス | `DebugApplication` | `ReleaseApplication`
-署名情報(release.jks) | - | 必須
+| | debug<br />(開発作業用) | release<br />(ストアリリース用) | 補足
+--- | :---: | :---: | ---
+Firebase Crashlytics | - | 利用可能 |  |
+google-services.json | - | 必須 |  |
+[Hyperion] | 利用可能 | - | アプリ起動後に、通知権限を許可した状態でOS 通知欄をタップするか、端末を振るとメニューが出てきます
+[LeakCanary](https://square.github.io/leakcanary/) | 利用可能 | - | アプリ起動後にメモリリークが起きると通知されます
+OkHttp の通信ログ | 利用可能 | - | アプリ起動後にAndroid Studio の"Logcat" ウィンドウを確認してください
+StrictMode | 適用済み | - | 設定内容は[DebugApplication](./src/debug/kotlin/jp.co.yumemi.android.code_check/DebugApplication.kt) を参照してください
+Timber | 全て出力 | `e()` をCrashlytics へ転送 |  |
+アプリID | 末尾に`.debug` がつく | - |  |
+アプリ名 | 先頭に`[D]` がつく | - |  |
+アプリバージョン | 末尾に`.debug` がつく | - |  |
+カスタムApplication クラス | `DebugApplication` | `ReleaseApplication` |  |
+署名情報(release.jks) | - | 必須 |  |
 
 ### リリースビルドを試したい
 リリースビルドを行うためには、下記の機密情報が必要です。
@@ -81,7 +72,7 @@ Git 管理から外しているため、試す際は追加でセットアップ�
         * [OkHttp](https://github.com/square/okhttp)
     * [Timber](https://github.com/JakeWharton/timber) ([Maven Central](https://mvnrepository.com/artifact/com.jakewharton.timber/timber))
 * 開発設定
-    * [Hyperion-Android](https://github.com/willowtreeapps/Hyperion-Android)
+    * [Hyperion]
         * Hyperion-Attr ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-attr))
         * [Hyperion-Core](https://github.com/willowtreeapps/Hyperion-Android/tree/develop/hyperion-core) ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-core))
         * Hyperion-Measurement ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-measurement))
@@ -97,3 +88,7 @@ Git 管理から外しているため、試す際は追加でセットアップ�
             * junit-ktx ([Maven Google](https://mvnrepository.com/artifact/androidx.test.ext/junit-ktx))
         * [uiautomator](https://developer.android.com/jetpack/androidx/releases/test-uiautomator) ([Maven Google](https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator))
     * [JUnit4](https://github.com/junit-team/junit4) ([Maven Central](https://mvnrepository.com/artifact/junit/junit))
+
+
+
+[Hyperion]: https://github.com/willowtreeapps/Hyperion-Android
