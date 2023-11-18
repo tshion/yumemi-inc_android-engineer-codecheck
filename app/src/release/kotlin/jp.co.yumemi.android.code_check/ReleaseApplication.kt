@@ -23,7 +23,7 @@ class ReleaseApplication : MainApplication() {
             t: Throwable?,
         ) {
             when (priority) {
-                Log.ERROR, Log.WARN -> t?.also {
+                Log.ERROR -> t?.also {
                     Firebase.crashlytics.recordException(it)
                 }
             }

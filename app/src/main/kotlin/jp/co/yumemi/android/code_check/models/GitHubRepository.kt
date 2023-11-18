@@ -45,7 +45,7 @@ class GitHubRepository(
                     watcherCount = it.watchers_count,
                 )
                 if (item == null) {
-                    Timber.w("Fail parse ${it.full_name}")
+                    Timber.e("Fail parse ${it.full_name}")
                 }
                 return@mapNotNull item
             }

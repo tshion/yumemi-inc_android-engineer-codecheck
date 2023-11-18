@@ -20,6 +20,6 @@ debug ビルドでアプリ実行した際に下記の機能を利用できま�
 --- | :---: | :---:
 Firebase Crashlytics | - | 利用可能
 google-services.json | - | 必須
-Timber | 全て出力 | `e()`, `w()` をCrashlytics へ転送
+Timber | 全て出力 | `e()` をCrashlytics へ転送
 カスタムApplication クラス | `DebugApplication` | `ReleaseApplication`
 署名情報(release.jks) | - | 必須
