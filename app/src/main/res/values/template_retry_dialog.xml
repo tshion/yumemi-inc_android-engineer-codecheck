@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="template_retry_dialog_button_negative">キャンセル</string>
+    <string name="template_retry_dialog_button_positive">リトライ</string>
+</resources>
