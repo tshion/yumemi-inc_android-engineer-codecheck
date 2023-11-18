@@ -20,6 +20,11 @@ debug ビルドでアプリ実行した際に下記の機能を利用できま�
 --- | :---: | :---:
 Firebase Crashlytics | - | 利用可能
 google-services.json | - | 必須
+LeakCanary | 利用可能 | -
+StrictMode | 適用済み | -
 Timber | 全て出力 | `e()` をCrashlytics へ転送
+アプリID | 末尾に`.debug` がつく | -
+アプリ名 | 先頭に`[D]` がつく | -
+アプリバージョン | 末尾に`.debug` がつく | -
 カスタムApplication クラス | `DebugApplication` | `ReleaseApplication`
 署名情報(release.jks) | - | 必須
