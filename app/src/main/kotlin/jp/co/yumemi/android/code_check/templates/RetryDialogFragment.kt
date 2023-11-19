@@ -26,7 +26,7 @@ import jp.co.yumemi.android.code_check.R
  * 1. 受け取り側の準備(例: Fragment)
  *     ``` kotlin
  *     viewLifecycleOwner.lifecycleScope.launch {
- *         repeatOnLifecycle(Lifecycle.State.STARTED) {
+ *         repeatOnLifecycle(Lifecycle.State.CREATED) {
  *             findNavController().currentBackStackEntry
  *                 ?.savedStateHandle
  *                 ?.getStateFlow(RetryDialogFragment.KEY_RESULT, false)

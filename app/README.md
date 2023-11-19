@@ -72,10 +72,12 @@ Git 管理から外しているため、試す際は追加でセットアップ�
         * [OkHttp](https://github.com/square/okhttp)
     * [Timber](https://github.com/JakeWharton/timber) ([Maven Central](https://mvnrepository.com/artifact/com.jakewharton.timber/timber))
 * 開発設定
+    * [AutoService](https://github.com/google/auto/tree/main/service) ([Maven Central](https://mvnrepository.com/artifact/com.google.auto.service/auto-service))
     * [Hyperion]
         * Hyperion-Attr ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-attr))
         * [Hyperion-Core](https://github.com/willowtreeapps/Hyperion-Android/tree/develop/hyperion-core) ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-core))
         * Hyperion-Measurement ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-measurement))
+        * Hyperion-Plugin ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-plugin))
         * [Hyperion-Timber](https://github.com/willowtreeapps/Hyperion-Android/tree/develop/hyperion-timber) ([Maven Central](https://mvnrepository.com/artifact/com.willowtreeapps.hyperion/hyperion-timber))
     * [LeakCanary](https://github.com/square/leakcanary) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.leakcanary/leakcanary-android))
     * OkHttp BOM
