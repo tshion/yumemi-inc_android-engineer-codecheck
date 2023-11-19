@@ -5,11 +5,29 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/oneFragment">
 
+    <!-- 結果通知ダイアログの表示 -->
+    <action
+        android:id="@+id/nav_show_notify_dialog"
+        app:destination="@id/template_notify_dialog" />
+
     <!-- リトライダイアログの表示 -->
     <action
         android:id="@+id/nav_show_retry_dialog"
         app:destination="@id/template_retry_dialog" />
 
+
+    <dialog
+        android:id="@+id/template_notify_dialog"
+        android:name="jp.co.yumemi.android.code_check.templates.NotifyDialogFragment">
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
 
     <dialog
         android:id="@+id/template_retry_dialog"
