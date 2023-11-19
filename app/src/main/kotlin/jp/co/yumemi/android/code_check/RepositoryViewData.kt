@@ -6,6 +6,7 @@ import androidx.annotation.IntRange
  * リポジトリの表示データ
  *
  * @property forkCount フォーク数
+ * @property imageText 表示画像の説明文言
  * @property imageUrl 表示画像のURL
  * @property issueCount 未解決のIssue 数
  * @property language プログラミング言語
@@ -15,6 +16,7 @@ import androidx.annotation.IntRange
  */
 data class RepositoryViewData(
     @IntRange(from = 0) val forkCount: Int,
+    val imageText: String,
     val imageUrl: String?,
     @IntRange(from = 0) val issueCount: Int,
     val language: String?,

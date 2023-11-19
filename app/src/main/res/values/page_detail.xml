@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="page_detail_label_forks">%d forks</string>
+    <string name="page_detail_label_issues">%d open issues</string>
+    <string name="page_detail_label_language">Written in %s</string>
+    <string name="page_detail_label_stars">%d stars</string>
+    <string name="page_detail_label_watchers">%d watchers</string>
+
+    <string name="page_detail_title">詳細画面</string>
+</resources>
