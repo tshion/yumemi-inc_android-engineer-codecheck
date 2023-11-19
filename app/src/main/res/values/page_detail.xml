@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="page_detail_label_forks">%s forks</string>
+    <string name="page_detail_label_issues">%s open issues</string>
+    <string name="page_detail_label_language">Written in %s</string>
+    <string name="page_detail_label_stars">%s stars</string>
+    <string name="page_detail_label_watchers">%s watchers</string>
+</resources>
