@@ -17,10 +17,24 @@ import androidx.core.view.setPadding
 import androidx.core.widget.ImageViewCompat
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.toPx
+
 import com.willowtreeapps.hyperion.plugin.R as HyperionR
 
 /**
  * Hyperion のメニュー項目UI
+ *
+ * ## 使用条件
+ * * Hyperion を利用している
+ *
+ * ## 使い方
+ * ``` kotlin
+ * HyperionMenuItemView(context).apply {
+ *     setName(resId)
+ *     setOnClickListener {
+ *         // TODO
+ *     }
+ * }
+ * ```
  *
  * ## 参考文献
  * * [Hyperion Timber のメニュー項目の実装](https://github.com/willowtreeapps/Hyperion-Android/blob/develop/hyperion-timber/src/main/res/layout/tmb_item_plugin.xml)
