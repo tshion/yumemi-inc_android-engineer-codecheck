@@ -14,6 +14,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>
 
+    <!-- ダイアログテーマ -->
+    <style name="ThemeOverlay.App.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorSurface">@color/app_base</item>
+        <item name="colorOnSurface">@color/app_base_on</item>
+        <item name="colorPrimary">@color/app_accent</item>
+    </style>
+
 
     <!-- 配色ルール関連 -->
     <color name="app_main">#24292F</color>
