@@ -3,6 +3,7 @@ package jp.co.yumemi.android.code_check.pages.detail
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import coil.load
 import jp.co.yumemi.android.code_check.R
@@ -27,7 +28,7 @@ class DetailFragment : Fragment(R.layout.page_detail) {
         val data = viewModel.data ?: throw IllegalArgumentException("表示データを設定してください")
 
         binding = PageDetailBinding.bind(view).apply {
-            pageDetailHeader.setTitle(R.string.page_detail_title)
+            pageDetailHeader.setupWith(findNavController())
 
             pageDetailImage.load(data.imageUrl)
             pageDetailImage.contentDescription = data.imageText
