@@ -48,6 +48,7 @@ class SearchFragment : Fragment(R.layout.page_search) {
             binding?.apply {
                 pageSearchBoxEditor.text = null
                 pageSearchList.adapter?.submitList(null)
+                pageSearchListEmpty.isVisible = false
             }
         }
 
