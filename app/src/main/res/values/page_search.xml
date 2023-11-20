@@ -11,6 +11,12 @@
 
     <string name="page_search_box_hint">@string/searchInputText_hint</string>
 
+    <string name="page_search_error_title_http">通信エラー</string>
+    <string name="page_search_error_title_invalid">検証エラー</string>
+    <string name="page_search_error_message_http">通信エラーが発生しました。</string>
+    <string name="page_search_error_message_invalid">検索条件を見直してください。</string>
+    <string name="page_search_error_message_offline">通信状態が悪いようです。しばらく時間を置いてから再度お試しください。</string>
+
     <string name="page_search_list_empty">指定した条件に合致する結果はありません</string>
 
     <string name="page_search_title">検索画面</string>

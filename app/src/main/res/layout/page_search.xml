@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@id/page_search_header">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/page_search_box_layout"
             style="@style/PageSearch.Box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
