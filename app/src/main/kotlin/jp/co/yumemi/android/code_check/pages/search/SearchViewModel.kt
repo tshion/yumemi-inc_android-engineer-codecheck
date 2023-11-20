@@ -52,10 +52,11 @@ class SearchViewModel(
                 runCatching {
                     val result = searchUseCase.searchRepositories(keyword, 1)
                     result.items.map {
+                        val url = it.ownerIconUrl?.toString()
                         RepositoryViewData(
                             it.forkCount,
-                            imageText = it.ownerName,
-                            imageUrl = it.ownerIconUrl?.toString(),
+                            imageText = if (url != null) it.ownerName else null,
+                            imageUrl = url,
                             it.issueCount,
                             it.language,
                             it.starCount,
