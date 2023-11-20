@@ -62,6 +62,7 @@ Git 管理から外しているため、試す際は追加でセットアップ�
             * ui-ktx ([Maven Google](https://mvnrepository.com/artifact/androidx.navigation/navigation-ui-ktx))
         * [recyclerview](https://developer.android.com/jetpack/androidx/releases/recyclerview) ([Maven Google](https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview))
     * [COIL](https://github.com/coil-kt/coil) ([Maven Central](https://mvnrepository.com/artifact/io.coil-kt/coil))
+    * [desugar](https://github.com/google/desugar_jdk_libs) ([Maven Google](https://mvnrepository.com/artifact/com.android.tools/desugar_jdk_libs))
     * Firebase BOM ([Maven Google](https://mvnrepository.com/artifact/com.google.firebase/firebase-bom))
         * [Firebase Crashlytics SDK](https://github.com/firebase/firebase-android-sdk/tree/master/firebase-crashlytics)
     * Kotlin Coroutines BOM ([Maven Central](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-bom))
