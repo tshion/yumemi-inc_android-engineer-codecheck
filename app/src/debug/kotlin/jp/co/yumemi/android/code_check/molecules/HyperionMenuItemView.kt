@@ -2,6 +2,7 @@ package jp.co.yumemi.android.code_check.molecules
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.os.Build
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
@@ -81,7 +82,9 @@ class HyperionMenuItemView @JvmOverloads constructor(
             layoutParams = LayoutParams(size, size).apply {
                 setMargins(0, 0, spaceH, 0)
             }
-            setImageResource(R.drawable.ic_launcher_foreground)
+            if (Build.VERSION_CODES.N <= Build.VERSION.SDK_INT) {
+                setImageResource(R.drawable.ic_launcher_foreground)
+            }
             ImageViewCompat.setImageTintList(this, ColorStateList.valueOf(colorSelector))
         }
 
