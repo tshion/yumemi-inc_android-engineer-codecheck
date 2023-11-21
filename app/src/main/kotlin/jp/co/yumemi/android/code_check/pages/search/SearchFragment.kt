@@ -67,7 +67,7 @@ class SearchFragment : Fragment(R.layout.page_search) {
         }
 
         binding?.pageSearchList?.adapter = RepositoryListViewAdapter {
-            detailViewModel.data = it
+            detailViewModel.setup(it, resources)
             findNavController().navigate(R.id.nav_go_detail)
         }
         // endregion

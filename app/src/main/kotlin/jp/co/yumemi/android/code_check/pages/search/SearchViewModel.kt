@@ -7,7 +7,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import io.github.tshion.android.codecheck.core.SearchUseCase
 import jp.co.yumemi.android.code_check.MainApplication
-import jp.co.yumemi.android.code_check.RepositoryViewData
+import jp.co.yumemi.android.code_check.organisms.repository_list_view.RepositoryListItemViewData
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,8 +28,8 @@ class SearchViewModel(
     private val _isLoading = MutableStateFlow(false)
 
     /** 検索結果 */
-    val searchResult: StateFlow<Result<List<RepositoryViewData>>?>
-    private val _searchResult = MutableStateFlow<Result<List<RepositoryViewData>>?>(null)
+    val searchResult: StateFlow<Result<List<RepositoryListItemViewData>>?>
+    private val _searchResult = MutableStateFlow<Result<List<RepositoryListItemViewData>>?>(null)
 
 
     init {
@@ -51,19 +51,7 @@ class SearchViewModel(
             _searchResult.value = withContext(dispatcherDefault) {
                 runCatching {
                     val result = searchUseCase.searchRepositories(keyword, 1)
-                    result.items.map {
-                        val url = it.ownerIconUrl?.toString()
-                        RepositoryViewData(
-                            it.forkCount,
-                            imageText = if (url != null) it.ownerName else null,
-                            imageUrl = url,
-                            it.issueCount,
-                            it.language,
-                            it.starCount,
-                            title = "${it.ownerName}/${it.name}",
-                            it.watcherCount,
-                        )
-                    }
+                    result.items.map { RepositoryListItemViewData(it) }
                 }
             }
             _isLoading.value = false
