@@ -28,13 +28,14 @@ class ShowNotifyDialogHyperionPlugin : Plugin() {
             setName(name)
             setOnClickListener {
                 try {
+                    val activity = extension.activity as? EntryPointActivity
+                    val id = activity?.mContainerId ?: return@setOnClickListener
+
                     val direction = NotifyDialogFragmentDirections.navShowNotifyDialog(
                         title = "タイトル from Hyperion",
                         message = "メッセージ from Hyperion",
                     )
-                    extension.activity
-                        .findNavController(R.id.nav_host_fragment)
-                        .navigate(direction)
+                    activity.findNavController(id).navigate(direction)
                 } catch (e: Exception) {
                     Toast.makeText(parent.context, "表示できません", Toast.LENGTH_SHORT).show()
                 }

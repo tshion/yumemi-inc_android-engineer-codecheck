@@ -11,9 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity
-            android:name="jp.co.yumemi.android.code_check.TopActivity"
-            android:exported="true" />
 
         <activity
             android:name=".EntryPointActivity"
