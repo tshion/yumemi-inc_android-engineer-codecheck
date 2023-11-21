@@ -16,7 +16,7 @@ import androidx.annotation.IntRange
  */
 data class RepositoryViewData(
     @IntRange(from = 0) val forkCount: Int,
-    val imageText: String,
+    val imageText: String?,
     val imageUrl: String?,
     @IntRange(from = 0) val issueCount: Int,
     val language: String?,

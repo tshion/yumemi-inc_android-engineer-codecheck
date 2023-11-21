@@ -40,7 +40,7 @@ class GitHubRepository(
                     language = it.language,
                     name = it.name,
                     ownerIconUrl = it.owner?.avatar_url,
-                    ownerName = it.owner?.gravatar_id,
+                    ownerName = it.owner?.login,
                     starCount = it.stargazers_count,
                     watcherCount = it.watchers_count,
                 )
