@@ -11,6 +11,7 @@
         <item name="android:colorBackground">@color/app_base</item>
         <item name="colorOnBackground">@color/app_base_on</item>
 
+        <item name="colorControlNormal">@color/app_main_on</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>
 
