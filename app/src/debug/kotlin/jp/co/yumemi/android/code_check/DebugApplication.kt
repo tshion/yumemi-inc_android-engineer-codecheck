@@ -1,7 +1,9 @@
 package jp.co.yumemi.android.code_check
 
+import android.os.Build
 import android.os.StrictMode
 import androidx.fragment.app.strictmode.FragmentStrictMode
+import com.willowtreeapps.hyperion.core.Hyperion
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
@@ -53,5 +55,11 @@ class DebugApplication : MainApplication() {
             .build()
             .also { FragmentStrictMode.defaultPolicy = it }
         // endregion
+
+
+        // TODO: Android 14 以降でHyperion が使えるようになったら、記述を削除する
+        if (Build.VERSION_CODES.UPSIDE_DOWN_CAKE <= Build.VERSION.SDK_INT) {
+            Hyperion.disable()
+        }
     }
 }
