@@ -67,7 +67,6 @@ Git 管理から外しているため、試す際は追加でセットアップ�
         * [Firebase Crashlytics SDK](https://github.com/firebase/firebase-android-sdk/tree/master/firebase-crashlytics)
     * Kotlin Coroutines BOM ([Maven Central](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-bom))
         * [Kotlinx Coroutines Android](https://github.com/Kotlin/kotlinx.coroutines/tree/master/ui/kotlinx-coroutines-android)
-    * ~~Ktor~~
     * [Material Design](https://github.com/material-components/material-components-android) ([Maven Google](https://mvnrepository.com/artifact/com.google.android.material/material))
     * OkHttp BOM ([Maven Central](https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp-bom))
         * [OkHttp](https://github.com/square/okhttp)

@@ -11,7 +11,8 @@
     <jp.co.yumemi.android.code_check.molecules.SimpleToolbar
         android:id="@+id/page_detail_header"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize" />
+        android:layout_height="?actionBarSize"
+        tools:title="@string/page_detail_title" />
 
     <ScrollView
         android:layout_width="match_parent"

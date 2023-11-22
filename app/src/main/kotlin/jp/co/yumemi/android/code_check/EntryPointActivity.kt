@@ -19,7 +19,7 @@ import androidx.navigation.fragment.NavHostFragment
  */
 class EntryPointActivity : AppCompatActivity() {
 
-    private var mContainerId: Int? = null
+    var mContainerId: Int? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
 
     // Firebase Crashlytics Gradle
@@ -113,15 +112,9 @@ dependencies {
     debugImplementation "${libraries.hyperion.plugin}"
     debugImplementation "${libraries.hyperion.timber}"
 
-    // JUnit
-    testImplementation "${libraries.junit}"
-
     // Kotlin Coroutines
     implementation "${libraries.coroutines.bom}"
     implementation "${libraries.coroutines.android}"
-
-    // Ktor
-    implementation "${libraries.ktor}"
 
     // LeakCanary
     debugImplementation "${libraries.leakCanary}"

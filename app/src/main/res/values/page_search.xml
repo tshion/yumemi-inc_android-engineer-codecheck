@@ -9,7 +9,7 @@
     </style>
 
 
-    <string name="page_search_box_hint">@string/searchInputText_hint</string>
+    <string name="page_search_box_hint">GitHub のリポジトリを検索できるよー</string>
 
     <string name="page_search_error_title_http">通信エラー</string>
     <string name="page_search_error_title_invalid">検証エラー</string>
