@@ -35,26 +35,11 @@ class DetailFragment : Fragment(R.layout.page_detail) {
 
             pageDetailLabelTitle.text = data.title
 
-            pageDetailLabelForks.text = getString(
-                R.string.page_detail_label_forks,
-                data.forkCount,
-            )
-            pageDetailLabelIssues.text = getString(
-                R.string.page_detail_label_issues,
-                data.issueCount,
-            )
-            pageDetailLabelLanguage.text = getString(
-                R.string.page_detail_label_language,
-                data.language,
-            )
-            pageDetailLabelStars.text = getString(
-                R.string.page_detail_label_stars,
-                data.starCount,
-            )
-            pageDetailLabelWatchers.text = getString(
-                R.string.page_detail_label_watchers,
-                data.watcherCount,
-            )
+            pageDetailLabelForks.text = data.forkCount
+            pageDetailLabelIssues.text = data.issueCount
+            pageDetailLabelLanguage.text = data.language
+            pageDetailLabelStars.text = data.starCount
+            pageDetailLabelWatchers.text = data.watcherCount
         }
     }
 
