@@ -32,4 +32,8 @@
 
     <!-- 透過色 -->
     <color name="app_transparent_shadow">#4D000000</color>
+
+
+    <!-- アプリ名 -->
+    <string name="app_name">Android Engineer CodeCheck</string>
 </resources>
