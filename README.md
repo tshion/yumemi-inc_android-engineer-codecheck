@@ -19,7 +19,9 @@
 ## アプリについて
 GitHub リポジトリを検索できるAndroid アプリ。
 
-<img src="docs/app.gif" width="320" />
+~ 1.1.x | 1.2.x
+:---: | :---:
+<img src="docs/app.gif" width="320" /> | <img src="docs/app1_2_x.gif" width="320" />
 
 ### インストール方法
 アプリのapk は[GitHub リポジトリのリリース](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/releases) 経由で入手することが出来ます。
