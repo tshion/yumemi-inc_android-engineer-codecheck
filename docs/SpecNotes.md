@@ -1,27 +1,52 @@
 # 仕様メモ
-## 画面一覧
-画面名 | クラス名
+## アプリ関連
+### 画面構成とデザイン
+画面名 | 概要
 --- | ---
-GitHub リポジトリの検索画面 | [OneFragment](../app/src/main/kotlin/jp/co/yumemi/android/code_check/OneFragment.kt)
-GitHub リポジトリの詳細画面 | [TwoFragment](../app/src/main/kotlin/jp/co/yumemi/android/code_check/TwoFragment.kt)
-(アプリ起動後の画面ホスト) | [TopActivity](../app/src/main/kotlin/jp/co/yumemi/android/code_check/topActivity.kt)
+検索画面 | GitHub リポジトリの検索条件の入力と、その結果を表示する画面
+詳細画面 | 選択したGitHub リポジトリの詳細情報を表示する画面
+
+[デザイン関連をまとめたGoogle スライド](https://docs.google.com/presentation/d/1MhPFy1jIEENGLCKthz4CfsVcAPls7aGKYyU_Ky1TQno/edit?usp=sharing) も参照してください。
+
+### データの取り扱い方針
+* アプリ側で永続化すべきデータは、システム上は特になし
+    * なので基本的にはオンメモリで完結させるようにする
+* センシティブな情報は、本システムでは特になし
+* データの検証は、外部システム仕様を完全に再現するのは難しいため、あまりにも極端なものを排除するくらいのレベルにとどめる
+
+### バージョニング
+セマンティックバージョニングをベースに、下記のようなルールを設定します。
+
+項目 | 桁数
+--- | :---:
+major | 1以上
+minor | 2
+patch | 2
+
+計算式は下記とします。
+* `versionCode` -> `(10,000 * major) + (100 * minor) + patch`
+* `versionName` -> `major.minor.patch`
+
+### ログの取り扱い方針
+* システムが要求するログ出力は特になし
+* セキュリティ等の観点から、なるべくログ出力を避ける
+    * 開発目的ならば、代わりにブレイクポイントを置いてデバッグするなどの手法に切り替える
 
 
 
-## アプリの使い方
-### 動作
-> 1. 何かしらのキーワードを入力
-> 2. GitHub API（`search/repositories`）でリポジトリを検索し、結果一覧を概要（リポジトリ名）で表示
-> 3. 特定の結果を選択したら、該当リポジトリの詳細（リポジトリ名、オーナーアイコン、プロジェクト言語、Star 数、Watcher 数、Fork 数、Issue 数）を表示
+## 外部システム関連
+### GitHub REST API
+[本リポジトリで利用する箇所を抜粋したOpenAPI 定義書](./github.yaml) に記載した下記のエンドポイントを利用しています。
 
-### 大まかな処理の流れ
-![UseFlow](https://www.plantuml.com/plantuml/svg/VLJVIzjG57w_VyMXmfWFhU-5YXqu7MnCPhRtsDxfXPg4v5QtjoNPcCx1L3OAhYejRdE3TWEL3kFmZxbDqluNk_bXUsygXX32FT_vpdVETv8vYwechQ_Na5gXkWdFBMoY5VqLvCg6aOEfnsHrZJwerJ42VXaSIoh4K3KAYcwKAvHi4Ffw8lPKmmzDTNKTQ_Iss0k2Dv_eLLoR9DtKHubOgm9NWiHuRe7GnVeAF9jVLg2yz2W7gWN96KAeL0Bcj9dROEwlmKNFt_d2N7vtc7i5fHAAUeFyhAWSYd0_apADn3Y72yr4S7_hC6WUXv-zuM6RsTt1QSVl7amZ4PNdMN6n8WGdpV2yFKQtJiEJoqHg4hfLeLpo1lYRevYxpMdyTz_y3r_XNXhokyU3riV8GRAXKYoDNz8rAqrVe6unvnzptPHzxuhPP_xxIsOt9DAnRn8DfqrjASAYeYmjm_3DGV-w5L5bbALMQJf_DwFL0ltbpM6q2mlp2inOM3KhQpCcDdIByAKas8gN8Sf2QQNyP2z9qV1YDpXgeYhErfGboqCMuTa-xt0rBZLsLIOPSQD2eO3kj7P4rF_ROVOESxRxdXUy_SHFcEF4pttcNCS6DRAE2fzCbj3P3teUixUO_JtPmA7T2tzuI4mHkXhyF0lF_qpiwXoVFVz1_0S0 "UseFlow")
+* https://docs.github.com/rest/releases/releases#get-the-latest-release
+* https://docs.github.com/rest/search/search#search-repositories
+
+### クラッシュ分析ツール
+[Firebase Crashlytics](https://firebase.google.com/docs/crashlytics) を利用しています。
 
 
 
-## その他
-* GitHub REST API
-    * https://docs.github.com/ja/rest/search/search?apiVersion=2022-11-28#search-repositories
-    * [本リポジトリで利用する箇所を抜粋したOpenAPI 定義書](./github.yaml)
-* アプリバージョンの仕様
-    * [Issue #5](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/5) を参照してください
+## 備考
+### データセーフティ
+* Firebase
+    * [Crashlytics](https://firebase.google.com/docs/android/play-data-disclosure#crashlytics)

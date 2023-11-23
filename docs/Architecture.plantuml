@@ -1,0 +1,44 @@
+@startuml
+
+Actor User
+
+package "app" {
+  [Activity or Fragment] as View
+  [ViewModel]
+
+  [Repository]
+}
+
+package "app_core" as core {
+  [Entity]
+  [UseCase]
+}
+note left of core
+  システムで
+  ・取り扱うデータ
+  ・取り扱い方法
+  の定義
+end note
+
+package "github_connector" as github {
+    [APIClient]
+}
+note top of github
+  GitHub との
+  データ交換方法の定義
+end note
+
+interface "GitHub REST API" as api
+
+
+
+UseCase <-down-> ViewModel
+UseCase <-down-> Repository
+
+ViewModel <-down-> View
+View <-down-> User
+
+APIClient <-down-> api
+APIClient <-up-> Repository
+
+@enduml

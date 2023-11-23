@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base"
+    android:orientation="vertical"
+    tools:context=".EntryPointActivity">
+
+    <jp.co.yumemi.android.code_check.molecules.SimpleToolbar
+        android:id="@+id/page_detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        tools:title="@string/page_detail_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/page_detail_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_max="240dp"
+                tools:contentDescription="@tools:sample/full_names"
+                tools:src="@tools:sample/avatars" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/page_detail_label_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/app_base_on"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/page_detail_image"
+                tools:text="@tools:sample/full_names" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/page_detail_label_language"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/app_base_on"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/page_detail_label_stars"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/page_detail_label_title"
+                tools:text="@string/page_detail_label_language" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/page_detail_label_stars"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/app_base_on"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/page_detail_label_language"
+                app:layout_constraintTop_toTopOf="@id/page_detail_label_language"
+                tools:text="@string/page_detail_label_stars" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/page_detail_label_watchers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/app_base_on"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/page_detail_label_stars"
+                app:layout_constraintStart_toStartOf="@id/page_detail_label_stars"
+                app:layout_constraintTop_toBottomOf="@id/page_detail_label_stars"
+                tools:text="@string/page_detail_label_watchers" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/page_detail_label_forks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/app_base_on"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/page_detail_label_stars"
+                app:layout_constraintStart_toStartOf="@id/page_detail_label_stars"
+                app:layout_constraintTop_toBottomOf="@id/page_detail_label_watchers"
+                tools:text="@string/page_detail_label_forks" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/page_detail_label_issues"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:textAlignment="textEnd"
+                android:textColor="@color/app_base_on"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/page_detail_label_stars"
+                app:layout_constraintStart_toStartOf="@id/page_detail_label_stars"
+                app:layout_constraintTop_toBottomOf="@id/page_detail_label_forks"
+                tools:text="@string/page_detail_label_issues" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

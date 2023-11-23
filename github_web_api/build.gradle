@@ -1,0 +1,39 @@
+import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
+
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin {
+    explicitApi = ExplicitApiMode.Strict
+}
+
+dependencies {
+
+    // JUnit
+    testImplementation "${libraries.junit}"
+
+    // Kotlin Coroutines
+    testImplementation platform("${libraries.coroutines.bom}")
+    testImplementation "${libraries.coroutines.test}"
+
+    // Moshi
+    implementation "${libraries.moshi.adapters}"
+    kapt "${libraries.moshi.codegen}"
+
+    // OkHttp
+    implementation platform("${libraries.okhttp.bom}")
+    testImplementation "${libraries.okhttp.mock}"
+    implementation "${libraries.okhttp.okhttp}"
+
+    // Retrofit
+    implementation "${libraries.retrofit.converter}"
+    implementation "${libraries.retrofit.retrofit}"
+}

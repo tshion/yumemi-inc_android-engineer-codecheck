@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hyperion_show_notify_dialog_title">結果通知ダイアログの表示</string>
+    <string name="hyperion_show_retry_dialog_title">リトライダイアログの表示</string>
+</resources>

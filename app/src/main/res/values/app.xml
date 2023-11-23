@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- アプリ全体で利用するリソース設定 -->
+
+
+    <!-- アプリテーマ -->
+    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/app_main</item>
+        <item name="colorOnPrimary">@color/app_main_on</item>
+
+        <item name="android:colorBackground">@color/app_base</item>
+        <item name="colorOnBackground">@color/app_base_on</item>
+
+        <item name="colorControlNormal">@color/app_main_on</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+    </style>
+
+    <!-- ダイアログテーマ -->
+    <style name="ThemeOverlay.App.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorSurface">@color/app_base</item>
+        <item name="colorOnSurface">@color/app_base_on</item>
+        <item name="colorPrimary">@color/app_accent</item>
+    </style>
+
+
+    <!-- 配色ルール関連 -->
+    <color name="app_main">#24292F</color>
+    <color name="app_main_on">#FFFFFF</color>
+    <color name="app_base">#FFFFFF</color>
+    <color name="app_base_on">#24292F</color>
+    <color name="app_accent">#C9510C</color>
+
+    <!-- 透過色 -->
+    <color name="app_transparent_shadow">#4D000000</color>
+
+
+    <!-- アプリ名 -->
+    <string name="app_name">Android Engineer CodeCheck</string>
+</resources>
