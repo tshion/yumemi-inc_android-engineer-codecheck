@@ -69,6 +69,7 @@ ext {
             mockK      : "io.mockk:mockk:${versionMockK}",
             moshi      : [
                     adapters: "com.squareup.moshi:moshi-adapters:$versionMoshi",
+                    codegen : "com.squareup.moshi:moshi-kotlin-codegen:$versionMoshi",
                     moshi   : "com.squareup.moshi:moshi-kotlin:$versionMoshi",
             ],
             okhttp     : [

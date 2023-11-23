@@ -1,5 +1,7 @@
 package io.github.tshion.android.codecheck.github.webapi.entities
 
+import com.squareup.moshi.JsonClass
+
 /**
  * A GitHub user.
  *
@@ -25,6 +27,7 @@ package io.github.tshion.android.codecheck.github.webapi.entities
  * @param site_admin
  * @param starred_at
  */
+@JsonClass(generateAdapter = true)
 public data class NullableSimpleUser(
     val name: String? = null,
     val email: String? = null,
