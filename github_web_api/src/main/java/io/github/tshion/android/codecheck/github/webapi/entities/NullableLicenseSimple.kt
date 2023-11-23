@@ -1,5 +1,7 @@
 package io.github.tshion.android.codecheck.github.webapi.entities
 
+import com.squareup.moshi.JsonClass
+
 /**
  * License Simple
  *
@@ -10,6 +12,7 @@ package io.github.tshion.android.codecheck.github.webapi.entities
  * @param node_id
  * @param html_url
  */
+@JsonClass(generateAdapter = true)
 public data class NullableLicenseSimple(
     val key: String,
     val name: String,

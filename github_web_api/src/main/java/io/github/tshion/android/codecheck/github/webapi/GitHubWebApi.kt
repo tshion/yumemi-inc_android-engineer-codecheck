@@ -3,7 +3,6 @@ package io.github.tshion.android.codecheck.github.webapi
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import io.github.tshion.android.codecheck.github.webapi.entities.GitHubErrorResponse
 import io.github.tshion.android.codecheck.github.webapi.utils.GitHubInterceptor
 import io.github.tshion.android.codecheck.github.webapi.utils.OffsetDateTimeAdapter
@@ -47,7 +46,6 @@ public class GitHubWebApi internal constructor(
 
     init {
         val moshi = Moshi.Builder()
-            .addLast(KotlinJsonAdapterFactory())
             .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
             .add(OffsetDateTimeAdapter())
             .build()

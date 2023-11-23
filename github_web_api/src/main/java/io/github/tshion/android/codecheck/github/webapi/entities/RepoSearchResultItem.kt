@@ -1,5 +1,7 @@
 package io.github.tshion.android.codecheck.github.webapi.entities
 
+import com.squareup.moshi.JsonClass
+
 /**
  * Repo Search Result Item
  *
@@ -93,6 +95,7 @@ package io.github.tshion.android.codecheck.github.webapi.entities
  * @param is_template
  * @param web_commit_signoff_required
  */
+@JsonClass(generateAdapter = true)
 public data class RepoSearchResultItem(
     val id: Int,
     val node_id: String,
@@ -175,7 +178,7 @@ public data class RepoSearchResultItem(
     val visibility: String? = null,
     val license: NullableLicenseSimple?,
     val permissions: Permissions? = null,
-    val textMatches: List<SearchResultTextMatches>? = null,
+    val text_matches: List<SearchResultTextMatches>? = null,
     val temp_clone_token: String? = null,
     val allow_merge_commit: Boolean? = null,
     val allow_squash_merge: Boolean? = null,
