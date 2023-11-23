@@ -5,7 +5,6 @@
 --- | ---
 検索画面 | GitHub リポジトリの検索条件の入力と、その結果を表示する画面
 詳細画面 | 選択したGitHub リポジトリの詳細情報を表示する画面
-スプラッシュ画面 | アプリ起動時に表示し、起動処理を行う画面
 
 [デザイン関連をまとめたGoogle スライド](https://docs.google.com/presentation/d/1MhPFy1jIEENGLCKthz4CfsVcAPls7aGKYyU_Ky1TQno/edit?usp=sharing) も参照してください。
 

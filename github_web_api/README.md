@@ -22,10 +22,6 @@ GitHub REST API とHTTP 通信をするモジュール。
         ``` kotlin
         try {
             val response = githubWebApi.endpoint.getSearchRepositories("android")
-        } catch (e: HttpException) {
-            // GitHub REST API との通信で失敗した場合
-            val errorResponse = githubWebApi.parse(e)
-            // TODO: クラッシュ分析ツールへ連携
         } catch (e: IOException) {
             // 端末オフラインや通信タイムアウトなど
         } catch (e: Exception) {
@@ -50,6 +46,8 @@ GitHub REST API とHTTP 通信をするモジュール。
     * IDE の検索機能で、`([a-z])([A-Z])` を`$1_\l$2` で置換し、変数名をsnake case 化
         * Moshi はsnake case をcamel case へ自動変換する機能が無いのでJSON キー名と揃えるため (※[関連stack overflow](https://stackoverflow.com/a/52149637))
         * 本モジュールは外部サービスに強く依存し、アプリで利用するうえで信用できるか不明のため、その注意喚起を含め違和感を持ってもらうため、snake case のままとしています
+    * Moshi の設定追加
+        * Android モジュールでminify をかけても大丈夫なように調整
     * 型の前についている`kotlin.` を削除
     * 型変更
         * `Array` -> `List`
