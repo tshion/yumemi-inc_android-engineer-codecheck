@@ -81,7 +81,7 @@ GitHub REST API とHTTP 通信をするモジュール。
         * [OkHttp](https://github.com/square/okhttp)
 * モジュール内部利用
     * [Moshi Adapters](https://github.com/square/moshi/tree/master/moshi-adapters) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-adapters))
-    * [Moshi Kotlin](https://github.com/square/moshi#kotlin) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin))
+    * [Moshi Codegen](https://github.com/square/moshi#codegen) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.moshi/moshi-kotlin-codegen))
     * [Retrofit](https://github.com/square/retrofit) ([Maven Central](https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit))
     * [Retrofit Converters](https://github.com/square/retrofit/tree/master/retrofit-converters)
         * Converter: Moshi ([Maven Central](https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-moshi))

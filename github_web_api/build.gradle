@@ -27,7 +27,6 @@ dependencies {
     // Moshi
     implementation "${libraries.moshi.adapters}"
     kapt "${libraries.moshi.codegen}"
-    implementation "${libraries.moshi.moshi}"
 
     // OkHttp
     implementation platform("${libraries.okhttp.bom}")
