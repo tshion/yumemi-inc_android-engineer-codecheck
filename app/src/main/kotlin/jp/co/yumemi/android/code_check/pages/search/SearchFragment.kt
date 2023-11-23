@@ -87,8 +87,8 @@ class SearchFragment : Fragment(R.layout.page_search) {
                         result?.onSuccess {
                             binding?.pageSearchList?.adapter?.submitList(it)
                             binding?.pageSearchListEmpty?.isVisible = it.isEmpty()
-                        }?.onFailure {
-                            when (it) {
+                        }?.onFailure { e ->
+                            when (e) {
                                 is IllegalArgumentException,
                                 is IndexOutOfBoundsException -> NavGraphEntryPointDirections.navShowNotifyDialog(
                                     title = getString(R.string.page_search_error_title_invalid),
@@ -101,7 +101,7 @@ class SearchFragment : Fragment(R.layout.page_search) {
                                 )
 
                                 else -> {
-                                    Timber.e(it)
+                                    Timber.e(e)
                                     NavGraphEntryPointDirections.navShowNotifyDialog(
                                         title = getString(R.string.page_search_error_title_http),
                                         message = getString(R.string.page_search_error_message_http),
