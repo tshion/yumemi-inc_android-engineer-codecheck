@@ -17,6 +17,9 @@ kotlin {
 
 dependencies {
 
+    // JDepend
+    testImplementation files('libs/jdepend-2.10.jar')
+
     // JUnit
     testImplementation "${libraries.junit}"
 

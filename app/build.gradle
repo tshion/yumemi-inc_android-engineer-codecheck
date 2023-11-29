@@ -112,12 +112,6 @@ dependencies {
     debugImplementation "${libraries.hyperion.plugin}"
     debugImplementation "${libraries.hyperion.timber}"
 
-    // JDepend
-    testImplementation files('libs/jdepend-2.10.jar')
-
-    // JUnit
-    testImplementation "${libraries.junit}"
-
     // Kotlin Coroutines
     implementation "${libraries.coroutines.bom}"
     implementation "${libraries.coroutines.android}"
