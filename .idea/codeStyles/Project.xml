@@ -221,6 +221,7 @@
               </match>
             </rule>
           </section>
+          <!--
           <section>
             <rule>
               <match>
@@ -232,6 +233,7 @@
               <order>BY_NAME</order>
             </rule>
           </section>
+          -->
           <section>
             <rule>
               <match>
@@ -285,6 +287,7 @@
               <order>BY_NAME</order>
             </rule>
           </section>
+          <!--
           <section>
             <rule>
               <match>
@@ -296,6 +299,8 @@
               <order>BY_NAME</order>
             </rule>
           </section>
+          -->
+          <!--
           <section>
             <rule>
               <match>
@@ -307,6 +312,7 @@
               <order>BY_NAME</order>
             </rule>
           </section>
+          -->
         </rules>
       </arrangement>
     </codeStyleSettings>
