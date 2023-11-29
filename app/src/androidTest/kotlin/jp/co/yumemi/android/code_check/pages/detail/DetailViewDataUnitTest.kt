@@ -5,7 +5,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import io.github.tshion.android.codecheck.core.entities.RepositoryEntity
-import jp.co.yumemi.android.code_check.TopActivity
+import jp.co.yumemi.android.code_check.EntryPointActivity
 import org.hamcrest.Matchers.`is`
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
@@ -24,7 +24,7 @@ class DetailViewDataUnitTest {
 
     @JvmField
     @Rule
-    var mActivityScenarioRule = ActivityScenarioRule(TopActivity::class.java)
+    var mActivityScenarioRule = ActivityScenarioRule(EntryPointActivity::class.java)
 
 
     @Test
