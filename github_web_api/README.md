@@ -84,6 +84,8 @@ GitHub REST API とHTTP 通信をするモジュール。
     * [Retrofit Converters](https://github.com/square/retrofit/tree/master/retrofit-converters)
         * Converter: Moshi ([Maven Central](https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-moshi))
 * テスト
+    * [jdepend](https://github.com/clarkware/jdepend)
+        * maven 等で見当たらないため、git のdist/ に配置されているものを利用した
     * [JUnit4](https://github.com/junit-team/junit4) ([Maven Central](https://mvnrepository.com/artifact/junit/junit))
     * Kotlin Coroutines BOM ([Maven Central](https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-bom))
         * [Kotlin Coroutines Test](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-test/README.md)
