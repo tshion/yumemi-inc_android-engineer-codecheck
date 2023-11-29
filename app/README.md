@@ -13,7 +13,7 @@ google-services.json | - | 必須 |  |
 [Hyperion] | 利用可能<br />(※Android 13 以下) | - | アプリ起動後に、通知権限を許可した状態でOS 通知欄をタップするか、端末を振るとメニューが出てきます
 [LeakCanary](https://square.github.io/leakcanary/) | 利用可能 | - | アプリ起動後にメモリリークが起きると通知されます
 OkHttp の通信ログ | 利用可能 | - | アプリ起動後にAndroid Studio の"Logcat" ウィンドウを確認してください
-StrictMode | 適用済み | - | 設定内容は[DebugApplication](./src/debug/kotlin/jp.co.yumemi.android.code_check/DebugApplication.kt) を参照してください
+StrictMode | 適用済み | - | 設定内容は[DebugApplication](./src/debug/kotlin/jp/co/yumemi/android/code_check/DebugApplication.kt) を参照してください
 Timber | 全て出力 | `e()` をCrashlytics へ転送 |  |
 アプリID | 末尾に`.debug` がつく | - |  |
 アプリ名 | 先頭に`[D]` がつく | - |  |
