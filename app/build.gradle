@@ -89,6 +89,7 @@ dependencies {
     implementation "${libraries.androidx.lifecycle.viewmodel}"
     implementation "${libraries.androidx.navigation.fragment}"
     implementation "${libraries.androidx.navigation.ui}"
+    implementation "${libraries.androidx.paging}"
     implementation "${libraries.androidx.recyclerview}"
     androidTestImplementation "${libraries.androidx.uiautomator}"
 

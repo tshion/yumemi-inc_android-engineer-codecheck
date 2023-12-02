@@ -40,6 +40,7 @@ ext {
                             fragment: "androidx.navigation:navigation-fragment-ktx:${versionNavigation}",
                             ui      : "androidx.navigation:navigation-ui-ktx:${versionNavigation}",
                     ],
+                    paging          : 'androidx.paging:paging-runtime:3.1.1',
                     recyclerview    : 'androidx.recyclerview:recyclerview:1.2.1',
                     uiautomator     : 'androidx.test.uiautomator:uiautomator:2.2.0',
             ],
