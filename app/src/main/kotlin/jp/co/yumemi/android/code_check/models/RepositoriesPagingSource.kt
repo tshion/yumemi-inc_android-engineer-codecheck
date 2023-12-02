@@ -1,22 +1,23 @@
-package jp.co.yumemi.android.code_check.pages.search
+package jp.co.yumemi.android.code_check.models
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import io.github.tshion.android.codecheck.core.SearchUseCase
-import jp.co.yumemi.android.code_check.organisms.repository_list_view.RepositoryListItemViewData
+import io.github.tshion.android.codecheck.core.entities.RepositoryEntity
+import io.github.tshion.android.codecheck.core.entities.RepositoryQueryEntity
 
 /**
- * ページング出来るリポジトリ一覧情報
+ * データ[RepositoryEntity] のページング実装
  */
 class RepositoriesPagingSource private constructor(
     private val keyword: String,
     private val searchUseCase: SearchUseCase,
-) : PagingSource<Int, RepositoryListItemViewData>() {
+) : PagingSource<Int, RepositoryEntity>() {
 
     override fun getRefreshKey(
-        state: PagingState<Int, RepositoryListItemViewData>,
+        state: PagingState<Int, RepositoryEntity>,
     ) = state.anchorPosition?.let {
         val anchorPage = state.closestPageToPosition(it)
         return@let anchorPage?.prevKey?.plus(1)
@@ -29,12 +30,8 @@ class RepositoriesPagingSource private constructor(
         val currentPage = params.key ?: 1
 
         val result = searchUseCase.searchRepositories(keyword, currentPage)
-
-        // TODO: View 都合による変換ロジックの移動
-        val data = result.items.map { RepositoryListItemViewData(it) }
-
         LoadResult.Page(
-            data = data,
+            data = result.items,
             prevKey = null,
             nextKey = (currentPage + 1).takeIf { result.hasMore },
         )
@@ -55,7 +52,7 @@ class RepositoriesPagingSource private constructor(
             keyword: String,
             searchUseCase: SearchUseCase,
         ) = PagingConfig(
-            pageSize = 50, // FIXME: RepositoryQueryEntity の値を利用する
+            pageSize = RepositoryQueryEntity.PER_PAGE,
         ).let {
             Pager(it) { RepositoriesPagingSource(keyword, searchUseCase) }
         }
