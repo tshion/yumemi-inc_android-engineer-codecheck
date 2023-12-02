@@ -5,37 +5,39 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.paging.cachedIn
+import androidx.paging.map
 import io.github.tshion.android.codecheck.core.SearchUseCase
 import jp.co.yumemi.android.code_check.MainApplication
+import jp.co.yumemi.android.code_check.models.RepositoriesPagingSource
 import jp.co.yumemi.android.code_check.organisms.repository_list_view.RepositoryListItemViewData
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 
 /**
  * 検索画面のViewModel
  */
 class SearchViewModel(
     private val searchUseCase: SearchUseCase,
-    private val dispatcherDefault: CoroutineDispatcher = Dispatchers.Default,
 ) : ViewModel() {
 
-    /** 読み込み中かどうか */
-    val isLoading: StateFlow<Boolean>
-    private val _isLoading = MutableStateFlow(false)
+    /** 検索条件 */
+    private val _query = MutableStateFlow<String?>(null)
 
     /** 検索結果 */
-    val searchResult: StateFlow<Result<List<RepositoryListItemViewData>>?>
-    private val _searchResult = MutableStateFlow<Result<List<RepositoryListItemViewData>>?>(null)
-
-
-    init {
-        isLoading = _isLoading
-        searchResult = _searchResult
-    }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val searchResult = _query
+        .filterNotNull()
+        .flatMapLatest {
+            RepositoriesPagingSource.newPager(it, searchUseCase).flow
+        }
+        .map { data ->
+            data.map { RepositoryListItemViewData(it) }
+        }
+        .cachedIn(viewModelScope)
 
 
     /**
@@ -44,18 +46,7 @@ class SearchViewModel(
      * @param keyword 検索キーワード
      */
     fun search(keyword: String) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            _searchResult.value = null
-
-            _searchResult.value = withContext(dispatcherDefault) {
-                runCatching {
-                    val result = searchUseCase.searchRepositories(keyword, 1)
-                    result.items.map { RepositoryListItemViewData(it) }
-                }
-            }
-            _isLoading.value = false
-        }
+        _query.value = keyword
     }
 
 
