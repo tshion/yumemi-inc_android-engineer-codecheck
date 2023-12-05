@@ -12,56 +12,53 @@
 
 ## 対応関係
 ### [【初級】ソースコードの可読性の向上](https://github.com/yumemi-inc/android-engineer-codecheck/issues/1)
-* #35
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/35
 * (※実装は、他のIssue で適宜対応しています)
 
 ### [【初級】ソースコードの安全性の向上](https://github.com/yumemi-inc/android-engineer-codecheck/issues/2)
 * (※実装は、他のIssue で適宜対応しています)
 
 ### [【初級】バグを修正](https://github.com/yumemi-inc/android-engineer-codecheck/issues/3)
-* #19
-* #24
-* #27
-* #29
-* #37
-* #43
-* #44
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/19
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/24
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/37
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/43
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/44
 
 ### [【初級】Fat Fragment の回避](https://github.com/yumemi-inc/android-engineer-codecheck/issues/4)
-* #85
-* #86
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/85
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/86
 
 ### [【中級】プログラム構造をリファクタリング](https://github.com/yumemi-inc/android-engineer-codecheck/issues/5)
 * (※実装は、他のIssue で適宜対応しています)
 
 ### [【中級】アーキテクチャを適用](https://github.com/yumemi-inc/android-engineer-codecheck/issues/6)
-* #1
-* #45
-* #60
-* #65
-* #66
-* #69
-* #75
-* #98
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/60
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/65
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/66
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/75
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/98
 
 ### [【中級】テストを追加](https://github.com/yumemi-inc/android-engineer-codecheck/issues/7)
-* #26
-* #65
-* #98
-* #106
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/65
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/66
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/98
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/106
 
 ### [【ボーナス】UI をブラッシュアップ](https://github.com/yumemi-inc/android-engineer-codecheck/issues/8)
-* #49
-* #70
-* #76
-* #78
-* #79
-* #83
-* #85
-* #86
-* #90
-* #96
-* #106
+既存のUI を踏襲しつつ、全体的に整えていきました。
+
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/49
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/70
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/76
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/78
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/79
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/83
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/85
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/86
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/96
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/98
+* https://github.com/tshion/yumemi-inc_android-engineer-codecheck/issues/106
 
 ### [【ボーナス】新機能を追加](https://github.com/yumemi-inc/android-engineer-codecheck/issues/9)
 該当なし
