@@ -76,6 +76,7 @@ GitHub リポジトリを検索できるAndroid アプリ。
 ## 関連リンク
 * 複製元リポジトリ: [yumemi-inc/android-engineer-codecheck]
     * [複製時点のREADME](./docs/README.original.md)
+    * [Issue の対応表](./docs/IssueRelations.md)
 
 
 
