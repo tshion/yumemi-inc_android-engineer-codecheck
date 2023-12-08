@@ -17,7 +17,7 @@ ext {
     def versionHyperion = '0.9.37'
     def versionLifecycle = '2.5.1'
     def versionMockK = '1.12.4'
-    def versionMoshi = '1.13.0'
+    def versionMoshi = '1.15.0'
     def versionNavigation = '2.5.3'
     def versionOkHttp = '4.10.0'
     def versionRetrofit = '2.9.0'

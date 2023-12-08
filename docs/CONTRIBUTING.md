@@ -15,7 +15,7 @@ Android Studio で開くことで開発作業をする環境が整います。
 * [Android Studio](https://developer.android.com/studio): Giraffe | 2022.3.1 Patch 4
     * Gradle: 8.0 ([gradle-wrapper.properties](../gradle/wrapper/gradle-wrapper.properties))
     * JDK: 17
-    * Kotlin Plugin: 1.6.21 以降 ([トップレベルのbuild.gradle](../build.gradle))
+    * Kotlin Plugin: 1.8.22 以降 ([トップレベルのbuild.gradle](../build.gradle))
 * GitHub
 
 ### 任意
