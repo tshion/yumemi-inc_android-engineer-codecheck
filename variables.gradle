@@ -19,7 +19,6 @@ ext {
     def versionMockK = '1.12.4'
     def versionMoshi = '1.15.0'
     def versionNavigation = '2.5.3'
-    def versionOkHttp = '4.10.0'
     def versionRetrofit = '2.9.0'
     libraries = [
             androidx   : [
@@ -72,7 +71,7 @@ ext {
                     codegen : "com.squareup.moshi:moshi-kotlin-codegen:$versionMoshi",
             ],
             okhttp     : [
-                    bom    : "com.squareup.okhttp3:okhttp-bom:$versionOkHttp",
+                    bom    : "com.squareup.okhttp3:okhttp-bom:4.12.0",
                     logging: "com.squareup.okhttp3:logging-interceptor",
                     mock   : "com.squareup.okhttp3:mockwebserver",
                     okhttp : "com.squareup.okhttp3:okhttp",
