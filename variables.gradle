@@ -15,14 +15,14 @@ ext {
     // ライブラリバージョン
     def versionEspresso = '3.5.1'
     def versionHyperion = '0.9.37'
-    def versionLifecycle = '2.5.1'
+    def versionLifecycle = '2.6.2'
     def versionMoshi = '1.15.0'
     def versionNavigation = '2.5.3'
     def versionRetrofit = '2.9.0'
     libraries = [
             androidx   : [
-                    annotation      : 'androidx.annotation:annotation:1.6.0',
-                    appcompat       : 'androidx.appcompat:appcompat:1.3.1',
+                    annotation      : 'androidx.annotation:annotation:1.7.0',
+                    appcompat       : 'androidx.appcompat:appcompat:1.6.1',
                     constraintlayout: 'androidx.constraintlayout:constraintlayout:2.1.1',
                     core            : 'androidx.core:core-ktx:1.12.0',
                     espresso        : [
@@ -42,7 +42,7 @@ ext {
                     uiautomator     : 'androidx.test.uiautomator:uiautomator:2.2.0',
             ],
             autoservice: 'com.google.auto.service:auto-service:1.1.1',
-            coil       : 'io.coil-kt:coil:1.3.2',
+            coil       : 'io.coil-kt:coil:2.5.0',
             coroutines : [
                     bom    : 'org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.7.3',
                     android: 'org.jetbrains.kotlinx:kotlinx-coroutines-android',
