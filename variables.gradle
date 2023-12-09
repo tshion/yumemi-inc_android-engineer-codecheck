@@ -15,9 +15,8 @@ ext {
     // ライブラリバージョン
     def versionEspresso = '3.5.1'
     def versionHyperion = '0.9.37'
-    def versionLifecycle = '2.6.2'
     def versionMoshi = '1.15.0'
-    def versionNavigation = '2.5.3'
+    def versionNavigation = '2.7.5'
     def versionRetrofit = '2.9.0'
     libraries = [
             androidx   : [
@@ -30,10 +29,6 @@ ext {
                             core   : "androidx.test.espresso:espresso-core:${versionEspresso}",
                     ],
                     junit           : 'androidx.test.ext:junit-ktx:1.1.5',
-                    lifecycle       : [
-                            runtime  : "androidx.lifecycle:lifecycle-runtime-ktx:${versionLifecycle}",
-                            viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versionLifecycle}",
-                    ],
                     navigation      : [
                             fragment: "androidx.navigation:navigation-fragment-ktx:${versionNavigation}",
                             ui      : "androidx.navigation:navigation-ui-ktx:${versionNavigation}",

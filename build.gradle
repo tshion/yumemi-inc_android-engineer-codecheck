@@ -10,7 +10,7 @@ plugins {
     id 'com.android.library' version '8.1.2' apply false
 
     // AndroidX Navigation
-    id 'androidx.navigation.safeargs' version '2.5.3' apply false
+    id 'androidx.navigation.safeargs' version '2.7.5' apply false
 
     // Firebase
     id 'com.google.firebase.crashlytics' version '2.9.9' apply false
