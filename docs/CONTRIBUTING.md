@@ -12,10 +12,10 @@ Android Studio で開くことで開発作業をする環境が整います。
 もし何か分からないことが出てきたら、声をかけてください。
 
 * macOS or Windows
-* [Android Studio](https://developer.android.com/studio): Giraffe | 2022.3.1 Patch 4
+* [Android Studio](https://developer.android.com/studio): Hedgehog | 2023.1.1
     * Gradle: 8.0 ([gradle-wrapper.properties](../gradle/wrapper/gradle-wrapper.properties))
     * JDK: 17
-    * Kotlin Plugin: 1.8.22 以降 ([トップレベルのbuild.gradle](../build.gradle))
+    * Kotlin Plugin: 1.9.21 以降 ([トップレベルのbuild.gradle](../build.gradle))
 * GitHub
 
 ### 任意
