@@ -85,8 +85,6 @@ dependencies {
     androidTestImplementation "${libraries.androidx.espresso.contrib}"
     androidTestImplementation "${libraries.androidx.espresso.core}"
     androidTestImplementation "${libraries.androidx.junit}"
-    implementation "${libraries.androidx.lifecycle.runtime}"
-    implementation "${libraries.androidx.lifecycle.viewmodel}"
     implementation "${libraries.androidx.navigation.fragment}"
     implementation "${libraries.androidx.navigation.ui}"
     implementation "${libraries.androidx.recyclerview}"
