@@ -63,7 +63,7 @@ ext {
             ],
             junit      : 'junit:junit:4.13.2',
             leakCanary : 'com.squareup.leakcanary:leakcanary-android:2.12',
-            material   : 'com.google.android.material:material:1.4.0',
+            material   : 'com.google.android.material:material:1.10.0',
             mockK      : "io.mockk:mockk:1.13.8",
             moshi      : [
                     adapters: "com.squareup.moshi:moshi-adapters:$versionMoshi",
