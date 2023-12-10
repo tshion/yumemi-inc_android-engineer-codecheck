@@ -42,7 +42,12 @@ class SearchFragment : Fragment(R.layout.page_search) {
         binding = PageSearchBinding.bind(view)
 
         // region 表示設定
-        binding?.pageSearchHeader?.setupWith(findNavController())
+        binding?.pageSearchHeader?.apply {
+            setupWith(findNavController())
+
+            // Note: この画面では遷移元に戻ることが出来ないので無効化
+            navigationIcon = null
+        }
 
         binding?.pageSearchBoxLayout?.setEndIconOnClickListener {
             binding?.apply {
