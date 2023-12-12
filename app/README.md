@@ -86,6 +86,7 @@ Git 管理から外しているため、試す際は追加でセットアップ�
             * espresso-core ([Maven Google](https://mvnrepository.com/artifact/androidx.test.espresso/espresso-core))
             * junit-ktx ([Maven Google](https://mvnrepository.com/artifact/androidx.test.ext/junit-ktx))
         * [uiautomator](https://developer.android.com/jetpack/androidx/releases/test-uiautomator) ([Maven Google](https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator))
+    * [ArchUnit](https://github.com/TNG/ArchUnit) ([Maven Central](https://mvnrepository.com/artifact/com.tngtech.archunit/archunit-junit4))
     * [JUnit4](https://github.com/junit-team/junit4) ([Maven Central](https://mvnrepository.com/artifact/junit/junit))
 
 

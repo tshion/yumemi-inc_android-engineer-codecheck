@@ -90,6 +90,9 @@ dependencies {
     implementation "${libraries.androidx.recyclerview}"
     androidTestImplementation "${libraries.androidx.uiautomator}"
 
+    // ArchUnit
+    testImplementation "${libraries.archUnit}"
+
     // Auto Service
     kaptDebug "${libraries.autoservice}"
 
@@ -109,6 +112,9 @@ dependencies {
     debugImplementation "${libraries.hyperion.measurement}"
     debugImplementation "${libraries.hyperion.plugin}"
     debugImplementation "${libraries.hyperion.timber}"
+
+    // JUnit
+    testImplementation "${libraries.junit}"
 
     // Kotlin Coroutines
     implementation "${libraries.coroutines.bom}"
