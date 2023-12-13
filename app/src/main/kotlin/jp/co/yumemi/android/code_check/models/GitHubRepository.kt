@@ -50,8 +50,9 @@ class GitHubRepository(
                 return@mapNotNull item
             }
 
+            val count = query.perPage * query.page
             RepositoryResultEntity(
-                hasMore = response.incomplete_results,
+                hasMore = count < response.total_count,
                 items = items,
             )
         }

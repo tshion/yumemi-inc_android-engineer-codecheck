@@ -58,6 +58,7 @@ Git 管理から外しているため、試す際は追加でセットアップ�
             * fragment-ktx ([Maven Google](https://mvnrepository.com/artifact/androidx.navigation/navigation-fragment-ktx))
             * ui-ktx ([Maven Google](https://mvnrepository.com/artifact/androidx.navigation/navigation-ui-ktx))
         * [recyclerview](https://developer.android.com/jetpack/androidx/releases/recyclerview) ([Maven Google](https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview))
+        * [paging](https://developer.android.com/jetpack/androidx/releases/paging) ([Maven Google](https://mvnrepository.com/artifact/androidx.paging/paging-runtime))
     * [COIL](https://github.com/coil-kt/coil) ([Maven Central](https://mvnrepository.com/artifact/io.coil-kt/coil))
     * [desugar](https://github.com/google/desugar_jdk_libs) ([Maven Google](https://mvnrepository.com/artifact/com.android.tools/desugar_jdk_libs))
     * Firebase BOM ([Maven Google](https://mvnrepository.com/artifact/com.google.firebase/firebase-bom))

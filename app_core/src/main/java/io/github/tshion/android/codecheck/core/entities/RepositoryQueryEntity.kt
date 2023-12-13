@@ -18,8 +18,15 @@ public class RepositoryQueryEntity internal constructor(
 
     /** 1ページあたりの結果 */
     @IntRange(from = 1, to = 100)
-    public val perPage: Int = 50
+    public val perPage: Int = PER_PAGE
 
     /** 並び替えのルール */
     public val sort: String? = null
+
+
+    public companion object {
+
+        /** 1ページ当たりに読み込む件数 */
+        public const val PER_PAGE: Int = 50
+    }
 }

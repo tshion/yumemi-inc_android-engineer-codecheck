@@ -13,11 +13,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
+import androidx.paging.LoadState
+import androidx.paging.PagingData
 import jp.co.yumemi.android.code_check.NavGraphEntryPointDirections
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.PageSearchBinding
 import jp.co.yumemi.android.code_check.organisms.repository_list_view.RepositoryListViewAdapter
 import jp.co.yumemi.android.code_check.pages.detail.DetailViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.io.IOException
@@ -47,7 +50,9 @@ class SearchFragment : Fragment(R.layout.page_search) {
         binding?.pageSearchBoxLayout?.setEndIconOnClickListener {
             binding?.apply {
                 pageSearchBoxEditor.text = null
-                pageSearchList.adapter?.submitList(null)
+                viewLifecycleOwner.lifecycleScope.launch {
+                    pageSearchList.adapter?.submitData(PagingData.empty())
+                }
                 pageSearchListEmpty.isVisible = false
             }
         }
@@ -77,18 +82,13 @@ class SearchFragment : Fragment(R.layout.page_search) {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
-                    viewModel.isLoading.collect {
-                        binding?.pageSearchLoading?.isVisible = it
-                    }
-                }
+                    binding?.pageSearchList?.adapter?.loadStateFlow?.collectLatest { loadStates ->
+                        when (val state = loadStates.refresh) {
+                            is LoadState.Loading -> {
+                                binding?.pageSearchLoading?.isVisible = true
+                            }
 
-                launch {
-                    viewModel.searchResult.collect { result ->
-                        result?.onSuccess {
-                            binding?.pageSearchList?.adapter?.submitList(it)
-                            binding?.pageSearchListEmpty?.isVisible = it.isEmpty()
-                        }?.onFailure { e ->
-                            when (e) {
+                            is LoadState.Error -> when (state.error) {
                                 is IllegalArgumentException,
                                 is IndexOutOfBoundsException -> NavGraphEntryPointDirections.navShowNotifyDialog(
                                     title = getString(R.string.page_search_error_title_invalid),
@@ -101,14 +101,31 @@ class SearchFragment : Fragment(R.layout.page_search) {
                                 )
 
                                 else -> {
-                                    Timber.e(e)
+                                    Timber.e(state.error)
                                     NavGraphEntryPointDirections.navShowNotifyDialog(
                                         title = getString(R.string.page_search_error_title_http),
                                         message = getString(R.string.page_search_error_message_http),
                                     )
                                 }
-                            }.also { findNavController().navigate(it) }
+                            }.also {
+                                binding?.pageSearchLoading?.isVisible = false
+                                findNavController().navigate(it)
+                            }
+
+                            else -> {
+                                binding?.apply {
+                                    pageSearchLoading.isVisible = false
+                                    val count = pageSearchList.adapter?.itemCount ?: 0
+                                    pageSearchListEmpty.isVisible = count < 1
+                                }
+                            }
                         }
+                    }
+                }
+
+                launch {
+                    viewModel.searchResult.collectLatest {
+                        binding?.pageSearchList?.adapter?.submitData(it)
                     }
                 }
             }

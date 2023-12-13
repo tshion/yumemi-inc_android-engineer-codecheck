@@ -4,8 +4,8 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import io.github.tshion.android.codecheck.core.entities.RepositoryEntity
 import jp.co.yumemi.android.code_check.molecules.SimpleListItemView
 
@@ -16,7 +16,7 @@ import jp.co.yumemi.android.code_check.molecules.SimpleListItemView
  */
 class RepositoryListViewAdapter(
     private val onTapListener: (RepositoryEntity) -> Unit,
-) : ListAdapter<RepositoryListItemViewData, SimpleListItemView.ViewHolder>(diffs) {
+) : PagingDataAdapter<RepositoryListItemViewData, SimpleListItemView.ViewHolder>(diffs) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,9 +27,15 @@ class RepositoryListViewAdapter(
 
     override fun onBindViewHolder(holder: SimpleListItemView.ViewHolder, position: Int) {
         val data = getItem(position)
-        holder.view.text = data.text
-        holder.itemView.setOnClickListener {
-            onTapListener.invoke(data.original)
+        holder.view.text = data?.text
+        holder.itemView.apply {
+            if (data != null) {
+                setOnClickListener {
+                    onTapListener.invoke(data.original)
+                }
+            } else {
+                setOnClickListener(null)
+            }
         }
     }
 
