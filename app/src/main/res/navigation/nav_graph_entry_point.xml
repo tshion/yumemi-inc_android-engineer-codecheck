@@ -47,7 +47,12 @@
         android:id="@+id/page_detail"
         android:name="jp.co.yumemi.android.code_check.pages.detail.DetailFragment"
         android:label="@string/page_detail_title"
-        tools:layout="@layout/page_detail" />
+        tools:layout="@layout/page_detail">
+
+        <argument
+            android:name="data"
+            app:argType="jp.co.yumemi.android.code_check.pages.detail.DetailViewData" />
+    </fragment>
 
     <fragment
         android:id="@+id/page_search"
