@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
+import androidx.navigation.fragment.navArgs
 import coil.load
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.PageDetailBinding
@@ -18,14 +18,14 @@ import jp.co.yumemi.android.code_check.databinding.PageDetailBinding
  */
 class DetailFragment : Fragment(R.layout.page_detail) {
 
-    private var binding: PageDetailBinding? = null
+    private val args: DetailFragmentArgs by navArgs()
 
-    private val viewModel by navGraphViewModels<DetailViewModel>(R.id.nav_graph_entry_point)
+    private var binding: PageDetailBinding? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val data = viewModel.data ?: throw IllegalArgumentException("表示データを設定してください")
+        val data = args.data
 
         binding = PageDetailBinding.bind(view).apply {
             pageDetailHeader.setupWith(findNavController())
