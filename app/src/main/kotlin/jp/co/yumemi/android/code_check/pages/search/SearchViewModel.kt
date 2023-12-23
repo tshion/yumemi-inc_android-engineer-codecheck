@@ -23,9 +23,17 @@ class SearchViewModel(
     private val dispatcherDefault: CoroutineDispatcher = Dispatchers.Default,
 ) : ViewModel() {
 
+    /** エラー */
+    val error: StateFlow<Exception?>
+    private val _error = MutableStateFlow<Exception?>(null)
+
     /** 読み込み中かどうか */
     val isLoading: StateFlow<Boolean>
     private val _isLoading = MutableStateFlow(false)
+
+    /** リポジトリ情報 */
+    val repositories: StateFlow<List<RepositoryListItemViewData>>
+    private val _repositories = MutableStateFlow<List<RepositoryListItemViewData>>(emptyList())
 
     /** 検索結果 */
     val searchResult: StateFlow<Result<List<RepositoryListItemViewData>>?>
@@ -33,7 +41,10 @@ class SearchViewModel(
 
 
     init {
+        error = _error
         isLoading = _isLoading
+        repositories = _repositories
+
         searchResult = _searchResult
     }
 
@@ -45,14 +56,19 @@ class SearchViewModel(
      */
     fun search(keyword: String) {
         viewModelScope.launch {
+            _error.value = null
             _isLoading.value = true
             _searchResult.value = null
-
-            _searchResult.value = withContext(dispatcherDefault) {
-                runCatching {
+            try {
+                val mapped = withContext(dispatcherDefault) {
                     val result = searchUseCase.searchRepositories(keyword, 1)
                     result.items.map { RepositoryListItemViewData(it) }
                 }
+                _repositories.value = mapped
+                _searchResult.value = Result.success(mapped)
+            } catch (e: Exception) {
+                _error.value = e
+                _searchResult.value = Result.failure(e)
             }
             _isLoading.value = false
         }
