@@ -32,20 +32,14 @@ class SearchViewModel(
     private val _isLoading = MutableStateFlow(false)
 
     /** リポジトリ情報 */
-    val repositories: StateFlow<List<RepositoryListItemViewData>>
-    private val _repositories = MutableStateFlow(emptyList<RepositoryListItemViewData>())
-
-    /** 検索結果 */
-    val searchResult: StateFlow<Result<List<RepositoryListItemViewData>>?>
-    private val _searchResult = MutableStateFlow<Result<List<RepositoryListItemViewData>>?>(null)
+    val repositories: StateFlow<List<RepositoryListItemViewData>?>
+    private val _repositories = MutableStateFlow<List<RepositoryListItemViewData>?>(null)
 
 
     init {
         error = _error
         isLoading = _isLoading
         repositories = _repositories
-
-        searchResult = _searchResult
     }
 
 
@@ -58,17 +52,15 @@ class SearchViewModel(
         viewModelScope.launch {
             _error.value = null
             _isLoading.value = true
-            _searchResult.value = null
+            _repositories.value = null
             try {
                 val mapped = withContext(dispatcherDefault) {
                     val result = searchUseCase.searchRepositories(keyword, 1)
                     result.items.map { RepositoryListItemViewData(it) }
                 }
                 _repositories.value = mapped
-                _searchResult.value = Result.success(mapped)
             } catch (e: Exception) {
                 _error.value = e
-                _searchResult.value = Result.failure(e)
             }
             _isLoading.value = false
         }
