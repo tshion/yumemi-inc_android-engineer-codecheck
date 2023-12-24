@@ -33,7 +33,7 @@ class SearchViewModel(
 
     /** リポジトリ情報 */
     val repositories: StateFlow<List<RepositoryListItemViewData>>
-    private val _repositories = MutableStateFlow<List<RepositoryListItemViewData>>(emptyList())
+    private val _repositories = MutableStateFlow(emptyList<RepositoryListItemViewData>())
 
     /** 検索結果 */
     val searchResult: StateFlow<Result<List<RepositoryListItemViewData>>?>
@@ -72,6 +72,13 @@ class SearchViewModel(
             }
             _isLoading.value = false
         }
+    }
+
+    /**
+     * エラー表示の完了
+     */
+    fun showedError() {
+        _error.value = null
     }
 
 
