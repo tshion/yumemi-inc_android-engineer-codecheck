@@ -95,7 +95,10 @@ class SearchFragment : Fragment(R.layout.page_search) {
                                     message = getString(R.string.page_search_error_message_http),
                                 )
                             }
-                        }.also { findNavController().navigate(it) }
+                        }.also {
+                            findNavController().navigate(it)
+                            viewModel.showedError()
+                        }
                     }
                 }
 
