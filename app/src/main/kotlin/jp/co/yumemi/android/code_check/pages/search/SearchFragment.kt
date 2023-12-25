@@ -17,6 +17,7 @@ import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.PageSearchBinding
 import jp.co.yumemi.android.code_check.organisms.repository_list_view.RepositoryListViewAdapter
 import jp.co.yumemi.android.code_check.pages.detail.DetailViewData
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.io.IOException
@@ -74,38 +75,43 @@ class SearchFragment : Fragment(R.layout.page_search) {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
+                    viewModel.error.filterNotNull().collect { e ->
+                        when (e) {
+                            is IllegalArgumentException,
+                            is IndexOutOfBoundsException -> NavGraphEntryPointDirections.navShowNotifyDialog(
+                                title = getString(R.string.page_search_error_title_invalid),
+                                message = getString(R.string.page_search_error_message_invalid),
+                            )
+
+                            is IOException -> NavGraphEntryPointDirections.navShowNotifyDialog(
+                                title = getString(R.string.page_search_error_title_http),
+                                message = getString(R.string.page_search_error_message_offline),
+                            )
+
+                            else -> {
+                                Timber.e(e)
+                                NavGraphEntryPointDirections.navShowNotifyDialog(
+                                    title = getString(R.string.page_search_error_title_http),
+                                    message = getString(R.string.page_search_error_message_http),
+                                )
+                            }
+                        }.also {
+                            findNavController().navigate(it)
+                            viewModel.showedError()
+                        }
+                    }
+                }
+
+                launch {
                     viewModel.isLoading.collect {
                         binding?.pageSearchLoading?.isVisible = it
                     }
                 }
 
                 launch {
-                    viewModel.searchResult.collect { result ->
-                        result?.onSuccess {
-                            binding?.pageSearchList?.adapter?.submitList(it)
-                            binding?.pageSearchListEmpty?.isVisible = it.isEmpty()
-                        }?.onFailure { e ->
-                            when (e) {
-                                is IllegalArgumentException,
-                                is IndexOutOfBoundsException -> NavGraphEntryPointDirections.navShowNotifyDialog(
-                                    title = getString(R.string.page_search_error_title_invalid),
-                                    message = getString(R.string.page_search_error_message_invalid),
-                                )
-
-                                is IOException -> NavGraphEntryPointDirections.navShowNotifyDialog(
-                                    title = getString(R.string.page_search_error_title_http),
-                                    message = getString(R.string.page_search_error_message_offline),
-                                )
-
-                                else -> {
-                                    Timber.e(e)
-                                    NavGraphEntryPointDirections.navShowNotifyDialog(
-                                        title = getString(R.string.page_search_error_title_http),
-                                        message = getString(R.string.page_search_error_message_http),
-                                    )
-                                }
-                            }.also { findNavController().navigate(it) }
-                        }
+                    viewModel.repositories.filterNotNull().collect {
+                        binding?.pageSearchList?.adapter?.submitList(it)
+                        binding?.pageSearchListEmpty?.isVisible = it.isEmpty()
                     }
                 }
             }
