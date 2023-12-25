@@ -43,7 +43,7 @@ class DetailViewDataUnitTest {
         entity!!
 
         mActivityScenarioRule.scenario.onActivity {
-            val data = DetailViewData(entity, it.resources)
+            val data = DetailViewData.parse(entity, it.resources)
             assertThat(data.imageText, `is`(entity.ownerName))
             assertNotNull(data.imageUrl)
         }
@@ -65,7 +65,7 @@ class DetailViewDataUnitTest {
         entity!!
 
         mActivityScenarioRule.scenario.onActivity {
-            val data = DetailViewData(entity, it.resources)
+            val data = DetailViewData.parse(entity, it.resources)
             assertNull(data.imageText)
             assertNull(data.imageUrl)
         }
