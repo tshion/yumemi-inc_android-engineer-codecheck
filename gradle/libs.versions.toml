@@ -1,0 +1,16 @@
+[versions]
+agp = "8.2.0"
+jetpackNavigation = "2.7.5"
+kotlin = "1.9.21"
+
+[libraries]
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+firebaseCrashlytics = "com.google.firebase.crashlytics:2.9.9"
+gmsGoogleServices = "com.google.gms.google-services:4.4.0"
+jetpackNavigationSafeargs = { id = "androidx.navigation.safeargs", version.ref = "jetpackNavigation" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ksp = "com.google.devtools.ksp:1.9.21-1.0.15"

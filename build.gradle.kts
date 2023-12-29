@@ -6,22 +6,23 @@ buildscript {
 
 plugins {
     // Android Gradle Plugin
-    id("com.android.application") version "8.2.0" apply false
-    id("com.android.library") version "8.2.0" apply false
+    alias(libs.plugins.androidApplication) apply false
+    alias(libs.plugins.androidLibrary) apply false
 
     // AndroidX Navigation
-    id("androidx.navigation.safeargs") version "2.7.5" apply false
+    alias(libs.plugins.jetpackNavigationSafeargs) apply false
 
     // Firebase
-    id("com.google.firebase.crashlytics") version "2.9.9" apply false
+    alias(libs.plugins.firebaseCrashlytics) apply false
 
     // Google GMS Google Services Gradle Plugin
-    id("com.google.gms.google-services") version "4.4.0" apply false
+    alias(libs.plugins.gmsGoogleServices) apply false
 
     // Kotlin
-    id("org.jetbrains.kotlin.android") version "1.9.21" apply false
-    id("org.jetbrains.kotlin.jvm") version "1.9.21" apply false
+    alias(libs.plugins.kotlinAndroid) apply false
+    alias(libs.plugins.kotlinJvm) apply false
 
     // KSP
-    id("com.google.devtools.ksp") version "1.9.21-1.0.15" apply false
+    alias(libs.plugins.ksp) apply false
 }
+true // Needed to make the Suppress annotation work for the plugins block
