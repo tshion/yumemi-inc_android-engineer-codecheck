@@ -1,9 +1,12 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id "kotlin-kapt"
-    id "kotlin-parcelize"
-    id 'androidx.navigation.safeargs.kotlin'
+    id("kotlin-kapt")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 
     // Firebase Crashlytics Gradle
     alias(libs.plugins.firebase.crashlytics)
@@ -14,40 +17,40 @@ plugins {
 
 
 // keystore.properties の読み取り
-def keystoreProperties = new Properties()
+val keystoreProperties = Properties()
 try {
-    keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
-} catch (e) {
+    keystoreProperties.load(FileInputStream(rootProject.file("keystore.properties")))
+} catch (_: Exception) {
 }
 
 
 android {
-    namespace "jp.co.yumemi.android.code_check"
-    compileSdk androidApi.target
+    namespace = "jp.co.yumemi.android.code_check"
+    compileSdk = rootProject.extra["androidApiTarget"] as Int
 
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
     defaultConfig {
-        applicationId "jp.co.yumemi.android.codecheck"
-        minSdk androidApi.min
-        targetSdk androidApi.target
-        versionCode appVersionCode
-        versionName appVersionName
+        applicationId = "jp.co.yumemi.android.codecheck"
+        minSdk = rootProject.extra["androidApiMin"] as Int
+        targetSdk = rootProject.extra["androidApiTarget"] as Int
+        versionCode = rootProject.extra["appVersionCode"] as Int
+        versionName = rootProject.extra["appVersionName"].toString()
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        def file = rootProject.file("release.jks")
+        val file = rootProject.file("release.jks")
         if (file.exists()) {
-            release {
-                storeFile file
-                storePassword System.getenv("KEYSTORE_PASSWORD")
-                        ?: keystoreProperties.getProperty("KEYSTORE_PASSWORD", "")
-                keyAlias System.getenv("KEY_ALIAS")
-                        ?: keystoreProperties.getProperty("KEY_ALIAS", "")
-                keyPassword System.getenv("KEY_PASSWORD")
-                        ?: keystoreProperties.getProperty("KEY_PASSWORD", "")
+            create("release") {
+                storeFile = file
+                storePassword = System.getenv("KEYSTORE_PASSWORD")
+                    ?: keystoreProperties.getProperty("KEYSTORE_PASSWORD", "")
+                keyAlias = System.getenv("KEY_ALIAS")
+                    ?: keystoreProperties.getProperty("KEY_ALIAS", "")
+                keyPassword = System.getenv("KEY_PASSWORD")
+                    ?: keystoreProperties.getProperty("KEY_PASSWORD", "")
             }
         }
     }
@@ -58,15 +61,18 @@ android {
             versionNameSuffix = ".debug"
         }
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.release
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+            signingConfig = signingConfigs["release"]
         }
     }
     compileOptions {
-        coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -133,12 +139,12 @@ dependencies {
 
 // アプリバージョン名の表示
 tasks.register("showVersionName") {
-    def file = rootProject.file("./app/build/outputs/apk/release/output-metadata.json")
-    def versionName = "unknown"
+    val file = rootProject.file("./app/build/outputs/apk/release/output-metadata.json")
+    var versionName = "unknown"
     if (file.exists()) {
-        def text = file.text.toString()
-        def matches = (text =~ /"versionName": "(.+)",/)
-        versionName = matches[0][1]
+        val text = file.readText()
+        val matches = Regex("""/"versionName": "(.+)",/""").findAll(text)
+        versionName = matches.first().groupValues[1]
     }
     println(versionName)
 }
@@ -146,5 +152,5 @@ tasks.register("showVersionName") {
 
 // app/google-services.json がある場合のみセットアップ
 if (rootProject.file("app/google-services.json").exists()) {
-    apply plugin: "com.google.gms.google-services"
+    apply(plugin = "com.google.gms.google-services")
 }

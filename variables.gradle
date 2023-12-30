@@ -1,9 +1,7 @@
 ext {
     // アプリ構成
-    androidApi = [
-            min   : 23,
-            target: 34,
-    ]
+    androidApiMin = 23
+    androidApiTarget = 34
 
     // アプリバージョン
     def appVersionMajor = 1
