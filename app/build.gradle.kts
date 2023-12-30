@@ -143,7 +143,7 @@ tasks.register("showVersionName") {
     var versionName = "unknown"
     if (file.exists()) {
         val text = file.readText()
-        val matches = Regex("""/"versionName": "(.+)",/""").findAll(text)
+        val matches = Regex(""""versionName": "(.+)",""").findAll(text)
         versionName = matches.first().groupValues[1]
     }
     println(versionName)
