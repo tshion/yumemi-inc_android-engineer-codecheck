@@ -48,7 +48,7 @@ Git 管理から外しているため、試す際は追加でセットアップ�
 
 
 ## 関連リンク
-### 依存ライブラリ ([build.gradle](./build.gradle))
+### 依存ライブラリ ([build.gradle](./build.gradle.kts))
 * コア
     * AndroidX
         * [appcompat](https://developer.android.com/jetpack/androidx/releases/appcompat) ([Maven Google](https://mvnrepository.com/artifact/androidx.appcompat/appcompat))
