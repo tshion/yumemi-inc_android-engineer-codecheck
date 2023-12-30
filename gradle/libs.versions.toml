@@ -1,16 +1,29 @@
 [versions]
 agp = "8.2.0"
-jetpackNavigation = "2.7.5"
+jetpack-navigation = "2.7.5"
 kotlin = "1.9.21"
+
+
 
 [libraries]
 
+
+
 [plugins]
-androidApplication = { id = "com.android.application", version.ref = "agp" }
-androidLibrary = { id = "com.android.library", version.ref = "agp" }
-firebaseCrashlytics = "com.google.firebase.crashlytics:2.9.9"
-gmsGoogleServices = "com.google.gms.google-services:4.4.0"
-jetpackNavigationSafeargs = { id = "androidx.navigation.safeargs", version.ref = "jetpackNavigation" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+# Android Gradle Plugin
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+
+# Android Jetpack
+jetpack-navigation = { id = "androidx.navigation.safeargs", version.ref = "jetpack-navigation" }
+
+# Firebase
+firebase-crashlytics = "com.google.firebase.crashlytics:2.9.9"
+
+# GMS
+gms-googleServices = "com.google.gms.google-services:4.4.0"
+
+# Kotlin
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = "com.google.devtools.ksp:1.9.21-1.0.15"

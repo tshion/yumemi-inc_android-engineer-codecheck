@@ -6,21 +6,21 @@ buildscript {
 
 plugins {
     // Android Gradle Plugin
-    alias(libs.plugins.androidApplication) apply false
-    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
 
-    // AndroidX Navigation
-    alias(libs.plugins.jetpackNavigationSafeargs) apply false
+    // Android Jetpack
+    alias(libs.plugins.jetpack.navigation) apply false
 
     // Firebase
-    alias(libs.plugins.firebaseCrashlytics) apply false
+    alias(libs.plugins.firebase.crashlytics) apply false
 
     // Google GMS Google Services Gradle Plugin
-    alias(libs.plugins.gmsGoogleServices) apply false
+    alias(libs.plugins.gms.googleServices) apply false
 
     // Kotlin
-    alias(libs.plugins.kotlinAndroid) apply false
-    alias(libs.plugins.kotlinJvm) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
 
     // KSP
     alias(libs.plugins.ksp) apply false
