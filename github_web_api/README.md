@@ -73,7 +73,7 @@ GitHub REST API とHTTP 通信をするモジュール。
         * [クライアントエラー](https://docs.github.com/ja/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#client-errors)
     * [メディアの種類 - GitHub Docs](https://docs.github.com/ja/rest/overview/media-types?apiVersion=2022-11-28)
 
-### 依存ライブラリ ([build.gradle](./build.gradle))
+### 依存ライブラリ ([build.gradle](./build.gradle.kts))
 * コア
     * OkHttp BOM ([Maven Central](https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp-bom))
         * [OkHttp](https://github.com/square/okhttp)

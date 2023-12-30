@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
 
     // Android Jetpack
-    alias(libs.plugins.jetpack.navigation) apply false
+    alias(libs.plugins.androidx.navigation) apply false
 
     // Firebase
     alias(libs.plugins.firebase.crashlytics) apply false
