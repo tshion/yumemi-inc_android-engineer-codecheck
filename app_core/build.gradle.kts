@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 
 plugins {
-    id 'java-library'
-    id 'org.jetbrains.kotlin.jvm'
+    id("java-library")
+    alias(libs.plugins.kotlin.jvm)
 }
 
 java {
@@ -17,15 +17,15 @@ kotlin {
 dependencies {
 
     // AndroidX
-    implementation "${libraries.androidx.annotation}"
+    implementation(libs.androidx.annotation)
 
     // JUnit
-    testImplementation "${libraries.junit}"
+    testImplementation(libs.junit)
 
     // Kotlin Coroutines
-    testImplementation platform("${libraries.coroutines.bom}")
-    testImplementation "${libraries.coroutines.test}"
+    testImplementation(platform(libs.kotlinx.coroutines.bom))
+    testImplementation(libs.kotlinx.coroutines.test)
 
     // MockK
-    testImplementation "${libraries.mockK}"
+    testImplementation(libs.mockK)
 }

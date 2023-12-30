@@ -14,7 +14,7 @@
 
 
 ## 関連リンク
-### 依存ライブラリ ([build.gradle](./build.gradle))
+### 依存ライブラリ ([build.gradle](./build.gradle.kts))
 * コア
     * AndroidX
         * [annotation](https://developer.android.com/jetpack/androidx/releases/annotation) ([Maven Google](https://mvnrepository.com/artifact/androidx.annotation/annotation))
