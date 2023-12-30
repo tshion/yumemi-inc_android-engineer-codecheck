@@ -1,28 +1,28 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'kotlin-parcelize'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    id "kotlin-kapt"
+    id "kotlin-parcelize"
     id 'androidx.navigation.safeargs.kotlin'
 
     // Firebase Crashlytics Gradle
-    id 'com.google.firebase.crashlytics'
+    alias(libs.plugins.firebase.crashlytics)
 
     // Google GMS Google Services Gradle Plugin
-    id 'com.google.gms.google-services' apply false
+    alias(libs.plugins.gms.googleServices) apply false
 }
 
 
 // keystore.properties の読み取り
 def keystoreProperties = new Properties()
 try {
-    keystoreProperties.load(new FileInputStream(rootProject.file('keystore.properties')))
+    keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
 } catch (e) {
 }
 
 
 android {
-    namespace 'jp.co.yumemi.android.code_check'
+    namespace "jp.co.yumemi.android.code_check"
     compileSdk androidApi.target
 
     buildFeatures {
@@ -38,28 +38,28 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
-        def file = rootProject.file('release.jks')
+        def file = rootProject.file("release.jks")
         if (file.exists()) {
             release {
                 storeFile file
-                storePassword System.getenv('KEYSTORE_PASSWORD')
-                        ?: keystoreProperties.getProperty('KEYSTORE_PASSWORD', '')
-                keyAlias System.getenv('KEY_ALIAS')
-                        ?: keystoreProperties.getProperty('KEY_ALIAS', '')
-                keyPassword System.getenv('KEY_PASSWORD')
-                        ?: keystoreProperties.getProperty('KEY_PASSWORD', '')
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                        ?: keystoreProperties.getProperty("KEYSTORE_PASSWORD", "")
+                keyAlias System.getenv("KEY_ALIAS")
+                        ?: keystoreProperties.getProperty("KEY_ALIAS", "")
+                keyPassword System.getenv("KEY_PASSWORD")
+                        ?: keystoreProperties.getProperty("KEY_PASSWORD", "")
             }
         }
     }
 
     buildTypes {
         debug {
-            applicationIdSuffix = '.debug'
-            versionNameSuffix = '.debug'
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = ".debug"
         }
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
         }
     }
@@ -69,72 +69,72 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = "17"
     }
 }
 
 dependencies {
 
     // Local Modules
-    implementation project(":app_core")
-    implementation project(":github_web_api")
+    implementation(project(":app_core"))
+    implementation(project(":github_web_api"))
 
     // AndroidX
-    implementation "${libraries.androidx.appcompat}"
-    implementation "${libraries.androidx.constraintlayout}"
-    implementation "${libraries.androidx.core}"
-    androidTestImplementation "${libraries.androidx.espresso.contrib}"
-    androidTestImplementation "${libraries.androidx.espresso.core}"
-    androidTestImplementation "${libraries.androidx.junit}"
-    implementation "${libraries.androidx.navigation.fragment}"
-    implementation "${libraries.androidx.navigation.ui}"
-    implementation "${libraries.androidx.recyclerview}"
-    androidTestImplementation "${libraries.androidx.uiautomator}"
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.core)
+    androidTestImplementation(libs.androidx.espresso.contrib)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.recyclerview)
+    androidTestImplementation(libs.androidx.uiautomator)
 
     // Auto Service
-    kaptDebug "${libraries.autoservice}"
+    kaptDebug(libs.autoservice)
 
     // Coil
-    implementation "${libraries.coil}"
+    implementation(libs.coil)
 
     // Desugar
-    coreLibraryDesugaring "${libraries.desugar}"
+    coreLibraryDesugaring(libs.desugar)
 
     // Firebase
-    releaseImplementation platform("${libraries.firebase.bom}")
-    releaseImplementation("${libraries.firebase.crashlytics}")
+    releaseImplementation(platform(libs.firebase.bom))
+    releaseImplementation(libs.firebase.crashlytics)
 
     // Hyperion
-    debugImplementation "${libraries.hyperion.attr}"
-    debugImplementation "${libraries.hyperion.core}"
-    debugImplementation "${libraries.hyperion.measurement}"
-    debugImplementation "${libraries.hyperion.plugin}"
-    debugImplementation "${libraries.hyperion.timber}"
+    debugImplementation(libs.hyperion.attr)
+    debugImplementation(libs.hyperion.core)
+    debugImplementation(libs.hyperion.measurement)
+    debugImplementation(libs.hyperion.plugin)
+    debugImplementation(libs.hyperion.timber)
 
     // Kotlin Coroutines
-    implementation "${libraries.coroutines.bom}"
-    implementation "${libraries.coroutines.android}"
+    implementation(platform(libs.kotlinx.coroutines.bom))
+    implementation(libs.kotlinx.coroutines.android)
 
     // LeakCanary
-    debugImplementation "${libraries.leakCanary}"
+    debugImplementation(libs.leakCanary)
 
     // Material Design
-    implementation "${libraries.material}"
+    implementation(libs.material)
 
     // OkHttp
-    implementation platform("${libraries.okhttp.bom}")
-    debugImplementation "${libraries.okhttp.logging}"
-    implementation "${libraries.okhttp.okhttp}"
+    implementation(platform(libs.okhttp.bom))
+    debugImplementation(libs.okhttp.logging)
+    implementation(libs.okhttp.okhttp)
 
     // Timber
-    implementation "${libraries.timber}"
+    implementation(libs.timber)
 }
 
 
 // アプリバージョン名の表示
-tasks.register('showVersionName') {
-    def file = rootProject.file('./app/build/outputs/apk/release/output-metadata.json')
-    def versionName = 'unknown'
+tasks.register("showVersionName") {
+    def file = rootProject.file("./app/build/outputs/apk/release/output-metadata.json")
+    def versionName = "unknown"
     if (file.exists()) {
         def text = file.text.toString()
         def matches = (text =~ /"versionName": "(.+)",/)
@@ -145,6 +145,6 @@ tasks.register('showVersionName') {
 
 
 // app/google-services.json がある場合のみセットアップ
-if (rootProject.file('app/google-services.json').exists()) {
-    apply plugin: 'com.google.gms.google-services'
+if (rootProject.file("app/google-services.json").exists()) {
+    apply plugin: "com.google.gms.google-services"
 }
