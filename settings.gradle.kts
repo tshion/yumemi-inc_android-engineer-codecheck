@@ -14,6 +14,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Android Engineer CodeCheck"
-include ':app'
-include ':app_core'
-include ':github_web_api'
+include(":app")
+include(":app_core")
+include(":github_web_api")
