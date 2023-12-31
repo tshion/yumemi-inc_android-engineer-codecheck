@@ -76,7 +76,7 @@ Android Studio で開くことで開発作業をする環境が整います。
 ## リリース作業の流れ
 1. リリース対象Pull Request が`develop` ブランチに全てマージされていることを確認する
 1. `develop` ブランチに切り替え、アプリバージョンを更新し、コミットする
-    * [variables.gradle](../variables.gradle) 内を確認してください
+    * [variables.gradle](../build.gradle.kts) 内を確認してください
 1. `develop` ブランチから`released` ブランチにPull Request を作成する
     * 例: [PR #16](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/16)
 1. 問題なければPull Request をマージする
