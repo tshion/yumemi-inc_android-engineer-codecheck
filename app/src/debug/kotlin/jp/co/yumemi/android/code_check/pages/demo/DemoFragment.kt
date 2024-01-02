@@ -2,6 +2,7 @@ package jp.co.yumemi.android.code_check.pages.demo
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -48,6 +49,10 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
      * 指定された箇所への遷移
      */
     override fun navigate(directions: NavDirections) {
-        findNavController().navigate(directions)
+        try {
+            findNavController().navigate(directions)
+        } catch (e: Exception) {
+            Toast.makeText(context, "表示できません", Toast.LENGTH_SHORT).show()
+        }
     }
 }

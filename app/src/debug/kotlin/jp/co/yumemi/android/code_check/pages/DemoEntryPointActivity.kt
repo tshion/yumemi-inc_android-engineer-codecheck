@@ -1,7 +1,9 @@
-package jp.co.yumemi.android.code_check
+package jp.co.yumemi.android.code_check.pages
 
 import android.content.Context
 import android.content.Intent
+import jp.co.yumemi.android.code_check.EntryPointActivity
+import jp.co.yumemi.android.code_check.R
 
 /**
  * 操作デモのエントリーポイントを担当するActivity

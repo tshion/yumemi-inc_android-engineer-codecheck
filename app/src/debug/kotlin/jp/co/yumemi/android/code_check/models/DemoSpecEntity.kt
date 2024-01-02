@@ -19,7 +19,7 @@ typealias OnTapAction = (WeakReference<DemoViewContract>) -> Unit
 class DemoSpecEntity private constructor(
     val title: String,
     val subtitle: String? = null,
-    val childrenLoader: ChildrenLoader? = null,
+//    val childrenLoader: ChildrenLoader? = null,
     val tapAction: OnTapAction? = null,
 ) {
 
@@ -53,14 +53,14 @@ class DemoSpecEntity private constructor(
          * @param subtitle 補足文言
          * @param childrenLoader 子要素の読み込みタスク
          */
-        fun createNavigator(
-            title: String,
-            subtitle: String? = null,
-            childrenLoader: ChildrenLoader,
-        ) = DemoSpecEntity(
-            title,
-            subtitle,
-            childrenLoader = childrenLoader,
-        )
+//        fun createNavigator(
+//            title: String,
+//            subtitle: String? = null,
+//            childrenLoader: ChildrenLoader,
+//        ) = DemoSpecEntity(
+//            title,
+//            subtitle,
+//            childrenLoader = childrenLoader,
+//        )
     }
 }

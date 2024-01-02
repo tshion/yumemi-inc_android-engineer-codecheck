@@ -7,7 +7,7 @@
         tools:replace="android:name">
 
         <activity
-            android:name=".DemoEntryPointActivity"
+            android:name=".pages.DemoEntryPointActivity"
             android:exported="false" />
     </application>
 </manifest>

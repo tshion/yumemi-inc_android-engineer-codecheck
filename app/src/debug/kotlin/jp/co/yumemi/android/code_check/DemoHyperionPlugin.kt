@@ -6,6 +6,7 @@ import com.google.auto.service.AutoService
 import com.willowtreeapps.hyperion.plugin.v1.Plugin
 import com.willowtreeapps.hyperion.plugin.v1.PluginModule
 import jp.co.yumemi.android.code_check.molecules.HyperionMenuItemView
+import jp.co.yumemi.android.code_check.pages.DemoEntryPointActivity
 
 /**
  * 操作デモを表示するHyperion Plugin
