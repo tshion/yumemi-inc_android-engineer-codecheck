@@ -15,7 +15,7 @@ Android Studio で開くことで開発作業をする環境が整います。
 * [Android Studio](https://developer.android.com/studio): Hedgehog | 2023.1.1
     * Gradle: 8.0 ([gradle-wrapper.properties](../gradle/wrapper/gradle-wrapper.properties))
     * JDK: 17
-    * Kotlin Plugin: 1.9.21 以降 ([トップレベルのbuild.gradle](../build.gradle))
+    * Kotlin Plugin: 1.9.21 以降 ([トップレベルのbuild.gradle](../build.gradle.kts))
 * GitHub
 
 ### 任意
@@ -76,7 +76,7 @@ Android Studio で開くことで開発作業をする環境が整います。
 ## リリース作業の流れ
 1. リリース対象Pull Request が`develop` ブランチに全てマージされていることを確認する
 1. `develop` ブランチに切り替え、アプリバージョンを更新し、コミットする
-    * [variables.gradle](../variables.gradle) 内を確認してください
+    * [variables.gradle](../build.gradle.kts) 内を確認してください
 1. `develop` ブランチから`released` ブランチにPull Request を作成する
     * 例: [PR #16](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/16)
 1. 問題なければPull Request をマージする
@@ -101,6 +101,8 @@ released | リリースの記録ブランチ
 * `bug` -> hotfix なものに付与する
     * 作業進行で慎重に扱わないといけないため
 * `duplicate` -> 重複しているものに付与し、他のところで取り扱うことを宣言する
+* `github` -> GitHub 機能を利用しているものに付与する
+    * 利用サービスによって変動するので、別プロジェクトとの差分を視覚化するためにマーキングする
 
 ### GitHub のMilestones について
 * 基本的にはGitHub のIssue を紐づけます
