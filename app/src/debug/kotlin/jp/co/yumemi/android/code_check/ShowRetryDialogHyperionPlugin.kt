@@ -29,7 +29,7 @@ class ShowRetryDialogHyperionPlugin : Plugin() {
             setOnClickListener {
                 try {
                     val activity = extension.activity as? EntryPointActivity
-                    val id = activity?.mContainerId ?: return@setOnClickListener
+                    val id = activity?.containerId ?: return@setOnClickListener
 
                     val direction = RetryDialogFragmentDirections.navShowRetryDialog(
                         title = "タイトル from Hyperion",

@@ -24,10 +24,9 @@ class DemoHyperionPlugin : Plugin() {
         ) = HyperionMenuItemView(parent.context).apply {
             setName(name)
             setOnClickListener {
-                val activity = extension.activity as? EntryPointActivity
-                val id = activity?.mContainerId ?: return@setOnClickListener
-
-                // TODO
+                val activity = extension.activity
+                DemoEntryPointActivity.newIntent(activity)
+                    .also { activity.startActivity(it) }
             }
         }
 
