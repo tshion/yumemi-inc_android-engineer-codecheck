@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.PageDemoBinding
 import jp.co.yumemi.android.code_check.models.DemoViewContract
+import jp.co.yumemi.android.code_check.organisms.demo_list_view.DemoListViewAdapter
+import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
 
 /**
  * 操作デモ画面
@@ -23,6 +27,8 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
 
     private var binding: PageDemoBinding? = null
 
+    private val viewModel by viewModels<DemoViewModel>()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,13 +36,21 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
 
         binding?.pageDemoHeader?.setupWith(findNavController())
 
-        binding?.pageDemoList?.apply {
-            val layoutManager = LinearLayoutManager(context).apply {
-                orientation = RecyclerView.VERTICAL
-            }
-            addItemDecoration(DividerItemDecoration(context, layoutManager.orientation))
-            this.layoutManager = layoutManager
+        binding?.pageDemoList?.adapter = DemoListViewAdapter {
+            it.tapAction?.invoke(WeakReference(this))
         }
+
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.specs.collect {
+                    binding?.pageDemoList?.adapter?.submitList(it)
+                }
+            }
+        }
+
+
+        viewModel.update()
     }
 
     override fun onDestroyView() {

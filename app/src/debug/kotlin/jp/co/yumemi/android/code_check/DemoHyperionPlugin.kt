@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import com.google.auto.service.AutoService
 import com.willowtreeapps.hyperion.plugin.v1.Plugin
 import com.willowtreeapps.hyperion.plugin.v1.PluginModule
+import jp.co.yumemi.android.code_check.models.DemoSpecEntity
 import jp.co.yumemi.android.code_check.molecules.HyperionMenuItemView
 import jp.co.yumemi.android.code_check.pages.DemoEntryPointActivity
 
@@ -32,5 +33,27 @@ class DemoHyperionPlugin : Plugin() {
         }
 
         override fun getName() = R.string.hyperion_show_demo
+    }
+
+
+    companion object {
+
+        /** 操作デモ一覧 */
+        val demoSpecs = listOf(
+            DemoSpecEntity.createDemo("結果通知ダイアログの表示") {
+                val direction = NavGraphDemoEntryPointDirections.navShowNotifyDialog(
+                    title = "タイトル from Hyperion",
+                    message = "メッセージ from Hyperion",
+                )
+                it.get()?.navigate(direction)
+            },
+            DemoSpecEntity.createDemo("リトライダイアログの表示") {
+                val direction = NavGraphDemoEntryPointDirections.navShowRetryDialog(
+                    title = "タイトル from Hyperion",
+                    message = "メッセージ from Hyperion",
+                )
+                it.get()?.navigate(direction)
+            },
+        )
     }
 }

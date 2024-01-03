@@ -18,7 +18,7 @@ typealias OnTapAction = (WeakReference<DemoViewContract>) -> Unit
  */
 class DemoSpecEntity private constructor(
     val title: String,
-    val subtitle: String? = null,
+//    val subtitle: String? = null,
 //    val childrenLoader: ChildrenLoader? = null,
     val tapAction: OnTapAction? = null,
 ) {
@@ -38,11 +38,11 @@ class DemoSpecEntity private constructor(
          */
         fun createDemo(
             title: String,
-            subtitle: String? = null,
+//            subtitle: String? = null,
             tapAction: OnTapAction,
         ) = DemoSpecEntity(
             title,
-            subtitle,
+//            subtitle,
             tapAction = tapAction,
         )
 
