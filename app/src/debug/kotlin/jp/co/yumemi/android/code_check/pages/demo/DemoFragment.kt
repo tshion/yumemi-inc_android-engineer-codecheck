@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.PageDemoBinding
 import jp.co.yumemi.android.code_check.models.DemoViewContract
-import jp.co.yumemi.android.code_check.organisms.demo_list_view.DemoListViewAdapter
+import jp.co.yumemi.android.code_check.organisms.demo_menu_view.DemoMenuViewAdapter
 import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 
@@ -36,8 +36,8 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
 
         binding?.pageDemoHeader?.setupWith(findNavController())
 
-        binding?.pageDemoList?.adapter = DemoListViewAdapter {
-            it.tapAction?.invoke(WeakReference(this))
+        binding?.pageDemoList?.adapter = DemoMenuViewAdapter {
+            it.original.tapAction?.invoke(WeakReference(this))
         }
 
 

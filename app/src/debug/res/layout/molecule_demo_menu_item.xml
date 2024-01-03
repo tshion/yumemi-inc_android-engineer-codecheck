@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/app_base"
+    tools:layout_height="@dimen/molecule_demo_menu_item_height"
+    tools:layout_width="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/molecule_demo_menu_item_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/molecule_demo_menu_item_space_x"
+        android:layout_marginStart="@dimen/molecule_demo_menu_item_space_x"
+        android:layout_marginTop="@dimen/molecule_demo_menu_item_space_y"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/app_base_on"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/molecule_demo_menu_item_subtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_goneMarginBottom="@dimen/molecule_demo_menu_item_space_y"
+        tools:text="@tools:sample/cities" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/molecule_demo_menu_item_subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/molecule_demo_menu_item_space_y"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/molecule_demo_menu_item_title"
+        app:layout_constraintStart_toStartOf="@id/molecule_demo_menu_item_title"
+        app:layout_constraintTop_toBottomOf="@id/molecule_demo_menu_item_title"
+        tools:text="@tools:sample/lorem/random" />
+
+    <!-- 利用できない場合のオーバーレイ -->
+    <View
+        android:id="@+id/molecule_demo_menu_item_overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/app_transparent_shadow"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</merge>

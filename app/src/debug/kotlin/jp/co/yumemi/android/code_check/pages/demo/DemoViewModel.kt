@@ -2,7 +2,7 @@ package jp.co.yumemi.android.code_check.pages.demo
 
 import androidx.lifecycle.ViewModel
 import jp.co.yumemi.android.code_check.DemoHyperionPlugin
-import jp.co.yumemi.android.code_check.models.DemoSpecEntity
+import jp.co.yumemi.android.code_check.molecules.demo_menu_item.DemoMenuItemViewData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.StateFlow
  */
 class DemoViewModel : ViewModel() {
 
-    val specs: StateFlow<List<DemoSpecEntity>>
-    private val _specs = MutableStateFlow(emptyList<DemoSpecEntity>())
+    val specs: StateFlow<List<DemoMenuItemViewData>>
+    private val _specs = MutableStateFlow(emptyList<DemoMenuItemViewData>())
 
 
     init {
@@ -20,7 +20,9 @@ class DemoViewModel : ViewModel() {
     }
 
 
-    fun update(spec: DemoSpecEntity? = null) {
-        _specs.value = DemoHyperionPlugin.demoSpecs
+    fun update(spec: DemoMenuItemViewData? = null) {
+        _specs.value = DemoHyperionPlugin.demoSpecs.map {
+            DemoMenuItemViewData(true, it)
+        }
     }
 }

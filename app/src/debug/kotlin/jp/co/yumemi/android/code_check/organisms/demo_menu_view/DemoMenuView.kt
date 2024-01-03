@@ -1,4 +1,4 @@
-package jp.co.yumemi.android.code_check.organisms.demo_list_view
+package jp.co.yumemi.android.code_check.organisms.demo_menu_view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * 操作デモ一覧UI (罫線付き)
+ * 操作デモのメニューUI (罫線付き)
  *
  * ## 使い方
  * ``` kotlin
- * val listView: DemoListView = TODO("View の生成 or 取得")
- * listView.adapter = DemoListViewAdapter {
+ * val listView: DemoMenuView = TODO("View の生成 or 取得")
+ * listView.adapter = DemoMenuViewAdapter {
  *     // TODO リスト項目タップ時に実行したいこと
  * }
  * ```
  */
-class DemoListView @JvmOverloads constructor(
+class DemoMenuView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
 ) : RecyclerView(context, attrs) {
@@ -31,13 +31,13 @@ class DemoListView @JvmOverloads constructor(
     }
 
 
-    override fun getAdapter(): DemoListViewAdapter? {
-        return super.getAdapter() as? DemoListViewAdapter
+    override fun getAdapter(): DemoMenuViewAdapter? {
+        return super.getAdapter() as? DemoMenuViewAdapter
     }
 
     override fun setAdapter(adapter: Adapter<*>?) {
-        if (adapter !is DemoListViewAdapter) {
-            throw IllegalArgumentException("DemoListViewAdapter を設定してください")
+        if (adapter !is DemoMenuViewAdapter) {
+            throw IllegalArgumentException("DemoMenuViewAdapter を設定してください")
         }
         super.setAdapter(adapter)
     }
