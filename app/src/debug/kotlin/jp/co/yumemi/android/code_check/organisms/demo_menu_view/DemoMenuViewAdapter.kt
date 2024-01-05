@@ -50,7 +50,7 @@ class DemoMenuViewAdapter(
             override fun areItemsTheSame(
                 oldItem: DemoMenuItemViewData,
                 newItem: DemoMenuItemViewData,
-            ) = oldItem.original.dataId == newItem.original.dataId
+            ) = oldItem.original.id == newItem.original.id
 
             override fun areContentsTheSame(
                 oldItem: DemoMenuItemViewData,

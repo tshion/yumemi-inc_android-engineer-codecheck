@@ -2,4 +2,8 @@
 <resources>
 
     <string name="hyperion_show_demo">操作デモの表示</string>
+
+    <!-- 操作デモのタイトル -->
+    <string name="hyperion_show_demo_title_show_notify_dialog">結果通知ダイアログの表示</string>
+    <string name="hyperion_show_demo_title_show_retry_dialog">リトライダイアログの表示</string>
 </resources>

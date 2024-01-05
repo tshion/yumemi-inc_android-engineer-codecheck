@@ -83,7 +83,7 @@ class DemoMenuItemView @JvmOverloads constructor(
             isVisible = !subtitle.isNullOrBlank()
             text = subtitle
         }
-        binding.moleculeDemoMenuItemTitle.text = data.original.title
+        binding.moleculeDemoMenuItemTitle.text = data.original.getTitle(context)
     }
 
 
