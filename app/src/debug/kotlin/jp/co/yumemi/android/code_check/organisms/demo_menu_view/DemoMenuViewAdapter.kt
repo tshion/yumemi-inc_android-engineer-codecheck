@@ -36,7 +36,7 @@ class DemoMenuViewAdapter(
         val data = getItem(position)
         holder.view.setup(data)
         if (data.isEnabled) {
-            holder.itemView.setOnClickListener { onTapListener.accept(data) }
+            holder.view.setOnClickListener { onTapListener.accept(data) }
         } else {
             holder.view.setOnClickListener(null)
         }

@@ -26,9 +26,19 @@ typealias OnTapAction = (WeakReference<DemoViewContract>) -> Unit
 class DemoSpecEntity private constructor(
     @StringRes private val titleId: Int,
     val subtitle: String? = null,
-//    val childrenLoader: ChildrenLoader? = null,
+    private val childrenLoader: ChildrenLoader? = null,
     val tapAction: OnTapAction? = null,
 ) {
+
+    /** 子要素 */
+    val children: List<DemoSpecEntity>
+        get() {
+            if (_children == null) {
+                _children = childrenLoader?.invoke() ?: emptyList()
+            }
+            return _children!!
+        }
+    private var _children: List<DemoSpecEntity>? = null
 
     /** 操作デモ内容を特定するID */
     val id = titleId
@@ -36,6 +46,30 @@ class DemoSpecEntity private constructor(
 
     /** タイトル文言の取得 */
     fun getTitle(context: Context) = context.getString(titleId)
+
+    /**
+     * 該当データの検索(幅優先)
+     *
+     * @param specId 操作デモ内容を特定するID
+     */
+    fun searchBreadthwise(
+        specId: Int,
+    ): DemoSpecEntity? {
+        val queue = ArrayDeque<DemoSpecEntity>().apply {
+            add(this@DemoSpecEntity)
+        }
+        var result: DemoSpecEntity? = null
+        do {
+            val candidate = queue.removeFirst()
+            if (candidate.id == specId) {
+                result = candidate
+                break
+            } else {
+                queue.addAll(candidate.children)
+            }
+        } while (queue.isNotEmpty())
+        return result
+    }
 
 
     companion object {
@@ -64,14 +98,14 @@ class DemoSpecEntity private constructor(
          * @param subtitle 補足文言 (※省略可)
          * @param childrenLoader 子要素の読み込みタスク
          */
-//        fun createNavigator(
-//            @StringRes titleId: Int,
-//            subtitle: String? = null,
-//            childrenLoader: ChildrenLoader,
-//        ) = DemoSpecEntity(
-//            titleId,
-//            subtitle,
-//            childrenLoader = childrenLoader,
-//        )
+        fun createNavigator(
+            @StringRes titleId: Int,
+            subtitle: String? = null,
+            childrenLoader: ChildrenLoader,
+        ) = DemoSpecEntity(
+            titleId,
+            subtitle,
+            childrenLoader = childrenLoader,
+        )
     }
 }

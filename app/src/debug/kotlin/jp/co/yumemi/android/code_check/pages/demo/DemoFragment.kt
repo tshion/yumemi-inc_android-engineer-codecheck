@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import jp.co.yumemi.android.code_check.R
 import jp.co.yumemi.android.code_check.databinding.PageDemoBinding
 import jp.co.yumemi.android.code_check.models.DemoViewContract
@@ -25,6 +26,8 @@ import java.lang.ref.WeakReference
  */
 class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
 
+    private val args by navArgs<DemoFragmentArgs>()
+
     private var binding: PageDemoBinding? = null
 
     private val viewModel by viewModels<DemoViewModel>()
@@ -36,8 +39,15 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
 
         binding?.pageDemoHeader?.setupWith(findNavController())
 
-        binding?.pageDemoList?.adapter = DemoMenuViewAdapter {
-            it.original.tapAction?.invoke(WeakReference(this))
+        binding?.pageDemoList?.adapter = DemoMenuViewAdapter { menu ->
+            val action = menu.original.tapAction
+            if (action != null) {
+                action.invoke(WeakReference(this))
+            } else {
+                DemoFragmentDirections.navGoDemo(
+                    specId = menu.original.id,
+                ).also { navigate(it) }
+            }
         }
 
 
@@ -50,7 +60,7 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
         }
 
 
-        viewModel.update()
+        viewModel.load(args.specId)
     }
 
     override fun onDestroyView() {

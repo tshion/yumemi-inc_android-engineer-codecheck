@@ -1,5 +1,6 @@
 package jp.co.yumemi.android.code_check.pages.demo
 
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModel
 import jp.co.yumemi.android.code_check.DemoHyperionPlugin
 import jp.co.yumemi.android.code_check.molecules.demo_menu_item.DemoMenuItemViewData
@@ -20,8 +21,18 @@ class DemoViewModel : ViewModel() {
     }
 
 
-    fun update(spec: DemoMenuItemViewData? = null) {
-        _specs.value = DemoHyperionPlugin.demoSpecs.map {
+    /**
+     * 操作デモのデータ読み込み
+     */
+    fun load(specId: Int) {
+        val specs = if (specId != ResourcesCompat.ID_NULL) {
+            DemoHyperionPlugin.demoSpecs.firstOrNull {
+                it.searchBreadthwise(specId) != null
+            }?.children ?: emptyList()
+        } else {
+            DemoHyperionPlugin.demoSpecs
+        }
+        _specs.value = specs.map {
             DemoMenuItemViewData(true, it)
         }
     }
