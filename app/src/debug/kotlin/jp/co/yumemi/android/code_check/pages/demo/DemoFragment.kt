@@ -1,8 +1,11 @@
 package jp.co.yumemi.android.code_check.pages.demo
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.util.Function
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -74,6 +77,14 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
         binding = null
     }
 
+
+    /**
+     * 指定された画面の起動
+     */
+    override fun launch(fx: Function<Context, Intent>) {
+        context?.let { fx.apply(it) }
+            ?.also { startActivity(it) }
+    }
 
     /**
      * 指定された箇所への遷移

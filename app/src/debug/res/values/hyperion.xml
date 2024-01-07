@@ -4,6 +4,8 @@
     <string name="hyperion_show_demo">操作デモの表示</string>
 
     <!-- 操作デモのタイトル -->
+    <string name="hyperion_show_demo_title_launch_app_settings">アプリ設定の起動</string>
+    <string name="hyperion_show_demo_title_launch_dev_settings">開発者設定の起動</string>
     <string name="hyperion_show_demo_title_show_dialog">ダイアログ表示</string>
     <string name="hyperion_show_demo_title_show_notify_dialog">結果通知ダイアログの表示</string>
     <string name="hyperion_show_demo_title_show_retry_dialog">リトライダイアログの表示</string>
