@@ -67,6 +67,7 @@ Git 管理から外しているため、試す際は追加でセットアップ�
     * [Material Design](https://github.com/material-components/material-components-android) ([Maven Google](https://mvnrepository.com/artifact/com.google.android.material/material))
     * OkHttp BOM ([Maven Central](https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp-bom))
         * [OkHttp](https://github.com/square/okhttp)
+    * [Play Services OSS Licenses](https://developers.google.com/android/guides/opensource) ([Maven Google](https://mvnrepository.com/artifact/com.google.android.gms/play-services-oss-licenses))
     * [Timber](https://github.com/JakeWharton/timber) ([Maven Central](https://mvnrepository.com/artifact/com.jakewharton.timber/timber))
 * 開発設定
     * [AutoService](https://github.com/google/auto/tree/main/service) ([Maven Central](https://mvnrepository.com/artifact/com.google.auto.service/auto-service))

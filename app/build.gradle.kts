@@ -11,8 +11,9 @@ plugins {
     // Firebase Crashlytics Gradle
     alias(libs.plugins.firebase.crashlytics)
 
-    // Google GMS Google Services Gradle Plugin
+    // Google GMS
     alias(libs.plugins.gms.googleServices) apply false
+    alias(libs.plugins.gms.ossLicenses)
 }
 
 
@@ -109,6 +110,9 @@ dependencies {
     // Firebase
     releaseImplementation(platform(libs.firebase.bom))
     releaseImplementation(libs.firebase.crashlytics)
+
+    // GMS
+    implementation(libs.gms.ossLicenses)
 
     // Hyperion
     debugImplementation(libs.hyperion.attr)

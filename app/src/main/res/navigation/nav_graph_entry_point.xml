@@ -5,6 +5,11 @@
     android:id="@+id/nav_graph_entry_point"
     app:startDestination="@id/page_search">
 
+    <!-- ライセンス表記の起動 -->
+    <action
+        android:id="@+id/nav_launch_license"
+        app:destination="@id/activity_license" />
+
     <!-- 結果通知ダイアログの表示 -->
     <action
         android:id="@+id/nav_show_notify_dialog"
@@ -14,6 +19,12 @@
     <action
         android:id="@+id/nav_show_retry_dialog"
         app:destination="@id/template_retry_dialog" />
+
+
+    <!-- ライセンス表記 -->
+    <activity
+        android:id="@+id/activity_license"
+        android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity" />
 
 
     <dialog

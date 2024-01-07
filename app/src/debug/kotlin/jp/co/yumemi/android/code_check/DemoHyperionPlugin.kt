@@ -49,6 +49,10 @@ class DemoHyperionPlugin : Plugin() {
             createNavigator(R.string.hyperion_show_demo_title_show_dialog) {
                 showDialogDemoSpecs
             },
+            createDemo(R.string.hyperion_show_demo_title_launch_license) {
+                val direction = NavGraphDemoEntryPointDirections.navLaunchLicense()
+                it.get()?.navigate(direction)
+            },
             createDemo(
                 R.string.hyperion_show_demo_title_launch_app_settings,
                 subtitle = "OS の設定アプリを起動する",
