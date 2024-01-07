@@ -22,6 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- ライセンス表記: 詳細 -->
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:theme="@style/Theme.App.License"
+            android:exported="false" />
+
+        <!-- ライセンス表記: 一覧 -->
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/Theme.App.License"
+            android:exported="false" />
     </application>
 
 </manifest>
