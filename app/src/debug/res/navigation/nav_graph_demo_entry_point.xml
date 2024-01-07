@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_demo_entry_point"
     app:startDestination="@id/page_demo">
-
-    <!-- 操作デモ画面へ遷移 -->
-    <action
-        android:id="@+id/nav_go_demo"
-        app:destination="@id/page_demo" />
 
     <!-- 結果通知ダイアログの表示 -->
     <action
         android:id="@+id/nav_show_notify_dialog"
-        app:destination="@id/template_notify_dialog" />
+        app:destination="@id/template_notify_dialog"
+        app:popUpToInclusive="true"/>
 
     <!-- リトライダイアログの表示 -->
     <action
@@ -51,7 +48,18 @@
     <fragment
         android:id="@+id/page_demo"
         android:name="jp.co.yumemi.android.code_check.pages.demo.DemoFragment"
-        android:label="@string/page_demo_title">
+        android:label="{label}"
+        tools:layout="@layout/page_demo">
+
+        <action
+            android:id="@+id/nav_go_demo"
+            app:destination="@id/page_demo" />
+
+
+        <argument
+            android:name="label"
+            app:argType="string"
+            android:defaultValue="" />
 
         <argument
             android:name="specId"

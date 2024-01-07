@@ -27,7 +27,7 @@ class DemoViewModel : ViewModel() {
     fun load(specId: Int) {
         val specs = if (specId != ResourcesCompat.ID_NULL) {
             DemoHyperionPlugin.demoSpecs.firstOrNull {
-                it.searchBreadthwise(specId) != null
+                it.search(specId) != null
             }?.children ?: emptyList()
         } else {
             DemoHyperionPlugin.demoSpecs

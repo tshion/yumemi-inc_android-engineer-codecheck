@@ -31,14 +31,9 @@ class DemoSpecEntity private constructor(
 ) {
 
     /** 子要素 */
-    val children: List<DemoSpecEntity>
-        get() {
-            if (_children == null) {
-                _children = childrenLoader?.invoke() ?: emptyList()
-            }
-            return _children!!
-        }
-    private var _children: List<DemoSpecEntity>? = null
+    val children by lazy {
+        childrenLoader?.invoke() ?: emptyList()
+    }
 
     /** 操作デモ内容を特定するID */
     val id = titleId
@@ -50,18 +45,16 @@ class DemoSpecEntity private constructor(
     /**
      * 該当データの検索(幅優先)
      *
-     * @param specId 操作デモ内容を特定するID
+     * @param id 操作デモ内容を特定するID
      */
-    fun searchBreadthwise(
-        specId: Int,
-    ): DemoSpecEntity? {
+    fun search(id: Int): DemoSpecEntity? {
         val queue = ArrayDeque<DemoSpecEntity>().apply {
             add(this@DemoSpecEntity)
         }
         var result: DemoSpecEntity? = null
         do {
             val candidate = queue.removeFirst()
-            if (candidate.id == specId) {
+            if (candidate.id == id) {
                 result = candidate
                 break
             } else {

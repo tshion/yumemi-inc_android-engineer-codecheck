@@ -37,7 +37,12 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
         super.onViewCreated(view, savedInstanceState)
         binding = PageDemoBinding.bind(view)
 
-        binding?.pageDemoHeader?.setupWith(findNavController())
+        binding?.pageDemoHeader?.apply {
+            setupWith(this@DemoFragment.findNavController())
+            if (title.isNullOrBlank()) {
+                title = getString(R.string.page_demo_title)
+            }
+        }
 
         binding?.pageDemoList?.adapter = DemoMenuViewAdapter { menu ->
             val action = menu.original.tapAction
@@ -45,6 +50,7 @@ class DemoFragment : Fragment(R.layout.page_demo), DemoViewContract {
                 action.invoke(WeakReference(this))
             } else {
                 DemoFragmentDirections.navGoDemo(
+                    label = menu.original.getTitle(requireContext()),
                     specId = menu.original.id,
                 ).also { navigate(it) }
             }
