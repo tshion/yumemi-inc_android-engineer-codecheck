@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_base"
+    android:orientation="vertical">
+
+    <!-- ヘッダー -->
+    <jp.co.yumemi.android.code_check.molecules.SimpleToolbar
+        android:id="@+id/page_demo_header"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        tools:title="@string/page_demo_title" />
+
+    <!-- リスト表示 -->
+    <jp.co.yumemi.android.code_check.organisms.demo_menu_view.DemoMenuView
+        android:id="@+id/page_demo_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</androidx.appcompat.widget.LinearLayoutCompat>

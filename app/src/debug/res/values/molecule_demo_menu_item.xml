@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- サイズ定義 -->
+    <dimen name="molecule_demo_menu_item_height">96dp</dimen>
+    <dimen name="molecule_demo_menu_item_space_x">16dp</dimen>
+    <dimen name="molecule_demo_menu_item_space_y">8dp</dimen>
+</resources>

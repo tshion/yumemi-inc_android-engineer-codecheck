@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_demo_entry_point"
+    app:startDestination="@id/page_demo">
+
+    <!-- 結果通知ダイアログの表示 -->
+    <action
+        android:id="@+id/nav_show_notify_dialog"
+        app:destination="@id/template_notify_dialog"
+        app:popUpToInclusive="true"/>
+
+    <!-- リトライダイアログの表示 -->
+    <action
+        android:id="@+id/nav_show_retry_dialog"
+        app:destination="@id/template_retry_dialog" />
+
+
+    <dialog
+        android:id="@+id/template_notify_dialog"
+        android:name="jp.co.yumemi.android.code_check.templates.NotifyDialogFragment">
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/template_retry_dialog"
+        android:name="jp.co.yumemi.android.code_check.templates.RetryDialogFragment">
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
+
+
+    <!-- 操作デモ画面 -->
+    <fragment
+        android:id="@+id/page_demo"
+        android:name="jp.co.yumemi.android.code_check.pages.demo.DemoFragment"
+        android:label="{label}"
+        tools:layout="@layout/page_demo">
+
+        <action
+            android:id="@+id/nav_go_demo"
+            app:destination="@id/page_demo" />
+
+
+        <argument
+            android:name="label"
+            app:argType="string"
+            android:defaultValue="" />
+
+        <argument
+            android:name="specId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
