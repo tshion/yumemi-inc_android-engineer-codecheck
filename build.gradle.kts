@@ -3,10 +3,6 @@ ext {
     // アプリ構成
     extra["androidApiMin"] = 23
     extra["androidApiTarget"] = 34
-
-    // アプリバージョン
-    extra["appVersionCode"] = 10202
-    extra["appVersionName"] = "1.2.2"
 }
 
 /**
@@ -41,16 +37,10 @@ tasks.register("setVersion") {
 
 
         // ファイル出力
-        val file = project.rootProject.file("build.gradle.kts")
+        val file = project.rootProject.file("build.properties")
         file.readText()
-            .replace(
-                Regex("""(extra\["appVersionCode"\] = )\d+"""),
-                "$1$versionCode",
-            )
-            .replace(
-                Regex("""(extra\["appVersionName"\] = ")\d[\d\.]{0,}\d(")"""),
-                "$1$versionName$2",
-            )
+            .replace(Regex("""(version_code=)\d+"""), "$1$versionCode")
+            .replace(Regex("""(version_name=)\d[\d\.]{0,}\d"""), "$1$versionName")
             .also { file.writeText(it) }
 
 
