@@ -6,10 +6,10 @@
         {
             "label": "アプリバージョン更新",
             "type": "process",
-            "command": "./gradlew",
+            "command": "jshell",
             "args": [
-                "setVersion",
-                "-Pargs=${input:versionMajor} ${input:versionMinor} ${input:versionPatch}",
+                "-R-Dargs=${input:versionMajor} ${input:versionMinor} ${input:versionPatch}",
+                "scripts/set-version.jsh",
             ]
         }
     ],
