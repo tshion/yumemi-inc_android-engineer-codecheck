@@ -143,19 +143,6 @@ dependencies {
 }
 
 
-// アプリバージョン名の表示
-tasks.register("showVersionName") {
-    val file = rootProject.file("./app/build/outputs/apk/release/output-metadata.json")
-    var versionName = "unknown"
-    if (file.exists()) {
-        val text = file.readText()
-        val matches = Regex(""""versionName": "(.+)",""").findAll(text)
-        versionName = matches.first().groupValues[1]
-    }
-    println(versionName)
-}
-
-
 // app/google-services.json がある場合のみセットアップ
 if (rootProject.file("app/google-services.json").exists()) {
     apply(plugin = "com.google.gms.google-services")
