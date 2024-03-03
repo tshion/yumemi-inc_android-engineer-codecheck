@@ -11,7 +11,16 @@
                 "setVersion",
                 "-Pargs=${input:versionMajor} ${input:versionMinor} ${input:versionPatch}",
             ]
-        }
+        },
+        {
+            "label": "JShell: アプリバージョン更新",
+            "type": "process",
+            "command": "jshell",
+            "args": [
+                "-R-Dargs=${input:versionMajor} ${input:versionMinor} ${input:versionPatch}",
+                "scripts/set-version.jsh",
+            ]
+        },
     ],
     "inputs": [
         {

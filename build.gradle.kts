@@ -5,6 +5,7 @@ ext {
     extra["androidApiTarget"] = 34
 }
 
+
 /**
  * アプリバージョン文字列の抽出
  */
@@ -64,6 +65,7 @@ tasks.register("setVersion") {
         println("Set code: $versionCode, name: $versionName")
     }
 }
+
 
 plugins {
     // Android Gradle Plugin

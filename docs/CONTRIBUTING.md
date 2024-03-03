@@ -77,6 +77,7 @@ Android Studio で開くことで開発作業をする環境が整います。
 1. リリース対象Pull Request が`develop` ブランチに全てマージされていることを確認する
 1. `develop` ブランチに切り替え、アプリバージョンを更新し、コミットする
     * VSCode 「Gradle: アプリバージョンの更新」で更新することもできる
+    * VSCode 「JShell: アプリバージョンの更新」で更新することもできる
 1. `develop` ブランチから`released` ブランチにPull Request を作成する
     * 例: [PR #16](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/16)
 1. 問題なければPull Request をマージする
