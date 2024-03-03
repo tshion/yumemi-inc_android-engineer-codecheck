@@ -28,7 +28,7 @@ jobs:
 
       # https://github.com/actions/setup-java
       - name: set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version-file: '.java-version'
           distribution: 'microsoft'
@@ -50,7 +50,7 @@ jobs:
       - name: Git push
         run: |
           git switch -c ${{ steps.app-version.outputs.branch-name }}
-          git add Build.xcconfig
+          git add build.properties
           git commit -m "${{ steps.app-version.outputs.message }}"
           git push --set-upstream origin ${{ steps.app-version.outputs.branch-name }}
 
