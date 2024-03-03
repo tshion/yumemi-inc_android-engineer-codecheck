@@ -6,6 +6,22 @@ ext {
 }
 
 /**
+ * アプリバージョン文字列の抽出
+ */
+tasks.register("pickVersionName") {
+    doLast {
+        // ファイル読み込み
+        val text = project.rootProject.file("build.properties").readText()
+
+        // アプリバージョン文字列の抽出
+        val match = Regex("""version_name=(\d[\d\.]{0,}\d)""").find(text)
+
+        // 終了表示
+        println(match?.groupValues?.get(1) ?: "unknown")
+    }
+}
+
+/**
  * アプリバージョンの設定
  */
 tasks.register("setVersion") {
