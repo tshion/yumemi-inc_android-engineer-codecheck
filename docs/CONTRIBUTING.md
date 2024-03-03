@@ -55,6 +55,7 @@ Android Studio で開くことで開発作業をする環境が整います。
     * 名前は`hotfix/???` という形式で、`???` の部分を良い感じに設定してください
 1. バグ修正をする
 1. アプリバージョンを更新する
+    * 後述する「リリース作業の流れ」にあるアプリバージョンを更新するGitHub Actions も利用できます
 1. 作業が完了したら下記ブランチそれぞれに対してPull Request を作成する
     * `released` ブランチ -> 例: [PR #51](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/51)
     * `develop` ブランチ -> 例: [PR #52](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/52)
@@ -75,9 +76,12 @@ Android Studio で開くことで開発作業をする環境が整います。
 
 ## リリース作業の流れ
 1. リリース対象Pull Request が`develop` ブランチに全てマージされていることを確認する
-1. `develop` ブランチに切り替え、アプリバージョンを更新し、コミットする
-    * VSCode 「Gradle: アプリバージョンの更新」で更新することもできる
-    * VSCode 「JShell: アプリバージョンの更新」で更新することもできる
+1. https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/update-app-version-jshell.yml に移動し、GitHub Actions を実行する
+    * アプリバージョンを更新するPull Request が作成されます
+    * ローカルの場合は下記を実行し、Pull Request を作成してください
+        * VSCode タスク「JShell: アプリバージョンの更新」を実行する
+        * プロジェクトルートで `jshell  -R-Dargs="x y z" scripts/set-version.jsh` を実行する
+1. 前の手順で作成したPull Request に問題がなければマージする
 1. `develop` ブランチから`released` ブランチにPull Request を作成する
     * 例: [PR #16](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/16)
 1. 問題なければPull Request をマージする

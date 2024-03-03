@@ -22,50 +22,6 @@ tasks.register("pickVersionName") {
     }
 }
 
-/**
- * アプリバージョンの設定
- */
-tasks.register("setVersion") {
-    doLast {
-        val args = "${project.properties["args"]}".split(" ")
-        if (args.count() != 3) {
-            throw IllegalArgumentException("引数を３つ指定してください")
-        }
-
-        val major = args[0].toIntOrNull() ?: -1
-        if (major < 0) {
-            throw IllegalArgumentException("major には正整数を指定してください")
-        }
-
-        val minor = args[1].toIntOrNull() ?: -1
-        if (minor !in 0..99) {
-            throw IllegalArgumentException("minor には1 ~ 2桁の正整数を指定してください")
-        }
-
-        val patch = args[2].toIntOrNull() ?: -1
-        if (minor !in 0..99) {
-            throw IllegalArgumentException("patch には1 ~ 2桁の正整数を指定してください")
-        }
-
-
-        // バージョン情報の算出
-        val versionCode = major * 10000 + minor * 100 + patch
-        val versionName = "${major}.${minor}.${patch}"
-
-
-        // ファイル出力
-        val file = project.rootProject.file("build.properties")
-        file.readText()
-            .replace(Regex("""(version_code=)\d+"""), "$1$versionCode")
-            .replace(Regex("""(version_name=)\d[\d\.]{0,}\d"""), "$1$versionName")
-            .also { file.writeText(it) }
-
-
-        // 終了表示
-        println("Set code: $versionCode, name: $versionName")
-    }
-}
-
 
 plugins {
     // Android Gradle Plugin

@@ -17,7 +17,7 @@ jobs:
 
       # https://github.com/actions/setup-java
       - name: set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version-file: '.java-version'
           distribution: 'microsoft'
@@ -55,8 +55,7 @@ jobs:
       - name: Pick version name
         id: app-version
         run: |
-          echo "$(./gradlew app:showVersionName)" > TMP_LOG
-          echo "$(head -n 1 TMP_LOG)" > TMP_LOG
+          echo "$(jshell scripts/pick-version-name.jsh)" > TMP_LOG
           echo "app version: $(cat TMP_LOG)"
           echo "version-name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
 
