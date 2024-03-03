@@ -47,16 +47,14 @@ android {
     }
     signingConfigs {
         val file = rootProject.file("release.jks")
-        if (file.exists()) {
-            create("release") {
-                storeFile = file
-                storePassword = System.getenv("KEYSTORE_PASSWORD")
-                    ?: keystoreProperties.getProperty("KEYSTORE_PASSWORD", "")
-                keyAlias = System.getenv("KEY_ALIAS")
-                    ?: keystoreProperties.getProperty("KEY_ALIAS", "")
-                keyPassword = System.getenv("KEY_PASSWORD")
-                    ?: keystoreProperties.getProperty("KEY_PASSWORD", "")
-            }
+        create("release") {
+            storeFile = file
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+                ?: keystoreProperties.getProperty("KEYSTORE_PASSWORD", "")
+            keyAlias = System.getenv("KEY_ALIAS")
+                ?: keystoreProperties.getProperty("KEY_ALIAS", "")
+            keyPassword = System.getenv("KEY_PASSWORD")
+                ?: keystoreProperties.getProperty("KEY_PASSWORD", "")
         }
     }
 
