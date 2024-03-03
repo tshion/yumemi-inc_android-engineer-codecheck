@@ -4,6 +4,15 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Gradle: アプリバージョン更新",
+            "type": "process",
+            "command": "./gradlew",
+            "args": [
+                "setVersion",
+                "-Pargs=${input:versionMajor} ${input:versionMinor} ${input:versionPatch}",
+            ]
+        },
+        {
             "label": "JShell: アプリバージョン更新",
             "type": "process",
             "command": "jshell",
@@ -11,7 +20,7 @@
                 "-R-Dargs=${input:versionMajor} ${input:versionMinor} ${input:versionPatch}",
                 "scripts/set-version.jsh",
             ]
-        }
+        },
     ],
     "inputs": [
         {
