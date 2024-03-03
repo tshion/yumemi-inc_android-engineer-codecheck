@@ -17,6 +17,10 @@ plugins {
 }
 
 
+// アプリビルド情報の読み取り
+val buildProperties = Properties()
+buildProperties.load(FileInputStream(rootProject.file("build.properties")))
+
 // keystore.properties の読み取り
 val keystoreProperties = Properties()
 try {
@@ -36,8 +40,8 @@ android {
         applicationId = "jp.co.yumemi.android.codecheck"
         minSdk = rootProject.extra["androidApiMin"] as Int
         targetSdk = rootProject.extra["androidApiTarget"] as Int
-        versionCode = rootProject.extra["appVersionCode"] as Int
-        versionName = rootProject.extra["appVersionName"].toString()
+        versionCode = "${buildProperties["version_code"]}".toIntOrNull()
+        versionName = "${buildProperties["version_name"]}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

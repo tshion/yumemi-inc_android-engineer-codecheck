@@ -3,13 +3,6 @@ ext {
     // アプリ構成
     extra["androidApiMin"] = 23
     extra["androidApiTarget"] = 34
-
-    // アプリバージョン
-    val appVersionMajor = 1
-    val appVersionMinor = 2
-    val appVersionPatch = 2
-    extra["appVersionCode"] = 10000 * appVersionMajor + 100 * appVersionMinor + appVersionPatch
-    extra["appVersionName"] = "${appVersionMajor}.${appVersionMinor}.${appVersionPatch}"
 }
 
 plugins {

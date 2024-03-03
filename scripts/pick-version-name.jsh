@@ -1,0 +1,29 @@
+// アプリバージョン文字列の抽出
+//
+// 注意事項
+// * ".java-version" に記載されているバージョンで実行してください
+
+
+try {
+    // 作業対象ファイルの設定と検証
+    final var file = new File("build.properties");
+    if (!file.exists() || !file.isFile()) {
+        throw new IllegalArgumentException("%s にファイルが存在しません".formatted(file.getAbsolutePath()));
+    }
+
+    // ファイル読み込み
+    final var text = Files.readString(file.toPath());
+
+    // アプリバージョン文字列の抽出
+    final var matches = Pattern.compile("version_name=(\\d[\\d\\.]{0,}\\d)").matcher(text);
+    matches.find();
+    final var versionName = matches.group(1);
+
+    // 終了表示
+    System.out.println(versionName);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+
+// jshell のREPL モードの終了
+/exit
