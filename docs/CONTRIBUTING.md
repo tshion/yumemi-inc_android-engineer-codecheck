@@ -82,10 +82,11 @@ Android Studio で開くことで開発作業をする環境が整います。
         * VSCode タスク「JShell: アプリバージョンの更新」を実行する
         * プロジェクトルートで `jshell  -R-Dargs="x y z" scripts/set-version.jsh` を実行する
 1. 前の手順で作成したPull Request に問題がなければマージする
-1. `develop` ブランチから`released` ブランチにPull Request を作成する
-    * 例: [PR #16](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/16)
-1. 問題なければPull Request をマージする
-1. GitHub Actions が自動実行されるので、様子を見る
+1. `released` ブランチへのマージPull Request が作成されるはずなので、しばらく待つ
+    * 手動実行する場合は、下記に移動してください
+        * https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/create-merge-pr.yml
+1. 前の手順で作成したPull Request に問題がなければマージする
+1. GitHub Releases が自動生成されるので、様子を見る
 
 ※`hotfix` ブランチの場合は、`released` ブランチに対してPull Request を作成するので、それをマージすればリリース処理が走ります
 
