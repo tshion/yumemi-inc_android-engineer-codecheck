@@ -1,0 +1,41 @@
+name: Create merge pull request
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches-ignore:
+      - 'released'
+    paths:
+      - 'build.properties'
+  workflow_dispatch:
+
+jobs:
+  create-merge-pr:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'アプリバージョン更新'))
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      # https://github.com/actions/setup-java
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version-file: '.java-version'
+          distribution: 'microsoft'
+
+      - name: Format title
+        id: pr-data
+        run: |
+          echo "$(jshell scripts/pick-version-name.jsh)" > TMP_LOG
+          echo "title=Merge $(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
+
+      - name: Create pull request
+        run: gh pr create --base released --title "${{ steps.pr-data.outputs.title }}" --body ""
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
