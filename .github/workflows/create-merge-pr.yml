@@ -29,13 +29,14 @@ jobs:
           java-version-file: '.java-version'
           distribution: 'microsoft'
 
-      - name: Format title
-        id: pr-data
+      - name: Pick version name
+        id: app-version
         run: |
           echo "$(jshell scripts/pick-version-name.jsh)" > TMP_LOG
-          echo "title=Merge $(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
+          echo "app version: $(cat TMP_LOG)"
+          echo "version-name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
 
       - name: Create pull request
-        run: gh pr create --base released --title "${{ steps.pr-data.outputs.title }}" --body ""
+        run: gh pr create --base released --title "Merge ${{ steps.app-version.outputs.version-name }}" --body ""
         env:
           GITHUB_TOKEN: ${{ github.token }}

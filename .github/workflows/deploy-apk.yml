@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # https://github.com/actions/setup-java
-      - name: set up JDK
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version-file: '.java-version'
@@ -42,7 +42,7 @@ jobs:
           fileDir: './'
           encodedString: ${{ secrets.KEYSTORE }}
 
-      - name: list up *.jks
+      - name: List up *.jks
         run: echo $(ls *.jks)
 
       - name: Build release apk
