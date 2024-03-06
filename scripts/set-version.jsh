@@ -3,7 +3,7 @@
 // 注意事項
 // * ".java-version" に記載されているバージョンで実行してください
 
-
+var statusCode = 0;
 try {
     // 作業対象ファイルの設定と検証
     final var file = new File("build.properties");
@@ -51,8 +51,9 @@ try {
     // 終了表示
     System.out.println("Set code: %d, name: %s".formatted(versionCode, versionName));
 } catch (Exception e) {
+    statusCode = 1;
     System.out.println(e.getMessage());
 }
 
 // jshell のREPL モードの終了
-/exit
+/exit statusCode
