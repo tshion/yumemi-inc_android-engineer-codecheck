@@ -8,7 +8,7 @@ try {
     // 作業対象ファイルの設定と検証
     final var file = new File("build.properties");
     if (!file.exists() || !file.isFile()) {
-        throw new IllegalArgumentException("%s にファイルが存在しません".formatted(file.getAbsolutePath()));
+        throw new IOException("%s にファイルが存在しません".formatted(file.getAbsolutePath()));
     }
 
 
