@@ -32,8 +32,8 @@ jobs:
         id: app-version
         run: |
           echo "$(jshell scripts/pick-version-name.jsh)" > TMP_LOG
-          echo "app version: $(cat TMP_LOG)"
           echo "version-name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
+          echo "app version: $(cat TMP_LOG)"
 
       - name: Create pull request
         run: gh pr create --base released --title "Merge ${{ steps.app-version.outputs.version-name }}" --body ""
