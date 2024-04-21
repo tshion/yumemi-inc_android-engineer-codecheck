@@ -4,12 +4,36 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "JShell: アプリバージョン更新",
+            "label": "RUN: アプリバージョン名の取得",
+            "type": "process",
+            "command": "jshell",
+            "args": [
+                ".github/scripts/get-version-name/get-version-name.jsh",
+            ]
+        },
+        {
+            "label": "TEST: アプリバージョン名の取得",
+            "type": "process",
+            "command": "sh",
+            "args": [
+                ".github/scripts/get-version-name/test.sh",
+            ]
+        },
+        {
+            "label": "RUN: アプリバージョン更新",
             "type": "process",
             "command": "jshell",
             "args": [
                 "-R-Dargs=${input:versionMajor} ${input:versionMinor} ${input:versionPatch}",
-                "scripts/set-version.jsh",
+                ".github/scripts/set-version/set-version.jsh",
+            ]
+        },
+        {
+            "label": "TEST: アプリバージョン情報の更新",
+            "type": "process",
+            "command": "sh",
+            "args": [
+                ".github/scripts/set-version/test.sh",
             ]
         },
     ],
