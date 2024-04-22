@@ -7,9 +7,11 @@ GitHub 用の設定や関連する実装などの置き場。
 [actions/setup-java-runtime/](./actions/setup-java-runtime/) | Java 実行環境のセットアップ
 [scripts/get-version-name/](./scripts/get-version-name/) | バージョン名の取得
 [scripts/set-version/](./scripts/set-version/) | バージョン情報の設定
-[workflows/](./workflows/) | GitHub Actions のワークフロー定義
-issue_template.md | Issue 作成時に適用されるテンプレート
-pull_request_template.md | Pull Request 作成時に適用されるテンプレート
+[workflows/080-create-version-pr.yml](./workflows/080-create-version-pr.yml) | バージョン情報を更新するPull Request 作成
+[workflows/140-create-release-pr.yml](./workflows/140-create-release-pr.yml) | リリース候補の変更内容をまとめたPull Request 作成
+[workflows/180-deploy.yml](./workflows/180-deploy.yml) | リリース(デプロイ)
+[issue_template.md](./issue_template.md) | Issue 作成時に適用されるテンプレート
+[pull_request_template.md](./pull_request_template.md) | Pull Request 作成時に適用されるテンプレート
 
 
 
@@ -24,11 +26,18 @@ pull_request_template.md | Pull Request 作成時に適用されるテンプレ�
         * 上記の条件であればGradle も当てはまるが、[Pull Request #169](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/169) で比較したところ、JShell の方が高速な傾向が見られたため
     * `**/test.sh` は簡易的なテストが記述されている
     * VSCode タスクとして実行できるようになっているので、必要に応じて試すこと
+* workflows/
+    * プレフィックスにある数値は、表示がリリースフローの作業順になるようにつけている
+        * 大まかな意味は下記となる
+            * 0xx -> リリース前作業
+            * 1xx -> リリース(デプロイ) 作業
+        * この後の改修で順番が変わることもあるので、間隔を空けて数値を振っている
 
 
 
 ## 参考文献
 * GitHub Actions
+    * [コンカレンシーの使用 - GitHub Docs](https://docs.github.com/ja/actions/using-jobs/using-concurrency)
     * [コンテキスト - GitHub Docs](https://docs.github.com/ja/actions/learn-github-actions/contexts)
     * [式 - GitHub Docs](https://docs.github.com/ja/actions/learn-github-actions/expressions)
     * トリガー
