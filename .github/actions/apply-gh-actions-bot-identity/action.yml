@@ -1,0 +1,16 @@
+name: Apply github actions bot identity
+
+inputs:
+  path:
+    description: working directory path
+    required: false
+    default: .
+runs:
+  using: composite
+  steps:
+    # https://qiita.com/thaim/items/3d1a4d09ec4a7d8844ce#github-actionsbot
+    - run: |
+        cd ${{ inputs.path }}
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "GitHub Actions"
+      shell: bash
