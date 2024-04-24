@@ -1,0 +1,74 @@
+name: 180 Deploy
+
+on:
+  push:
+    branches:
+      - released
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-java-runtime
+
+      - name: Get version name
+        id: version
+        run: |
+          echo "$(jshell .github/scripts/get-version-name/get-version-name.jsh)" > TMP_LOG
+          if gh release view $(cat TMP_LOG) > /dev/null; then
+            echo "$(cat TMP_LOG) is already released!"
+            exit 1
+          fi
+          echo "name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # https://github.com/timheuer/base64-to-file
+      - name: Set google-services.json
+        id: set_google_services
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'google-services.json'
+          fileDir: './app/'
+          encodedString: ${{ secrets.GOOGLE_SERVICES_JSON }}
+      - name: Set keystore's file
+        id: set_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'release.jks'
+          fileDir: './'
+          encodedString: ${{ secrets.KEYSTORE }}
+
+      - name: List up *.jks
+        run: echo $(ls *.jks)
+
+      - name: Build release apk
+        run: ./gradlew app:assembleRelease
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Set git tag
+        run: |
+          echo "${{ steps.version.outputs.name }}" > TAG_NAME
+          git tag "$(cat TAG_NAME)"
+          git push origin "$(cat TAG_NAME)"
+
+      - name: Create release with assets
+        run: gh release create "${{ steps.version.outputs.name }}" 'app/build/outputs/apk/release/app-release.apk' 'app/build/outputs/mapping/release/mapping.txt' --generate-notes --title "${{ steps.version.outputs.name }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
