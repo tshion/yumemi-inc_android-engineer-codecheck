@@ -38,10 +38,7 @@ jobs:
         run: |
           jshell -R-Dargs="${{ inputs.versionMajor }} ${{ inputs.versionMinor }} ${{ inputs.versionPatch }}" .github/scripts/set-version/set-version.jsh
           echo "$(jshell .github/scripts/get-version-name/get-version-name.jsh)" > TMP_LOG
-          if gh release view $(cat TMP_LOG) > /dev/null; then
-            echo "$(cat TMP_LOG) is already released!"
-            exit 1
-          fi
+          bash .github/scripts/can-release.bash $(cat TMP_LOG)
           echo "branch-name=feature/update_$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
           echo "message=アプリバージョン更新: $(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
         env:
