@@ -64,7 +64,9 @@ GitHub リポジトリを検索できるAndroid アプリ。
     * 基本方針
     * 適用する設計パターン
     * 設計パターンを支えるライブラリ
-* 各モジュールのREADME
+* 各README
+    * [.github/](.github/READ_ME.md)
+        * 本GitHub リポジトリの設定
     * [app](./app/)
         * リリースビルドを試したい
         * 依存ライブラリ

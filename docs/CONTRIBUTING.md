@@ -54,11 +54,6 @@ Android Studio で開くことで開発作業をする環境が整います。
 1. 最新の`released` ブランチからGit ブランチを切る
     * 名前は`hotfix/???` という形式で、`???` の部分を良い感じに設定してください
 1. バグ修正をする
-1. アプリバージョンを更新する
-    * 後述する「リリース作業の流れ」にあるアプリバージョンを更新するGitHub Actions も利用できます
-1. 作業が完了したら下記ブランチそれぞれに対してPull Request を作成する
-    * `released` ブランチ -> 例: [PR #51](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/51)
-    * `develop` ブランチ -> 例: [PR #52](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/52)
 1. レビュー担当者に連絡してください
 
 
@@ -75,20 +70,25 @@ Android Studio で開くことで開発作業をする環境が整います。
 
 
 ## リリース作業の流れ
+### 通常
 1. リリース対象Pull Request が`develop` ブランチに全てマージされていることを確認する
-1. https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/update-app-version-jshell.yml に移動し、GitHub Actions を実行する
-    * アプリバージョンを更新するPull Request が作成されます
-    * ローカルの場合は下記を実行し、Pull Request を作成してください
-        * VSCode タスク「JShell: アプリバージョンの更新」を実行する
-        * プロジェクトルートで `jshell  -R-Dargs="x y z" scripts/set-version.jsh` を実行する
+1. https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/140-create-version-pr.yml のGitHub Actions を実行し、アプリバージョンの更新Pull Request を作成する
 1. 前の手順で作成したPull Request に問題がなければマージする
 1. `released` ブランチへのマージPull Request が作成されるはずなので、しばらく待つ
     * 手動実行する場合は、下記に移動してください
-        * https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/create-merge-pr.yml
+        * https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/160-create-release-pr.yml
 1. 前の手順で作成したPull Request に問題がなければマージする
 1. GitHub Releases が自動生成されるので、様子を見る
 
-※`hotfix` ブランチの場合は、`released` ブランチに対してPull Request を作成するので、それをマージすればリリース処理が走ります
+### hotfix
+1. hotfix のPull Request に問題ないことを確認する
+1. 上記のブランチを指定して、https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/140-create-version-pr.yml を実行し、アプリバージョンの更新Pull Request を作成する
+1. 前の手順で作成したPull Request に問題がなければマージする
+1. 作業が完了したら下記ブランチそれぞれに対してPull Request を作成する
+    * `released` ブランチ -> hotfix のブランチを指定して https://github.com/tshion/yumemi-inc_android-engineer-codecheck/actions/workflows/160-create-release-pr.yml を実行する
+    * `develop` ブランチ -> 例: [PR #52](https://github.com/tshion/yumemi-inc_android-engineer-codecheck/pull/52)
+1. 前の手順で作成したPull Request に問題がなければマージする
+1. GitHub Releases が自動生成されるので、様子を見る
 
 
 
