@@ -22,6 +22,7 @@ jobs:
         (github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'アプリバージョン更新')))
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       pull-requests: write
     steps:
       # https://github.com/actions/checkout
