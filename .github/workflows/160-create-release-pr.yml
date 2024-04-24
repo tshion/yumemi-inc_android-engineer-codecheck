@@ -1,0 +1,55 @@
+name: 160 Create release pull request
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'develop'
+    paths:
+      - 'build.properties'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  create-release-pr:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'アプリバージョン更新'))
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-java-runtime
+
+      - name: Get version name
+        id: version
+        run: |
+          echo "$(jshell .github/scripts/get-version-name/get-version-name.jsh)" > TMP_LOG
+          if gh release view $(cat TMP_LOG) > /dev/null; then
+            echo "$(cat TMP_LOG) is already released!"
+            exit 1
+          fi
+          echo "name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Generate diff notes
+        id: notes
+        run: |
+          echo "$(gh release list --exclude-drafts --exclude-pre-releases --order desc --limit 1 --json tagName --jq '.[].tagName')" > TMP_LOG
+          echo "gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/${{ github.repository }}/releases/generate-notes -f "tag_name=preview${{ steps.version.outputs.name }}" -f "target_commitish=develop" -f "previous_tag_name=$(cat TMP_LOG)"" > TMP_LOG
+          echo "diff=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Create pull request
+        run: gh pr create --base released --title "Merge ${{ steps.version.outputs.name }}" --body "${{ steps.notes.outputs.diff }}"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
