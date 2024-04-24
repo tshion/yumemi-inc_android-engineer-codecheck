@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref_type == 'branch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
