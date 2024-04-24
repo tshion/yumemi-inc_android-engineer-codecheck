@@ -49,7 +49,7 @@ jobs:
       - name: Git push
         run: |
           git switch --create ${{ steps.version.outputs.branch-name }}
-          git add --all
+          git add build.properties
           git commit --message "${{ steps.version.outputs.message }}"
           git push --set-upstream origin ${{ steps.version.outputs.branch-name }}
 
