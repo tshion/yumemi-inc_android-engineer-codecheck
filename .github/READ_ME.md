@@ -7,8 +7,8 @@ GitHub 用の設定や関連する実装などの置き場。
 [actions/setup-java-runtime/](./actions/setup-java-runtime/) | Java 実行環境のセットアップ
 [scripts/get-version-name/](./scripts/get-version-name/) | バージョン名の取得
 [scripts/set-version/](./scripts/set-version/) | バージョン情報の設定
-[workflows/080-create-version-pr.yml](./workflows/080-create-version-pr.yml) | バージョン情報を更新するPull Request 作成
-[workflows/140-create-release-pr.yml](./workflows/140-create-release-pr.yml) | リリース候補の変更内容をまとめたPull Request 作成
+[workflows/140-create-version-pr.yml](./workflows/140-create-version-pr.yml) | バージョン情報を更新するPull Request 作成
+[workflows/160-create-release-pr.yml](./workflows/160-create-release-pr.yml) | リリース候補の変更内容をまとめたPull Request 作成
 [workflows/180-deploy.yml](./workflows/180-deploy.yml) | リリース(デプロイ)
 [issue_template.md](./issue_template.md) | Issue 作成時に適用されるテンプレート
 [pull_request_template.md](./pull_request_template.md) | Pull Request 作成時に適用されるテンプレート

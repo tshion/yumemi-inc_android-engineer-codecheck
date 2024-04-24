@@ -1,4 +1,4 @@
-name: 080 Create version pull request
+name: 140 Create version pull request
 
 on:
   workflow_dispatch:
@@ -51,12 +51,15 @@ jobs:
 
       - name: Git push
         run: |
-          git switch -c ${{ steps.version.outputs.branch-name }}
-          git add build.properties
-          git commit -m "${{ steps.version.outputs.message }}"
+          git switch --create ${{ steps.version.outputs.branch-name }}
+          git add --all
+          git commit --message "${{ steps.version.outputs.message }}"
           git push --set-upstream origin ${{ steps.version.outputs.branch-name }}
 
       - name: Create pull request
-        run: gh pr create --base ${{ github.ref_name }} --title "${{ steps.version.outputs.message }}" --body ""
+        run: |
+          gh pr create --base ${{ github.ref_name }} --title "${{ steps.version.outputs.message }}" --body "## 確認事項
+          * [ ] 意図したバージョンが設定されている
+          * [ ] ビルド出来る"
         env:
           GITHUB_TOKEN: ${{ github.token }}
