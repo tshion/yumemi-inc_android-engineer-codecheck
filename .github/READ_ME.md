@@ -8,6 +8,7 @@ GitHub 用の設定や関連する実装などの置き場。
 [scripts/get-version-name/](./scripts/get-version-name/) | バージョン名の取得
 [scripts/set-version/](./scripts/set-version/) | バージョン情報の設定
 [scripts/can-release.sh](./scripts/can-release.sh) | リリース出来るかどうか
+[scripts/presume-release-notes.bash](./scripts/presume-release-notes.bash) | まだリリースしていないGit タグのリリースノートの推定
 [workflows/140-create-version-pr.yml](./workflows/140-create-version-pr.yml) | バージョン情報を更新するPull Request 作成
 [workflows/160-create-release-pr.yml](./workflows/160-create-release-pr.yml) | リリース候補の変更内容をまとめたPull Request 作成
 [workflows/180-deploy.yml](./workflows/180-deploy.yml) | リリース(デプロイ)
