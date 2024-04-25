@@ -42,7 +42,7 @@ jobs:
           echo "branch-name=feature/update_$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
           echo "message=アプリバージョン更新: $(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
 
       - uses: ./.github/actions/apply-gh-actions-bot-identity
 
@@ -59,4 +59,4 @@ jobs:
           * [ ] 意図したバージョンが設定されている
           * [ ] ビルド出来る"
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}

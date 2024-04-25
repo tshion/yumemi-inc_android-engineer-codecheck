@@ -37,15 +37,15 @@ jobs:
           bash .github/scripts/can-release.bash $(cat TMP_LOG)
           echo "name=$(cat TMP_LOG)" >> "$GITHUB_OUTPUT"
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
 
       - name: Generate diff notes
         id: notes
         run: echo "response=$(bash .github/scripts/presume-release-notes.bash preview${{ steps.version.outputs.name }} ${{ github.ref_name }})" >> "$GITHUB_OUTPUT"
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
 
       - name: Create pull request
         run: gh pr create --base released --title "Merge ${{ steps.version.outputs.name }}" --body "${{ fromJson(steps.notes.outputs.response).body }}"
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
