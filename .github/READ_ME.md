@@ -3,7 +3,6 @@ GitHub 用の設定や関連する実装などの置き場。
 
 パス | 用途
 --- | ---
-[actions/apply-gh-actions-bot-identity/](./actions/apply-gh-actions-bot-identity/) | Git User にGitHub Actions Bot の情報を適用する
 [actions/setup-java-runtime/](./actions/setup-java-runtime/) | Java 実行環境のセットアップ
 [scripts/get-version-name/](./scripts/get-version-name/) | バージョン名の取得
 [scripts/set-version/](./scripts/set-version/) | バージョン情報の設定
