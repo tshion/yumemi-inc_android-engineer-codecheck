@@ -29,6 +29,14 @@ jobs:
           fileDir: './app/'
           encodedString: ${{ secrets.GOOGLE_SERVICES_JSON }}
 
+      - name: Set keystore's file
+        id: set_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'release.jks'
+          fileDir: './'
+          encodedString: ${{ secrets.KEYSTORE }}
+
       - uses: ./.github/actions/setup-java-runtime
 
       # https://github.com/gradle/actions
@@ -44,7 +52,11 @@ jobs:
           build-mode: manual
       
       - name: Build manually
-        run: ./gradlew app:assembleDebug
+        run: ./gradlew app:assembleRelease
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
       # https://github.com/github/codeql-action
       - name: Perform CodeQL Analysis
