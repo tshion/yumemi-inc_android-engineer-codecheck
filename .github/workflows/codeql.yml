@@ -1,0 +1,53 @@
+name: "CodeQL Advanced"
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+  schedule:
+    - cron: 0 19 * * 0 # Sunday 4am JST
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      packages: read
+      security-events: write
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      # https://github.com/timheuer/base64-to-file
+      - name: Set google-services.json
+        id: set_google_services
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'google-services.json'
+          fileDir: './app/'
+          encodedString: ${{ secrets.GOOGLE_SERVICES_JSON }}
+
+      - uses: ./.github/actions/setup-java-runtime
+
+      # https://github.com/gradle/actions
+      - uses: gradle/actions/setup-gradle@v4
+
+      - run: chmod +x gradlew
+
+      # https://github.com/github/codeql-action
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: java-kotlin
+          build-mode: manual
+      
+      - name: Build manually
+        run: ./gradlew app:assembleDebug
+
+      # https://github.com/github/codeql-action
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:java-kotlin"
