@@ -9,6 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.commit
 import androidx.navigation.fragment.NavHostFragment
+import com.microsoft.clarity.Clarity
+import com.microsoft.clarity.ClarityConfig
 
 /**
  * エントリーポイントを担当するActivity
@@ -52,6 +54,9 @@ open class EntryPointActivity : AppCompatActivity() {
                 setPrimaryNavigationFragment(fragment)
             }
         }
+
+        val config = ClarityConfig(BuildConfig.CLARITY_ID)
+        Clarity.initialize(applicationContext, config)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
