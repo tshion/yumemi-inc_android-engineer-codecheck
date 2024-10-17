@@ -34,6 +34,7 @@ android {
     compileSdk = rootProject.extra["androidApiTarget"] as Int
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
     defaultConfig {
@@ -44,6 +45,12 @@ android {
         versionName = "${buildProperties["version_name"]}"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "CLARITY_ID",
+            "\"${keystoreProperties.getProperty("CLARITY_ID", "")}\""
+        )
     }
     signingConfigs {
         val file = rootProject.file("release.jks")
@@ -102,6 +109,9 @@ dependencies {
 
     // Auto Service
     kaptDebug(libs.autoservice)
+
+    // Clarity
+    implementation(libs.clarity)
 
     // Coil
     implementation(libs.coil)

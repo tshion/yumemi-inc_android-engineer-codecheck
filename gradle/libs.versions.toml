@@ -25,6 +25,9 @@ androidx-uiautomator = "androidx.test.uiautomator:uiautomator:2.2.0"
 # Auto Service
 autoservice = "com.google.auto.service:auto-service:1.1.1"
 
+# Clarity
+clarity = "com.microsoft.clarity:clarity:2.5.2"
+
 # Coil
 coil = "io.coil-kt:coil:2.5.0"
 
