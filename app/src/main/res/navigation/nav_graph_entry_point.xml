@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_entry_point"
-    app:startDestination="@id/page_search">
+    app:startDestination="@id/page_launcher">
 
     <!-- ライセンス表記の起動 -->
     <action
@@ -63,6 +63,18 @@
         <argument
             android:name="data"
             app:argType="jp.co.yumemi.android.code_check.pages.detail.DetailViewData" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_launcher"
+        android:name="jp.co.yumemi.android.code_check.pages.launcher.LauncherFragment"
+        android:label="@string/page_launcher_title">
+
+        <action
+            android:id="@+id/nav_go_search"
+            app:destination="@id/page_search"
+            app:popUpTo="@id/nav_graph_entry_point"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
