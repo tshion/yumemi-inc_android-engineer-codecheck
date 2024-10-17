@@ -1,5 +1,8 @@
 name: reviewdog
-on: [push, pull_request]
+
+on:
+  pull_request:
+    branches: [ "develop" ]
   
 jobs:
   reviewdog:
@@ -12,6 +15,23 @@ jobs:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v4
 
+      # https://github.com/timheuer/base64-to-file
+      - name: Set google-services.json
+        id: set_google_services
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'google-services.json'
+          fileDir: './app/'
+          encodedString: ${{ secrets.GOOGLE_SERVICES_JSON }}
+
+      - name: Set keystore's file
+        id: set_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'release.jks'
+          fileDir: './'
+          encodedString: ${{ secrets.KEYSTORE }}
+
       - uses: ./.github/actions/setup-java-runtime
 
       # https://github.com/gradle/actions
@@ -19,7 +39,12 @@ jobs:
 
       - run: chmod +x gradlew
 
-      - run: ./gradlew build
+      - name: Build manually
+        run: ./gradlew app:assembleRelease
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       
       # https://github.com/reviewdog/reviewdog
       - uses: reviewdog/action-setup@v1
